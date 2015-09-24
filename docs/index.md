@@ -1,4 +1,4 @@
-# What is NewtOS? 
+# What is Newt Operating System?
 
 NewtOS is an open-source RTOS (Real Time Operating System) that can be easily customized for your project using the Newt Tool. Like wine, it only gets better with age.
 
