@@ -1,6 +1,6 @@
 ## Objective
 
-The goal is to set up a STM32-E407 development board from Olimex, download an appropriate firmware image onto it, and make the LED on the board blink.
+The goal is to set up a STM32-E407 development board from Olimex, download an appropriate firmware image onto it, and make the LED on the board blink. First, we will run the image from SRAM. Then, we'll try running the image from flash.
 
 ## What you need
 
@@ -63,7 +63,7 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 	        name: blink
 	        arch: arm
 
-5. Now you have to build the package. Once built, you can find the executable "main.elf" in the project directory at ~/dev/dev_test/project/main/bin/blink. It's a good idea to take the time to understand the directory structure.
+5. Now you have to build the image package. Once built, you can find the executable "main.elf" in the project directory at ~/dev/larva/project/main/bin/blink. It's a good idea to take a little time to understand the directory structure.
 
         $ newt target build blink
         Successfully run!
@@ -94,7 +94,7 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 
 7. Next are the steps to get the debugger up and running with the project's hardware. [<span style="color:red">*This will be simplified eventually into a consolidated single action step instead of manual tweakscurrently required*</span>]
 
-    Currently, the following 5 files are required. They are likely to be packed into a .tar file and made available under mynewt on github.com. Unpack it in the blink directory using `tar xvfz` command. Go into the openocd directory created and make sure that the gdb-8888.cfg file indicates the correct file (main.elf) to load and its full path. Specifically, look for 'load ~/larva/larva/project/main/bin/blink/main.elf' and 'symbol-file ~/larva/larva/project/main/bin/blink/main.elf'.   
+    Currently, the following 5 files are required. They are likely to be packed into a .tar file and made available under mynewt on github.com. Unpack it in the blink directory using `tar xvfz` command. Go into the openocd directory created and make sure that the gdb-8888.cfg file indicates the correct file (main.elf) to load and its full path. Specifically, look for 'load ~/dev/larva/project/main/bin/blink/main.elf' and 'symbol-file ~/larva/larva/project/main/bin/blink/main.elf'.   
 
     * ocd-8888.cfg
     * olimex-arm-usb-tiny-h-ftdi.cfg
@@ -122,7 +122,7 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 
 1. Go into the openocd directory and start an OCD session. You should see some status messages are shown below. Check the value of the xPSR, pc (program counter), and msp (main service pointer) registers. If they are not as indicated below, you will have to manually set it after you open the gdp tool to load the image on it (next step). Note the `-c "reset halt"` flag that tells it to halt after opening the session. It will now require a manual "continue" command from the GNU debugger in step 3. 
 
-        $ cd ~/larva/larva/project/main/bin/blink/openocd
+        $ cd ~/dev/larva/project/main/bin/blink/openocd
         $ openocd -f olimex-arm-usb-tiny-h-ftdi.cfg -f ocd-8888.cfg -f stm32f4x.cfg -c "reset halt" 
         Open On-Chip Debugger 0.8.0 (2015-09-22-18:21)
         Licensed under GNU GPL v2
@@ -146,7 +146,7 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 
 2. Open a new terminal window and run the GNU debugger for ARM. Specifying the script gdb-8888.cfg tells it what image to load. You should now have a (gdb) prompt inside the debugger.
 
-        $ cd ~/larva/larva/project/main/bin/blink/openocd
+        $ cd ~/dev/larva/project/main/bin/blink/openocd
         $ arm-none-eabi-gdb -x gdb-8888.cfg 
         GNU gdb (GNU Tools for ARM Embedded Processors) 7.8.0.20150604-cvs
         Copyright (C) 2014 Free Software Foundation, Inc.
@@ -206,7 +206,13 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
          (gdb) c
          Continuing.
 
+## Preparing the hardware to boot from flash
 
+1. Configure the board to boot from flash by moving the two jumpers together to B0_0 and B1_0. 
+2. You will have to reset the board once the image is uploaded to it.
 
+## Making the LED blink again
+
+1. We will create a binary file 
 
 
