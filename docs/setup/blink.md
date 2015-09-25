@@ -213,6 +213,17 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 
 ## Making the LED blink again
 
-1. We will create a binary file 
+1. We will first create a binary image file to upload into flash. It's easiest to be in the project (blink) directory.
+
+        $ /usr/local/bin/arm-none-eabi-objcopy -R .bss -R .shared -O binary ~/dev/larva/project/main/bin/blink/main.elf ~/dev/larva/project/main/bin/blink/main.bin
+        $ ls
+        main.bin		main.elf.lst		openocd
+        main.elf		main.elf.map		openocd-pkg.tar.gz
+        
+2. We now have to build a new package. To do that you first have to copy 
+3. 
+        $
+        
+
 
 
