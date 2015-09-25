@@ -18,8 +18,8 @@ Step by Step process to get oriented for success with Newt Operating System!
 
     The GOPATH environment variable specifies the location of your workspace. First create a 'dev' directory and then a 'go' directory under it. Set the GOPATH environment variable to this directory and then proceed to create the directory for cloning the stack tool repository. 
 
-        $ mkdir larva    
-        $ cd larva
+        $ mkdir dev    
+        $ cd dev
         $ mkdir go  
         $ cd go  
         $ export GOPATH=`pwd` 
@@ -41,9 +41,9 @@ Step by Step process to get oriented for success with Newt Operating System!
 
 5. Now you will get the godep package. Return to the go directory level and get godep. Check for it in the bin subdirectory. 
 
-        $ cd ~/larva/go
+        $ cd ~/dev/go
         $ pwd  
-        $HOME/larva/go
+        $HOME/dev/go
         $ go get github.com/tools/godep
         $ ls
         bin     pkg     src
