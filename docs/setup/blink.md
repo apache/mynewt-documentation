@@ -212,17 +212,82 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 2. You will have to reset the board once the image is uploaded to it.
 
 ## Making the LED blink again
+        
+2. We have to build a new package. First, the olimex_stm32-e407_devboard.ld linker script which was previously the same as run_from_sram.ld now has to have the contents of run_from_flash.ld. Then the target has to be rebuilt. We will simply replace the blink directory contents with the package needed to boot from flash.
 
-1. We will first create a binary image file to upload into flash. It's easiest to be in the project (blink) directory.
+        $ cd ~/dev/larva/hw/bsp/olimex_stm32-e407_devboard
+        $ diff olimex_stm32-e407_devboard.ld run_from_sram.ld
+        $ cp run_from_flash.ld olimex_stm32-e407_devboard.ld
+        $ cd ~/dev/larva/project/main/bin/blink
+        $ newt target build blink
+        
+        
+2. We will create a binary image file to upload into flash. 
 
         $ /usr/local/bin/arm-none-eabi-objcopy -R .bss -R .shared -O binary ~/dev/larva/project/main/bin/blink/main.elf ~/dev/larva/project/main/bin/blink/main.bin
         $ ls
         main.bin		main.elf.lst		openocd
         main.elf		main.elf.map		openocd-pkg.tar.gz
         
-2. We now have to build a new package. To do that you first have to copy 
-3. 
-        $
+3. Go to the openocd directory under blink and use OpenOCD to open up a session with the board as done while booting from SRAM.
+
+        $ cd ~/dev/larva/project/main/bin/blink/openocd
+        $ openocd -f olimex-arm-usb-tiny-h-ftdi.cfg -f ocd-8888.cfg -f stm32f4x.cfg -c "reset halt" 
+        Open On-Chip Debugger 0.8.0 (2015-09-22-18:21)
+        Licensed under GNU GPL v2
+        For bug reports, read
+	        http://openocd.sourceforge.net/doc/doxygen/bugs.html
+        Info : only one transport option; autoselect 'jtag'
+        adapter speed: 1000 kHz
+        adapter_nsrst_assert_width: 500
+        adapter_nsrst_delay: 100
+        jtag_ntrst_delay: 100
+        cortex_m reset_config sysresetreq
+        Info : clock speed 1000 kHz
+        Info : JTAG tap: stm32f4x.cpu tap/device found: 0x4ba00477 (mfg: 0x23b, part: 0xba00, ver: 0x4)
+        Info : JTAG tap: stm32f4x.bs tap/device found: 0x06413041 (mfg: 0x020, part: 0x6413, ver: 0x0)
+        Info : stm32f4x.cpu: hardware has 6 breakpoints, 4 watchpoints
+        target state: halted
+        target halted due to debug-request, current mode: Thread 
+        xPSR: 0x01000000 pc: 0x0800408c psp: 0x20003c60
+        Info : JTAG tap: stm32f4x.cpu tap/device found: 0x4ba00477 (mfg: 0x23b, part: 0xba00, ver: 0x4)
+        Info : JTAG tap: stm32f4x.bs tap/device found: 0x06413041 (mfg: 0x020, part: 0x6413, ver: 0x0)
+        target state: halted
+        target halted due to debug-request, current mode: Thread 
+        xPSR: 0x01000000 pc: 0x08000580 msp: 0x10010000
+
+4. Run the GNU debugger for ARM in a different window. Specifying the script gdb-8888.cfg tells it what image to load. You should now have a (gdb) prompt inside the debugger.
+
+        $ cd ~/dev/larva/project/main/bin/blink/openocd
+        $ arm-none-eabi-gdb -x gdb-8888.cfg 
+        GNU gdb (GNU Tools for ARM Embedded Processors) 7.8.0.20150604-cvs
+        Copyright (C) 2014 Free Software Foundation, Inc.
+        License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+        This is free software: you are free to change and redistribute it.
+        There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+        and "show warranty" for details.
+        This GDB was configured as "--host=x86_64-apple-darwin10 --target=arm-none-eabi".
+        Type "show configuration" for configuration details.
+        For bug reporting instructions, please see:
+        <http://www.gnu.org/software/gdb/bugs/>.
+        Find the GDB manual and other documentation resources online at:
+        <http://www.gnu.org/software/gdb/documentation/>.
+        For help, type "help".
+        Type "apropos word" to search for commands related to "word".
+         
+        *** Set target charset ASCII
+         
+        *** Connecting to OpenOCD over port #8888 ***
+        0x20000580 in ?? ()
+         
+        *** loading nic.out.elf ***
+        Loading section .text, size 0x65d4 lma 0x20000000
+        Loading section .ARM.extab, size 0x24 lma 0x200065d4
+        Loading section .ARM.exidx, size 0xd8 lma 0x200065f8
+        Loading section .data, size 0x8f8 lma 0x200066d0
+        Start address 0x20000580, load size 28616
+        Transfer rate: 78 KB/sec, 2861 bytes/write.
+        (gdb)
         
 
 
