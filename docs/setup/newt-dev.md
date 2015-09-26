@@ -10,7 +10,7 @@ Note: The instructions assume the user is using a Bourne-compatible shell (e.g. 
 
         $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-Alternatively, you can just extract (or `git clone`) Homebrew and install it to `/usr/local`.
+    Alternatively, you can just extract (or `git clone`) Homebrew and install it to `/usr/local`.
  
 3. The environment must be readied for using Go. Go code must be kept inside a workspace. A workspace is a directory hierarchy with three directories at its root:
 
