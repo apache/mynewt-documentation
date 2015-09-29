@@ -74,10 +74,11 @@ Note: The instructions assume the user is using a Bourne-compatible shell (e.g. 
         $ go install
 
 
-8. Try using go to run the newt.go program. You will see the compiled binary as 'newt' in the directory. If not, you can compile the packages again by typing 'go build' at the command line.
+8. Try using go to run the newt.go program. After the run you will see the compiled binary as 'newt' in the directory. Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
 
-    Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
+Note: If you are modifying the newt tool itself often and wish to compile the program every time you call it, you want to store the command in a variable in your .bash_profile. So type in `export newt="go run $GOPATH/src/github.com/mynewt/newt/newt.go"` in your .bash_profile and execute it by calling `$newt` at the prompt instead of `newt`.
 
+        $ go run $GOPATH/src/github.com/mynewt/newt/newt.go
         $ cd ~/dev/go/src/github.com/mynewt/newt
         $ ls
         Godeps			README.md		coding_style.txt	newt

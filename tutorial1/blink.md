@@ -83,7 +83,7 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
         $ cd blink
         $ ls
         main.elf	main.elf.lst	main.elf.map
-            p flair
+
 6. Now it's time to install OpenOCD or Open On-Chip Debugger (OpenOCD) to allow programming, debugging, and testing of embedded target devices which, in this case, is the Olimex board. Use brew to install it. Brew adds a simlink /usr/local/bin/openocd to the openocd directory in the Cellar.
 
         $ brew install open-ocd
