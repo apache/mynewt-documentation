@@ -2,6 +2,8 @@
 
 The goal is to create a simulator or 'sim_test' project that can eventually be used for development and testing purposes. 
 
+## Procedure
+
 1. Go to your larva directory and create a new project using the newt tool. You can either use the compiled binary `newt` or run the newt.go program using `$newt` (assuming you have stored the command in a variable in your .bash_profile). When you do a `newt target show` or `$newt target show` it should list all the projects you have created so far. 
 
         $ cd dev/larva

@@ -1,17 +1,11 @@
-site_name: Newt OS from Runtime
+site_name: MyNewt
 
 pages:
 - 'Introduction': index.md
-- 'Getting Started':
-     - 'Prepare your environment': 'setup/newt-dev.md' 
-     - 'Get your first LED blinking': 'setup/blink.md'
-- 'User Guide': 
-     - 'Stack Tool': 'user-guide/stack-tool.md'
-     - 'Stack OS': 'user-guide/stack-os.md'
-     - 'Stack File System': 'user-guide/stack-fs.md'
-     - 'Stack BLE': 'user-guide/stack-ble.md'
-
-- 'Tutorials': tutorials.md
+- 'Environment Setup': newt-dev.md
+- 'Directory Layout': layout.md
+- 'Building Blink': blink.md
+- 'Building Sim': sim.md
      
 theme: mkdocs 
 
