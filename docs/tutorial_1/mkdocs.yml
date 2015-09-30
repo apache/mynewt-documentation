@@ -1,0 +1,11 @@
+site_name: A Beginner's Guide to Building your first custom Embedded System 
+
+pages:
+- 'Introduction': index.md
+- 'Environment Setup': newt-dev.md
+- 'Directory Layout': layout.md
+- 'Building Sim': sim.md
+- 'Building Blink': blink.md
+     
+theme: mkdocs 
+
