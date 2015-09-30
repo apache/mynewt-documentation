@@ -107,8 +107,8 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
 ## Preparing the hardware to boot from embedded SRAM
 
 1. Locate the boot jumpers on the board.
-![Alt Layout - Top View](./topview.png)
-![Alt Layout - Bottom View](./bottomview.png)
+![Alt Layout - Top View](./pics/topview.png)
+![Alt Layout - Bottom View](./pics/bottomview.png)
 
 2. B1_1/B1_0 and B0_1/B0_0 are PTH jumpers which can be moved relatively easy. Note that the markings on the board may not always be accurate. Always refer to the manual for the correct positioning of jumpers in case of doubt. The two jumpers must always be moved together – they are responsible for the boot mode if bootloader is present. The board can search for bootloader on three places – User Flash Memory, System Memory or the Embedded SRAM. We will configure it to boot from SRAM by jumpering B0_1 and B1_1.
 
