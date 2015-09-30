@@ -1,9 +1,9 @@
 
-# Vision
+## Vision
 
 We want to make it very simple for an application developer to pick and choose the hardware components for an embedded device and run their application on it in an optimized way. We invite you to join us in our efforts to develop the ecosystem of firmware, software, and tools needed to offer the higher level of abstraction to the application developers to enable them to be more productive.  
 
-# What are the basic components?
+## What are the basic components?
 
 * NewtOS is an open-source RTOS (Real Time Operating System) that is not tied to any particular hardware. It has support for multitasking, synchronization of tasks, scheduling and buffering of operations, memory management,file systems, networking, security, power management, and more features.
 
