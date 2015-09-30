@@ -19,8 +19,8 @@ The goal is to set up a STM32-E407 development board from Olimex, download an ap
         $ brew update
         $ brew install gcc-arm-none-eabi-49
         $ arm-none-eabi-gcc --version  
-        arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors) 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147]
-        Copyright (C) 2013 Free Software Foundation, Inc.
+        arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors) 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 224288]
+        Copyright (C) 2014 Free Software Foundation, Inc.
         This is free software; see the source for copying conditions.  There is NO
         warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
         $ ls -al /usr/local/bin/arm-none-eabi-gdb
