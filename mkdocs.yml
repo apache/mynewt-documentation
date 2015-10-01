@@ -1,7 +1,7 @@
 site_name: MyNewt
 
 pages:
-- 'Introduction': index.md
+- 'Introduction': intro.md
 - 'Tutorial #1': 
     - 'Environment Setup': tutorial_1/newt-dev.md
     - 'Directory Layout': tutorial_1/layout.md

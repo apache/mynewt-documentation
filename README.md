@@ -12,7 +12,7 @@ documentation/
 ├── README.md
 ├── mkdocs.yml
 ├── docs/
-|    ├── index.md: Introduction & Vision
+|    ├── intro.md: Introduction & General Philosophy
 |    └── tutorial_1/ : Tutorial #1 - Getting Started  
 |        ├── newt-dev.md: Downloads & Installs to get your dev/run environment ready
 |        ├── layout.md: Directory layout & basic terminology in a mynewt project
