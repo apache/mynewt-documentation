@@ -1,12 +1,11 @@
 site_name: MyNewt
 
 pages:
-- 'Introduction': intro.md
-- 'Tutorial #1': 
-    - 'Environment Setup': tutorial_1/newt-dev.md
-    - 'Directory Layout': tutorial_1/layout.md
-    - 'Building Blink': tutorial_1/blink.md
-    - 'Building Sim': tutorial_1/sim.md
+- Home: index.md
+- Geting started:
+    - Introduction: 'chapter1/intro.md'
+    - Newt Concepts: 'chapter1/newt_concepts.md'
+    - First Project: 'chapter1/project1.md'
      
 theme: mkdocs 
 
