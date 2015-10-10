@@ -16,7 +16,7 @@ If you want to explore even further, you can try to upload the image to the boar
 4. Personal Computer
 
 The instructions assume the user is using a Bourne-compatible shell (e.g. bash or zsh) on your computer. You may already have some of the required packages on your machine.  In that 
-case, simply skip the corresponding installation step in the instructions under [Getting your Mac Ready](#anchor1) or [Getting your Ubuntu machine Ready](#anchor2) or [Getting your Windows machine Ready](#anchor3). While the given instructions should work on other versions, they have been tested for the two specific releases of operating systems noted here:
+case, simply skip the corresponding installation step in the instructions under [Getting your Mac Ready](#anchor1) or [Getting your Ubuntu machine Ready](#anchor2) or [Getting your Windows machine Ready](#anchor3). While the given instructions should work on other versions, they have been tested for the three specific releases of operating systems noted here:
 
 * Mac: OS X Yosemite Version 10.10.5
 * Linux: Ubuntu 14.10 (Utopic Unicorn)

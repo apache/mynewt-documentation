@@ -142,7 +142,7 @@ So, if you had two clutches installed, the output could be:
     Remote clutch larva (eggshells: 19)
     Remote clutch ble_test (eggshells: 15)
     
-#### []Target](id:anchor4)
+#### [Target](id:anchor4)
 
 A target is the hardware build or its software equivalent (e.g. test, simulator) set for a project. It tells the newt tool how to build the source code within a given nest. Once a new target is created, its architecture and other details needs to be defined. An example of a defined target named "blink_f3disc" is given below.
  
