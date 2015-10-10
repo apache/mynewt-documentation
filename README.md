@@ -12,10 +12,11 @@ documentation/
 ├── README.md
 ├── mkdocs.yml
 ├── docs/
-|    ├── intro.md: Introduction & General Philosophy
-|    └── tutorial_1/ : Tutorial #1 - Getting Started  
-|        ├── newt-dev.md: Downloads & Installs to get your dev/run environment ready
-|        ├── layout.md: Directory layout & basic terminology in a mynewt project
-|        ├── blink.md: How to make an LED blink on an Olimex board
-|        └── sim.md: Starting a simulator project
-```
+|    ├── index.md: Introduction & General Philosophy
+|    └── chapter1/ : Chapter#1 - Getting Started  
+|        ├── intro.md: Introduction to the chapter 
+|        ├── newt_concepts.md: Terminology of the Newt world
+|        ├── project1.md: How to use eggs to make an LED blink on an Olimex board
+|        └── pics/
+|             ├── bottomview.png: Bottom view of the Olimex board
+|             └── topview.png: Top view of the Olimex board
