@@ -102,11 +102,11 @@ case, simply skip the corresponding installation step in the instructions under 
 
 #### Building the Newt tool
 
-* You will now use go to run the newt.go program to build the newt tool. After the run you will see the compiled binary as 'newt' in the directory. Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
+* You will now use go to run the newt.go program to build the newt tool. You will have to use `go build` command which compiles and writes the resulting executable to an output file named `newt`. However, it does not install the results along with its dependencies in $GOPATH/bin (for that you will need to use `go install`). Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
 
-Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to store the command in a variable in your .bash_profile. So type in `export newt="go run $GOPATH/src/github.com/mynewt/newt/newt.go"` in your .bash_profile and execute it by calling `$newt` at the prompt instead of `newt`. Don't forget to reload the updated bash profile by typing `source ~/.bash_profile` at the prompt!
+Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to store the command in a variable in your .bash_profile. So type in `export newt="go run $GOPATH/src/github.com/mynewt/newt/newt.go"` in your .bash_profile and execute it by calling `$newt` at the prompt instead of `newt`. Don't forget to reload the updated bash profile by typing `source ~/.bash_profile` at the prompt! Here, you use `go run` which runs the compiled binary directly without producing an executable.
 
-        $ go run %GOPATH%\src\github.com\mynewt\newt\newt.go
+        $ go run %GOPATH%/src/github.com/mynewt/newt/newt.go
         $ cd ~/dev/go/src/github.com/mynewt/newt
         $ ls
         Godeps			README.md		coding_style.txt	newt
@@ -155,7 +155,16 @@ Note: If you are going to be be modifying the newt tool itself often and wish to
 
 #### Getting the debugger ready
 
-* Before you start building nests and hatching eggs, you need to do one final step in the environment preparation - install gcc / libc that can produce 32-bit executables. ARM maintains a pre-built GNU toolchain with a GCC source branch targeted at Embedded ARM Processors namely Cortex-R/Cortex-M processor families. Install the PX4 Toolchain and check the version installed. Make sure that the symbolic link installed by Homebrew points to the correct version of the debugger. If not, you can either change the symbolic link using the "ln -f -s" command or just go ahead and try with the version it points to!
+* Before you start building nests and hatching eggs, you need to do one final step in the environment preparation - install gcc / libc that can produce 32-bit executables. So, first install gcc. You will see the brew steps and a final summary confirming install.
+
+        $ brew install gcc
+        ...
+        ...
+        ==> Summary
+        🍺  /usr/local/Cellar/gcc/5.2.0: 1353 files, 248M
+
+
+* ARM maintains a pre-built GNU toolchain with a GCC source branch targeted at Embedded ARM Processors namely Cortex-R/Cortex-M processor families. Install the PX4 Toolchain and check the version installed. Make sure that the symbolic link installed by Homebrew points to the correct version of the debugger. If not, you can either change the symbolic link using the "ln -f -s" command or just go ahead and try with the version it points to!
 
         $ brew tap PX4/homebrew-px4
         $ brew update
@@ -238,11 +247,11 @@ Note: If you are going to be be modifying the newt tool itself often and wish to
 
 #### Building the newt tool
 
-* You will now use go to run the newt.go program to build the newt tool. After the run you will see the compiled binary as 'newt' in the directory. Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
+* You will now use go to run the newt.go program to build the newt tool. You will have to use `go build` command which compiles and writes the resulting executable to an output file named `newt`. However, it does not install the results along with its dependencies in $GOPATH/bin (for that you will need to use `go install`). Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
 
-Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to store the command in a variable in your .bash_profile. So type in `export newt="go run $GOPATH/src/github.com/mynewt/newt/newt.go"` in your ~/.bashrc (or equivalent) and execute it by calling `$newt` at the prompt instead of `newt`. 
+Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to store the command in a variable in your .bash_profile. So type in `export newt="go run $GOPATH/src/github.com/mynewt/newt/newt.go"` in your ~/.bashrc (or equivalent) and execute it by calling `$newt` at the prompt instead of `newt`. Here, you use `go run` which runs the compiled binary directly without producing an executable.
 
-        $ go run %GOPATH%\src\github.com\mynewt\newt\newt.go
+        $ go build %GOPATH%/src/github.com/mynewt/newt/newt.go
         $ cd ~/dev/go/src/github.com/mynewt/newt
         $ ls
         Godeps			README.md		coding_style.txt	newt
@@ -431,11 +440,11 @@ tutorial for a Windows machine assumes the specified folders.
 
 #### Building the newt tool
 
-* You will now use go to run the newt.go program to build the newt tool. After the run you will see the compiled binary as 'newt' in the directory. Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
+* You will now use go to run the newt.go program to build the newt tool. You will have to use `go build` command which compiles and writes the resulting executable to an output file named `newt`. However, it does not install the results along with its dependencies in $GOPATH/bin (for that you will need to use `go install`). Now try running newt using the compiled binary. For example, check for the version number by typing 'newt version'. See all the possible commands available to a user of newt by typing 'newt -h'.
 
-    Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to define the newt environment variable that allows you to execute the command via `%newt%`. Use `set newt=go run %GOPATH%\src\github.com\mynewt\newt\newt.go` or set it from the GUI. 
+    Note: If you are going to be be modifying the newt tool itself often and wish to compile the program every time you call it, you may want to define the newt environment variable that allows you to execute the command via `%newt%`. Use `set newt=go run %GOPATH%\src\github.com\mynewt\newt\newt.go` or set it from the GUI. Here, you use `go run` which runs the compiled binary directly without producing an executable.
 
-        $ go run %GOPATH%\src\github.com\mynewt\newt\newt.go
+        $ go build %GOPATH%\src\github.com\mynewt\newt\newt.go
         $ cd ~/dev/go/src/github.com/mynewt/newt
         $ dir
         Godeps			README.md		coding_style.txt	newt
@@ -495,7 +504,7 @@ tutorial for a Windows machine assumes the specified folders.
 
 #### Proceed to the [Building test code on simulator](#anchor4) section.
 
-### [Building test code on simulator](id:anchor4)
+### [Building test code on simulator on non-Windows machine](id:anchor4)
 
 1.  First, you have to create a repository for the project i.e. build your first nest! Go to ~/dev and clone the larva repository from github. The URL used below is the HTTPS clone URL from the github.com repository for the Newt Operating System. 
 
@@ -588,6 +597,9 @@ tutorial for a Windows machine assumes the specified folders.
         ...
         [pass] boot_test_main/boot_test_vb_ns_11
 
+### [Building test code on simulator on non-Windows machine]
+
+Coming
 
 ### [Making an LED blink](id:anchor5)
 

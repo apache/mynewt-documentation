@@ -1,6 +1,62 @@
+
 ## Newt tool Reference
 
-### nest
+### Available high-level commands
+
+    version     Display the Newt version number.
+    help        Help about any command
+    nest        Commands to manage nests & clutches (remote egg repositories)
+    egg         Commands to list and inspect eggs on a nest
+    target      Set and view target information
+
+
+### *version*
+
+#### Usage:
+ 
+    newt version [flags]
+    
+Flags:
+
+    -h, --help=false: help for version
+
+Global Flags:
+
+    -h, --help=false: help for newt
+    
+    
+Examples
+
+Sub-command  | Usage                  | Explanation
+-------------| -----------------------|-----------------
+version       | newt version | Displays the version of newt tool installed
+
+
+### *help*
+
+#### Usage:
+
+    newt help [input1]
+    
+Flags:
+
+    -h, --help=false: help for newt
+    -l, --loglevel="WARN": Log level, defaults to WARN.
+    -q, --quiet=false: Be quiet; only display error output.
+    -s, --silent=false: Be silent; don't output anything.
+    -v, --verbose=false: Enable verbose output when executing commands.
+
+    
+Examples
+
+Sub-command  | Usage                  | Explanation
+-------------| -----------------------|-----------------
+help       | newt help target | Displays the help text for the newt command 'target'
+help       | newt help   | Displays the help text for newt tool
+    
+    
+
+### *nest*
 
 #### Usage: 
 
@@ -55,7 +111,7 @@ list-clutches | newt nest list-clutches | Shows all the remote clutch descriptio
 show-clutch   | newt nest show-clutch larva | Outputs the details of the clutch named larva such as the github url where the remote sits, the constituent eggs and their versions
 
 
-### egg
+### *egg*
 
 #### Usage: 
 
@@ -86,9 +142,118 @@ Description
 
 Sub-command  | Explanation
 -------------| ------------------------
-list         | Lists all the eggs in the current nest. The output shows the name, version, path, and any additional attributes of each egg in the nest such as dependencies, capabilities, and linker scripts. The newt command gets the attributes of each egg from the corresponsing egg.yml description file.
-checkdeps    | 
+list         | List all the eggs in the current nest. The output shows the name, version, path, and any additional attributes of each egg in the nest such as dependencies, capabilities, and linker scripts. The newt command gets the attributes of each egg from the corresponsing egg.yml description file.
+checkdeps    | Resolve all dependencies in the local nest. This command goes through all eggs currently installed, checks their dependencies, and prints any unresolved dependencies between eggs.
+hunt         | Hunts for an egg, specified by `input1`. The local nest, along with all remote nests (clutches) are searched. All matched eggs are shown along with the clutch informaton. Installed eggs are called out as such. The command can be invoked from anywhere in the nest.
+show     |  Show the contents of the egg named `input2` found in the clutch named `input1`. The clutch name is optional; if only the egg name is given as the argument it is resolved using all the clutches installed in the current nest. If the egg is present in multiple clutches it will list all of them along with the clutch information for each.
+install  |  Install the egg specified by `input2` from the clutch named `input1`. The command downloads the egg from the github repository using the URL in the clutch description file (typically donwloaded as 'input1@<branch-name>.yml' in .nest/clutches). It also downloads all the dependencies (constituent eggs) as decribed in the egg's description file ('egg.yml') and installs all of them. The clutch name is optional. If only the egg name is given as the argument, the command looks for the egg name in all the clutches in the local nest and installs accordingly. An egg is installed by this command only if it has not already been installed. 
+remove   |  Remove an egg named `input2` from clutch `input1`, if clutch is specified. Otherwise only one input required - that of the name of the egg to be removed from the local nest.
 
 
 
-    
+
+Command-specific flags
+
+Sub-command  | Available flags | Explanation
+-------------| ----------------|------------
+install   | -b, --branch="<branch-name>" | Installs the eggs from the branch name or tag of the clutch specified
+
+Examples
+
+Sub-command  | Usage                  | Explanation
+-------------| -----------------------|-----------------
+list       | newt egg list | CList all of the eggs in the current nest and the details of the eggs.
+checkdeps       | newt egg checkdeps | Checks all the dependencies between eggs in the nest. Lists any unresolved dependencies.
+hunt | newt egg hunt blinky| Hunts for the egg named 'blinky'. The command can be invoked from anywhere in the nest. Results show if the egg is installed and which clutch, if any, has the egg.
+show   | newt egg show larva libs/os | Show the contents of the egg named 'libs/os' in the clutch named larva. The contents are essentially derived from the egg's 'egg.yml' file. 
+install | newt egg install hw/bsp/stm32f3discovery | Downloads and installs the egg named "stm32f3discovery" (specified with its full path name inside the remote nest) along with all its dependencies from the remote nest on github. Since no clutch is specified, the URL for the remote nest in the clutch description file found in the local nest (in .nest/clutches for the project) is used. 
+remove   | newt egg remove larva blinky| Removes the egg named blinky only from the clutch named larva
+remove   | newt egg remove blinky| Removes the egg named blinky from the local nest
+
+
+### *target*
+
+#### Usage: 
+
+Usage: 
+
+    newt target [command] input1 [flag1] [flag2]
+
+Available Commands: 
+
+    set         Set target configuration variable
+    unset       Unset target configuration variable
+    delete      Delete target
+    create      Create a target
+    show        View target configuration variables
+    build       Build target
+    test        Test target
+    export      Export target
+    import      Import target
+
+Flags:
+
+    -h, --help=false: help for target
+
+Global Flags:
+
+    -l, --loglevel="WARN": Log level, defaults to WARN.
+    -q, --quiet=false: Be quiet; only display error output.
+    -s, --silent=false: Be silent; don't output anything.
+    -v, --verbose=false: Enable verbose output when executing commands.
+
+Description
+
+Sub-command  | Explanation
+-------------| ------------------------
+set         | Set attributes of the target. Currently the list of possible attributes are:``` arch, compiler, compiler_def, project, bsp, egg, identities, capabilities, dependencies, cflags, lflags```. Typically only the first 5 need to be set for a hardware target. For a simulated target, e.g. for software testing purposes, `arch=sim`, `compiler=sim`, and `egg=<egg name to be tested>`. You cannot set both the project and egg for a target. 
+unset    | Unset attributes of the target in its configuration.
+delete         | Deletes only the description for the target. Does not delete the target directory with associated binaries. If you want to clean out the binaries, list files, and executables use`newt target build <target-name> clean` **before** deleting the target!
+create    |  Creates a target description or build definition by the name `input1`. By default it assigns the sim (simulator) architecture to it which allows you to build new projects and software on your native OS and try it out.
+show  |  Display the configuration defined for the target named `input1`. If no `input1` is specified then show the details for all the targets in the nest.
+build   |  Build the source code into an image that can be loaded on the hardware associated with the target named `input1` to do the application enabled by the 'project' associated with that target. It creates 'bin/' and 'bin/<input1>/' subdirectories inside the base directory for the project, compiles and generates binaries and executables, and places them in 'bin/<input1>/. Additional 
+test   | Test an egg on the target named `input1`. The egg is either supplied as an argument to the command line invocation of `newt target build` or added as part of the target definition. You currently cannot test an entire project on a hardware target. The test command is envisioned for use if one or two eggs gets updated and needs to be tested against a target. Alternatively, a script may be written for a series of tests on several eggs.
+export |  Exports the configurations of the specified target `input1`. If -a or -export-all flag is used, then all targets are exported and printed out to standard out. You may redirect the output to a file. 
+import | Import one or more target configuration from standard input or a file. Each target starts with `@target=<target-name>` followed by the attributes. The list of targets should end with `@endtargets`.
+
+
+
+Command-specific flags
+
+Sub-command  | Available flags | Explanation
+-------------| ----------------|------------
+build   | clean | All the binaries and object files for the specified target will be removed.
+build clean | all | All the binaries and object files for all targets are removed.
+export  | -a, -export-all  | Export all targets. `input1` is not necessary when this flag is used.
+import  | -a, -import-all  | Import all targets typed into standard input or redirected from a file. 
+
+Examples
+
+ Sub-command  | Usage                  | Explanation 
+-------------| -----------------------|-----------------
+set       | newt target set myblinky compiler=arm-none-eabi-m4 | Set the compiler for the 'myblinky' target to the gcc compiler for embedded ARM chips.
+unset       | newt target unset myblinky compiler | Remove the setting for the compiler for the 'myblinky' target.
+delete       | newt target delete myblinky | Delete the target description for the target named 'myblinky'. Note that it does not remove any binaries or clean out the directory for this target. 
+create       | newt target create blink_f3disc | Create a new target description by the name 'blink_f3disc'. The architecture is 'sim' by default and can be changed using subcommand 'set' above.
+show      | newt target show myblinky | Show the target attributes set for 'myblinky'
+build       | newt target build blink_f3disc | Compile the source code for the target named blink_f3disc and generate binaries that can be loaded into the target hardware.
+test | newt target test test_target egg=libs/os | Tests the egg named 'libs/os' against the target named 'test_target'
+export   | newt target export -a > my_exports.txt | Export all build targets from the current nest, and redirect output to a file named 'my_exports.txt'.
+export  | newt target export -export-all  | Export all build targets from the current nest, and print them to standard output on the screen.
+export  | newt target export my_target | Export only target named 'my_target' and print it to standard output on the screen.
+import | newt target import ex_tgt_1 < exported_targets.txt | Imports the target configuration for 'ex_tgt_1' in 'exported_targets.txt'.
+import | newt target import -a < in_targets.txt | Imports all the targets specified in the file named `in_targets.txt`. A sample file is shown after this table.
+
+Example content for `in_targets.txt` file used for importing targets `test3` and `test4`.  
+
+> @target=test3  
+project=blinked  
+arch=sim  
+compiler_def=debug  
+compiler=arm-none-eabi-m4  
+@target=test4  
+project=super_blinky  
+arch=sim  
+compiler_def=debug  
+compiler=arm-none-eabi-m4  
+@endtargets

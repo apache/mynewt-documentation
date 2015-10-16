@@ -43,10 +43,6 @@ The goal of this tutorial is to download a generic skeleton for getting LEDs to 
         Installing compiler/arm-none-eabi-m4
         Installation was a success!
 
-        [user:~/foo/test_project]$ newt egg install libs/testutil
-        Downloading larva from https://github.com/mynewt/larva//master... ok!
-        Installing libs/testutil
-        Installation was a success!
 
 * It's time to create a target for the project and define the target attributes. 
 
