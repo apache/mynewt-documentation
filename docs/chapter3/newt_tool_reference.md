@@ -222,8 +222,8 @@ Command-specific flags
 
 Sub-command  | Available flags | Explanation
 -------------| ----------------|------------
-build   | clean | All the binaries and object files for the specified target will be removed.
-build clean | all | All the binaries and object files for all targets are removed.
+build   | clean | All the binaries and object files for the specified target will be removed. The subdirectory named after the specified target within that project is removed.
+build clean | all | All the binaries and object files for all targets are removed, and subdirectories of all targets for the project are removed. However, the entire repository is not emptied since any eggs or projects that the specified target doesn't reference are not touched.
 export  | -a, -export-all  | Export all targets. `input1` is not necessary when this flag is used.
 import  | -a, -import-all  | Import all targets typed into standard input or redirected from a file. 
 
