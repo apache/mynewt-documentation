@@ -3,17 +3,18 @@
 
 ### Available high-level commands
 
-    version     Display the Newt version number.
-    help        Help about any command
-    nest        Commands to manage nests & clutches (remote egg repositories)
-    egg         Commands to list and inspect eggs on a nest
-    target      Set and view target information
-
+```
+version     Display the Newt version number
+help        Help about any command
+nest        Commands to manage nests & clutches (remote egg repositories)
+egg         Commands to list and inspect eggs on a nest
+target      Set and view target information
+```
 
 ### *version*
 
 #### Usage:
- 
+
     newt version [flags]
     
 Flags:
@@ -40,12 +41,14 @@ version       | newt version | Displays the version of newt tool installed
     
 Flags:
 
-    -h, --help=false: help for newt
-    -l, --loglevel="WARN": Log level, defaults to WARN.
-    -q, --quiet=false: Be quiet; only display error output.
-    -s, --silent=false: Be silent; don't output anything.
-    -v, --verbose=false: Enable verbose output when executing commands.
+```
 
+-h, --help=false: help for newt
+-l, --loglevel="WARN": Log level, defaults to WARN.
+-q, --quiet=false: Be quiet; only display error output.
+-s, --silent=false: Be silent; don't output anything.
+-v, --verbose=false: Enable verbose output when executing commands.
+```
     
 Examples
 
