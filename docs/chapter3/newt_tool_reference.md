@@ -214,10 +214,12 @@ unset    | Unset attributes of the target in its configuration.
 delete         | Deletes only the description for the target. Does not delete the target directory with associated binaries. If you want to clean out the binaries, list files, and executables use`newt target build <target-name> clean` **before** deleting the target!
 create    |  Creates a target description or build definition by the name `input1`. By default it assigns the sim (simulator) architecture to it which allows you to build new projects and software on your native OS and try it out.
 show  |  Display the configuration defined for the target named `input1`. If no `input1` is specified then show the details for all the targets in the nest.
-build   |  Build the source code into an image that can be loaded on the hardware associated with the target named `input1` to do the application enabled by the 'project' associated with that target. It creates 'bin/' and 'bin/<input1>/' subdirectories inside the base directory for the project, compiles and generates binaries and executables, and places them in 'bin/<input1>/. Additional 
+build   |  Build the source code into an image that can be loaded on the hardware associated with the target named `input1` to do the application enabled by the 'project' associated with that target (via the target definition). It creates 'bin/' and 'bin/<input1>/' subdirectories inside the base directory for the project, compiles and generates binaries and executables, and places them in 'bin/<input1>/. 
 test   | Test an egg on the target named `input1`. The egg is either supplied as an argument to the command line invocation of `newt target test` or added as part of the target definition. If only the target is specified as `input1`, then the egg in the target's definition is automatically chosen to be tested. You currently cannot test an entire project on a hardware target. The test command is envisioned for use if one or two eggs gets updated and each needs to be tested against a target. Alternatively, a script may be written for a series of tests on several eggs.
 export |  Exports the configurations of the specified target `input1`. If -a or -export-all flag is used, then all targets are exported and printed out to standard out. You may redirect the output to a file. 
 import | Import one or more target configuration from standard input or a file. Each target starts with `@target=<target-name>` followed by the attributes. The list of targets should end with `@endtargets`.
+size   | Outputs the RAM and flash consumption by the components of the specified target `input1`.
+
 
 
 
@@ -246,6 +248,7 @@ export  | newt target export -export-all  | Export all build targets from the cu
 export  | newt target export my_target | Export only target named 'my_target' and print it to standard output on the screen.
 import | newt target import ex_tgt_1 < exported_targets.txt | Imports the target configuration for 'ex_tgt_1' in 'exported_targets.txt'.
 import | newt target import -a < in_targets.txt | Imports all the targets specified in the file named `in_targets.txt`. A sample file is shown after this table.
+size   | newt target size blink_nordic | Inspects and lists the RAM and Flash memory use by each component (object files and libraries) of the target.
 
 Example content for `in_targets.txt` file used for importing targets `test3` and `test4`.  
 
