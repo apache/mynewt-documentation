@@ -550,9 +550,15 @@ tutorial for a Windows machine assumes the specified folders.
 	        compiler: sim
 	        name: sim_test
 
-4. Configure newt to use the gnu build tools native to linux.  Replace 
-~/dev/larva/compiler/sim/compiler.yml with the linux-compiler.yml file: 
+4. Configure newt to use the gnu build tools native to OS X or linux. In order for sim to work properly, it needs to be using 32-bit gcc (gcc-5). Replace 
+~/dev/larva/compiler/sim/compiler.yml with the compiler/sim/osx-compiler.yml or linux-compiler.yml file, depending on the system. 
 
+    For a Mac OS X environment:
+
+        $ cp compiler/sim/osx-compiler.yml compiler/sim/compiler.yml 
+        
+    For a Linux machine:
+        
         $ cp compiler/sim/linux-compiler.yml compiler/sim/compiler.yml
 
 5. Next, create (hatch!) the eggs for this project using the newt tool - basically, build the packages for it. You can specify the VERBOSE option if you want to see the gory details. 
