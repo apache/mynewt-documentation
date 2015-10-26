@@ -71,17 +71,27 @@ case, simply skip the corresponding installation step in the instructions under 
 
 #### Installing Go and Godep
 
-* Next you will use brew to install go. The summary message at the end of the installation should indicate that it as installed in the /usr/local/Cellar/go/ directory. Use the go command 'install' to compile and install packages and dependencies. Also set the GOROOT environment variable to /usr/local/Cellar/go as that is the root of the brewed go directory structure. Again, to make the export variable permanent, add it to your ~/.bash_profile and ~./bashrc files.
+* Next you will use brew to install go. The summary message at the end of the installation should indicate that it as installed in the /usr/local/Cellar/go/ directory. Use the go command 'install' to compile and install packages and dependencies. 
 
+    Run `go env` to see what the value of the GOROOT environment is set to. It shows the root of the installed go directory structure and hence its value depends on the installation method you used. Typically it is baked into the binary when it is compiled and you only need to override it if you have moved things around after installation. If you have homebrewed go, then GOROOT should be set to /usr/local/Cellar/go/1.4.2/libexec automatically as that is the root of the brewed go directory structure. 
+    
         $ brew install go
         ==> 
         ==> 
         ==> *Summary*
         🍺  /usr/local/Cellar/go/1.5.1: 5330 files, 273M
         $ cd $GOPATH/src/github.com/mynewt/newt
-        $ export GOROOT=/usr/local/Cellar/go
+        $ go env GOROOT
+        /usr/local/Cellar/go/1.4.2/libexec
 
-    Alternatively, you can download the go package directly from (https://golang.org/dl/) instead of brewing it. Install it in /usr/local directory and set GOROOT to /usr/local/go as that is now the root of the go directory structure.
+    If the GOROOT environment variable does not look correct, then set it manually to the base directory. Again, to make the export variable permanent, add it to your ~/.bash_profile and ~./bashrc files.
+        
+        $ export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
+
+    Alternatively, you can download the go package directly from (https://golang.org/dl/) instead of brewing it. Install it in /usr/local directory and in that case, the GOROOT should indicate /usr/local/go as that is now the root of the go directory structure.
+    
+        $ go env GOROOT 
+        GOROOT="/usr/local/go"
 
 * Now you will get the godep package. Return to the go directory level and get godep. Check for it in the bin subdirectory. Add the go environment to path. Make sure it is added to your .bash_profile.
 
