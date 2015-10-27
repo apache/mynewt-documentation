@@ -501,7 +501,9 @@ tutorial for a Windows machine assumes the specified folders.
     5. Select the "WinUSB" driver.
     6. Click the "Install Driver" button.
 
-#### Proceed to the [Building test code on simulator](#anchor4) section.
+#### Proceed to the [Building test code on simulator on Windows machine](#anchor7) section.
+
+Note: Currently, the simulator cannot be run in the Windows machine. We are working on it. In the meantime proceed to the [Making an LED blink](#anchor5) on the Olimex hardware directly.
 
 ### [Building test code on simulator on non-Windows machine](id:anchor4)
 
@@ -602,9 +604,9 @@ tutorial for a Windows machine assumes the specified folders.
         ...
         [pass] boot_test_main/boot_test_vb_ns_11
 
-### [Building test code on simulator on non-Windows machine]
+### [Building test code on simulator on Windows machine](id:anchor7)
 
-Coming
+Coming soon.
 
 ### [Making an LED blink](id:anchor5)
 
