@@ -1,13 +1,17 @@
-Apache Mynewt Documentation
+.. title:: Mynewt Documentation
+
+Introduction
 ===========================
 
 .. toctree::
    :hidden:
    :titlesonly:
 
+   self
    get_started/index
+   concepts
    newt/index
-
+   misc/index
 
 Welcome to Apache Mynewt
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,3 +62,34 @@ operating system for constrained devices, including:
 -  A Hardware Abstraction Layer (HAL) that abstracts the MCU's
    peripheral functions, allowing developers to easily write
    cross-platform code.
+
+Newt
+~~~~
+
+In order to provide all this functionality, and operate in an extremely
+low resource environment, Mynewt provides a very fine-grained source
+package management and build system tool, called *newt*.
+
+You can install *newt* for :doc:`Mac OS <newt/install/newt_mac>`,
+:doc:`Linux <newt/install/newt_linux>`, or
+:doc:`Windows <newt/install/newt_windows>`.
+
+Newt Manager
+~~~~~~~~~~~~
+
+In order to enable a user to communicate with remote instances of Mynewt
+OS and query, configure, and operate them, Mynewt provides an
+application tool called Newt Manager or *newtmgr*.
+
+You can install *newtmgr* for :doc:`Mac OS <newtmgr/install_mac/>`,
+:doc:`Linux <newtmgr/install_linux/>`, or
+:doc:`Windows <newtmgr/install_windows/>`.
+
+Build your first Mynewt App with Newt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the introductions out of the way, now is a good time to :doc:`get set up
+and started <get_started/index>` with your first Mynewt
+application.
+
+Happy Hacking!
