@@ -41,7 +41,8 @@ previously installed). The brew-installed version can be checked using
 expects version 5.x for Mac users, so if the installed version is 6.x
 and you wish to continue with this newer version, modify the
 ``<mynewt-src-directory>/repos/apache-mynewt-core/compiler/sim/compiler.yml``
-file to change the default ``gcc-5`` defined there to ``gcc-6``. In
+file to change the default ``gcc-5`` defined there to that displayed by
+``brew list gcc`` e.g. ``gcc-6``. In
 other words, replace the lines shown highlighted below:
 
 .. code-block:: yaml
@@ -163,5 +164,5 @@ Next
 
 At this point you have installed all the necessary software to build and
 run your first project on a simulator on your Mac OS or Linux computer.
-You may proceed to :doc:`project_create` or continue to the next section and install the cross tools for
+You may proceed to :doc:`../project_create` or continue to the next section and install the cross tools for
 ARM.

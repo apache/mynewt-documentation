@@ -1,3 +1,5 @@
+
+
 Developing Mynewt Applications with Visual Studio Code
 ------------------------------------------------------
 
@@ -11,12 +13,15 @@ Linux, and Windows. This guide shows you how to:
 4. Define debugger configurations to debug Mynewt applications.
 5. Launch the debugger.
 
+.. contents::
+  :local:
+  :depth: 2
+
 Prerequisites:
 
 -  Have Internet connectivity to fetch remote Mynewt components.
 -  Have a computer to build a Mynewt application.
--  Perform `native
-   installation </os/get_started/native_install_intro.html>`__ for the
+-  Perform :doc:`native installation <../get_started/native_install/index>` for the
    Mynewt tools and toolchains.
    **Note:** For Windows platforms, ensure that the MinGW bash you
    install is added to your Windows Path. In addition, if you are using
@@ -26,7 +31,7 @@ Prerequisites:
 -  Create a project space (directory structure) and populate it with the
    core code repository (apache-mynewt-core) or know how to as explained
    in Creating Your First Project.
--  Complete one of the `Blinky Tutorials </os/tutorials/blinky.html>`__.
+-  Complete one of the :doc:`Blinky Tutorials <../tutorials/blinky/index>`.
 
 **Notes:**
 
@@ -40,15 +45,14 @@ Prerequisites:
    supported on Linux and Mac OS but may have some variations in the
    keyboard shortcuts and command names for these platforms.
 -  You can also use the Eclipse IDE to develop Mynewt applications. See
-   https://www.codecoup.pl/blog/hacking-mynewt-in-eclipse for more
+   `hacking-mynewt-in-eclipse <https://www.codecoup.pl/blog/hacking-mynewt-in-eclipse>`__ for more
    details. On Windows platforms, you must also ensure the MinGW bash is
    set in your Windows Path as described in the prerequisites.
 
 Installing Visual Studio Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download and install Visual Studio Code from
-https://code.visualstudio.com/.
+Download and install Visual Studio Code from https://code.visualstudio.com/.
 
 Installing the C/C++ and Debugger Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,12 +107,12 @@ Select **File** > **Open Folder**, and select the ``myproj`` folder from
 the ``Select Folder`` dialog box to open the folder.
 
 Defining Visual Studio Code Tasks to Build and Debug Mynewt Applications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You define Visual Studio Code tasks to build and debug your Mynewt
 targets in Visual Studio Code. We use the Blinky application for the
-Arduino Zero board from the `Blinky On Arduino Zero
-Tutorial </os/tutorials/arduino_zero.html>`__ to illustrate how to define
+Arduino Zero board from the :doc:`Blinky On Arduino Zero
+Tutorial <../tutorials/arduino_zero>` to illustrate how to define
 the tasks to build and debug the Arduino blinky bootloader and
 application targets.
 
@@ -136,7 +140,7 @@ command with "Hello World" as the argument.
 Step 3: Delete the content from the ``tasks.json`` file, add the
 following definitions, and press ``Ctrl-S`` to save the file.
 
-.. code-block:: console
+.. code-block:: JSON
 
     {
         "version": "0.1.0",
@@ -176,21 +180,21 @@ passed in the ``args`` property for each task.
 
 The following tasks are defined in this example:
 
-1. **build\_arduino\_boot**: Runs the ``newt build arduino_boot``
-   command to build the arduino\_boot target.
-2. **build\_arduino\_blinky**: Runs the ``newt build arduino_blinky``
-   command to build the arduino\_blinky target.
+1. **build_arduino_boot**: Runs the ``newt build arduino_boot``
+   command to build the arduino_boot target.
+2. **build_arduino_blinky**: Runs the ``newt build arduino_blinky``
+   command to build the arduino_blinky target.
 
    **Note:** This task sets the ``isBuildCommand`` property to ``true``.
    This is an optional property that, when set to true, allows you to
    run the **Tasks: Run Build Task**\ (``Ctrl-Shift-B``) command to
    start the task.
 
-3. **create\_arduino\_blinky**: Runs the
+3. **create_arduino_blinky**: Runs the
    ``newt create-image arduino_blinky`` command to create the image
    file.
-4. **debug\_arduino\_blinky**: Runs the ``newt build arduino_blinky -n``
-   command to debug the arduino\_blinky target. The ``-n`` flag is
+4. **debug_arduino_blinky**: Runs the ``newt build arduino_blinky -n``
+   command to debug the arduino_blinky target. The ``-n`` flag is
    specified to start only the GDB server and not the GDB client. We
    will launch the GDB client from Visual Studio Code.
 
@@ -228,8 +232,9 @@ To create the tasks for the ``newt load arduino_boot`` and
 ``newt load arduino_blinky`` commands, add the following definitions to
 the ``tasks.json`` file:
 
-.. code-block:: console
+.. code-block:: JSON
 
+    [
             {
                 "taskName": "load_arduino_boot",
                 "args": ["load", "arduino_boot"],
@@ -240,6 +245,7 @@ the ``tasks.json`` file:
                 "args": ["load", "arduino_blinky"],
                 "suppressTaskName":true
             },
+    ]
 
 To run a command from the Visual Studio integrated terminal, instead of
 starting a task, press ``Ctrl-``` to launch the integrated terminal and
@@ -267,7 +273,7 @@ folder.
 Step 2: Delete the content from the ``launch.json`` file, add the
 following definitions, and press 'Ctrl-S' to save the file.
 
-.. code-block:: console
+.. code-block:: json
 
     {
         "version": "0.2.0",
@@ -292,16 +298,20 @@ specifies:
 -  The debugger is type **gdb**.
 -  To use the ``blinky.elf`` file for the executable.
 -  To use port 3333 to connect with the remote target.
--  To use arm-none-eabi-gdb for the GDB program. ###Debugging Your
-   Application To debug your application, start the GDB server and
-   launch the GDB session from Visual Studio Code. For the the arduino
-   blinky example, perform the following:
+-  To use arm-none-eabi-gdb for the GDB program.
 
-Step 1: Run the debug\_arduino\_blinky task to start the GDB server.
+Debugging Your Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To debug your application, start the GDB server and
+launch the GDB session from Visual Studio Code. For the the arduino
+blinky example, perform the following:
+
+Step 1: Run the debug_arduino_blinky task to start the GDB server.
 Perform the following:
 
 1. Press ``Ctrl-Shift-P`` and type ``task`` in the search box.
-2. Select **Tasks:Run Task** > **debug\_arduino\_blinky**.
+2. Select **Tasks:Run Task** > **debug_arduinoblinky**.
 3. Press ``Ctrl-Shift-U`` to open the Output Panel and see the OpenOCD
    GDB Server output.
 

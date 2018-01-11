@@ -21,6 +21,10 @@ This guide shows you how to perform the following:
 3. Download the source, build, and install the newt or newtmgr tools.
 4. Update and rebuild the tools.
 
+.. contents::
+  :local:
+  :depth: 2
+
 **Note:** You will also need to read and follow the instructions from
 the :doc:`FAQ </misc/faq>` to set up your git repos to submit changes.
 
@@ -45,7 +49,6 @@ You can also extract (or ``git clone``) Homebrew and install it to
 /usr/local.
 
 Use brew to install Go:
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
@@ -61,13 +64,13 @@ You can also download the Go package directly from
 brewing it.
 
 Installing Go on Linux and Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can download Go from
 https://golang.org/dl/.
 
 Step 2: Setting Up Your Go Environment
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section describes the Go environment and how to setup a Go
 workspace. If you already have a Go workspace for your other Go
@@ -99,10 +102,10 @@ newtmgr repositories.
     $ cd dev/go
     $ export GOPATH=`pwd`
 
-Add the following export statements to your ~/.bash\_profile file and
+Add the following export statements to your ~/.bash_profile file and
 source the file:
 
-.. code-block:: console
+.. code-block:: sh
 
     export GOPATH=$HOME/dev/go
     export PATH=$GOPATH/bin:$PATH
@@ -117,7 +120,7 @@ We use the ``go get`` command to download the source, build, and install
 the binary in the **$GOPATH/bin** directory.
 
 Downloading and Installing the Newt Tool
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The newt Go package is **mynewt.apache.org/newt/newt** and is stored in
 the `Apache Mynewt newt tool repository mirrored on
@@ -158,7 +161,7 @@ Check that the newt binary is installed and you are using the one from
     Apache Newt version: 1.1.0-dev
 
 Downloading and Installing the Newtmgr Tool
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The newtmgr Go package is **mynewt.apache.org/newtmgr/newtmgr**. It is
 stored in the `Apache Mynewt newtmgr tool repository mirrored on
@@ -189,7 +192,7 @@ from **$GOPATH/bin**:
     ~/dev/go/bin/newtmgr
 
 Step 4: Updating and Rebuilding the Tools:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section shows you
 how to rebuild the newt and newtmgr tools with the latest updates from
@@ -204,7 +207,7 @@ tools.
    is installed.
 2. Pull the latest changes from the master branch. If you made changes
    you will need to rebase with **origin master** (See
-   :doc:`FAQ </misc/faq>`).
+   :doc:`faq`).
 3. Build and install the tool.
 
 Change to the directory where the source for the tool is installed.

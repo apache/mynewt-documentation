@@ -20,15 +20,15 @@ or more of your applications. A project consists of the following items:
    parameters (located in ``project.yml``)
 -  Packages
 
-`Packages <#package>`__ are described in detail in the section below.
+`Package`_ are described in detail in the section below.
 
 Here is an example project definition file from the default Apache
 Mynewt project:
 
-.. code-block:: console
+.. code-block:: yaml
 
-    $ more project.yml
-    <snip>
+    # project.yml
+    # <snip>
     project.name: "my_project"
 
     project.repositories:
@@ -42,7 +42,6 @@ Mynewt project:
         vers: 1-latest
         user: apache
         repo: mynewt-core
-    $
 
 A couple of things to note in the project definition:
 
@@ -89,10 +88,10 @@ Mynewt Operating System. Packages can be:
 A package is identified by having a ``pkg.yml`` file in it's base
 directory. Here is a sample ``pkg.yml`` file for the blinky applicaton:
 
-.. code-block:: console
+.. code-block:: yaml
 
-    $ more pkg.yml
-    <snip>
+    # pkg.yml
+    # <snip>
     pkg.name: apps/blinky
     pkg.type: app
     pkg.description: Basic example application which blinks an LED.
@@ -147,25 +146,35 @@ In order to create and manipulate targets, the *newt* tool offers a set
 of helper commands, you can find more information about these by
 issuing:
 
-``no-highlight $ newt target``\ no-highlight newt target Usage: newt
-target [flags] newt target [command]
+.. code-block:: console
 
-Available Commands: config View or populate a target's system
-configuration copy Copy target create Create a target delete Delete
-target dep View target's dependency graph revdep View target's
-reverse-dependency graph set Set target configuration variable show View
-target configuration variables
+    $ newt target
+    Usage:
+      newt target [flags]
+      newt target [command]
 
-Global Flags: -h, --help Help for newt commands -j, --jobs int Number of
-concurrent build jobs (default 8) -l, --loglevel string Log level
-(default "WARN") -o, --outfile string Filename to tee output to -q,
---quiet Be quiet; only display error output -s, --silent Be silent;
-don't output anything -v, --verbose Enable verbose output when executing
-commands
+    Available Commands:
+      amend       Add, change, or delete values for multi-value target variables
+      cmake
+      config      View or populate a target's system configuration
+      copy        Copy target
+      create      Create a target
+      delete      Delete target
+      dep         View target's dependency graph
+      revdep      View target's reverse-dependency graph
+      set         Set target configuration variable
+      show        View target configuration variables
 
-Use "newt target [command] --help" for more information about a command.
+    Global Flags:
+      -h, --help              Help for newt commands
+      -j, --jobs int          Number of concurrent build jobs (default 2)
+      -l, --loglevel string   Log level (default "WARN")
+      -o, --outfile string    Filename to tee output to
+      -q, --quiet             Be quiet; only display error output
+      -s, --silent            Be silent; don't output anything
+      -v, --verbose           Enable verbose output when executing commands
 
-$ \`\`\`
+    Use "newt target [command] --help" for more information about a command.
 
 Configuration
 ~~~~~~~~~~~~~
