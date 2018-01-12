@@ -16,7 +16,18 @@ docs: _scratch html
 _scratch:
 	mkdir _scratch
 	cp -a docs/* _scratch
+	# the mynewt-core cp will eventually be
+	# cp -a ../mynewt-core/docs/os _scratch/os
+	# once redundant files are pruned
+	mkdir _scratch/os
+	cp -a ../mynewt-core/docs/os/*.rst _scratch/os/
+	mkdir _scratch/os/core_os
+	cp -a ../mynewt-core/docs/os/core_os/mynewt_os.rst _scratch/os/core_os/mynewt_os.rst
+	cp -a ../mynewt-core/docs/os/core_os/API.rst _scratch/os/core_os/API.rst
+	mkdir _scratch/os/core_os/context_switch
+	cp -a ../mynewt-core/docs/os/core_os/context_switch/context_switch.rst _scratch/os/core_os/context_switch/context_switch.rst
 	cp -a ../mynewt-newt/docs _scratch/newt
+	doxygen doxygen-mynewt-core.xml
 
 clean:
 	rm -rf _build _scratch
