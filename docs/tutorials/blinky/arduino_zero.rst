@@ -1,8 +1,14 @@
 Blinky, your "Hello World!", on Arduino Zero
 --------------------------------------------
 
+.. include common.rst
+
 This tutorial shows you how to create, build and run the Blinky
 application on an Arduino Zero board.
+
+.. contents::
+  :local:
+  :depth: 2
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -19,6 +25,20 @@ This tutorial uses the Arduino Zero Pro board. The tutorial has been
 tested on the following three Arduino Zero boards - Zero, M0 Pro, and
 Zero-Pro.
 
+  .. figure:: ../../images/Zero_Usb_Ports.jpg
+     :alt:  Arduino Zero
+     :width: 200
+     :align: left
+
+  .. figure:: ../../images/Arduino-M0Pro-flat.jpg
+     :alt:  Arduino M0 Pro
+     :width: 160
+     :align: left
+
+  .. figure:: ../../images/ArduinoZeroPro-flat-org.jpg
+     :alt:  Arduino Zero Pro
+     :width: 160
+
 Mynewt has not been tested on Arduino M0 which has no internal debugger
 support.
 
@@ -26,7 +46,7 @@ Create a Project
 ~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip
-this step and proceed to `fetch external packages <#fetchexternal>`__ if
+this step and proceed to `Fetch External Packages`_ if
 you already created a project.
 
 Run the following commands to create a new project:
@@ -65,23 +85,34 @@ to your project file are highlighted.
 **Note:** On Windows platforms: You need to set ``vers`` to ``0-dev``
 and use the latest master branch for both repositories.
 
-\`\`\`hl\_lines="6 14 15 16 17 18" $ more project.yml project.name:
-"my\_project"
+.. code-block:: yaml
+    :emphasize-lines: 6,14-18
 
-project.repositories: - apache-mynewt-core - mynewt\_arduino\_zero
+    # project.yml
+    project.name: "my_project"
 
-repository.apache-mynewt-core: type: github vers: 1-latest user: apache
-repo: mynewt-core
+    project.repositories:
+        - apache-mynewt-core
+        - mynewt_arduino_zero
 
-repository.mynewt\_arduino\_zero: type: github vers: 1-latest user:
-runtimeco repo: mynewt\_arduino\_zero $ \`\`\`
+    repository.apache-mynewt-core:
+        type: github
+        vers: 1-latest
+        user: apache
+        repo: mynewt-core
+
+    repository.mynewt_arduino_zero:
+        type: github
+        vers: 1-latest
+        user: runtimeco
+        repo: mynewt_arduino_zero
 
 Install the project dependencies using the ``newt install`` command
 (you can specify ``-v`` for verbose output):
 
 .. code-block:: console
 
-    $ newt install 
+    $ newt install
     apache-mynewt-core
     mynewt_arduino_zero
     $
@@ -93,17 +124,18 @@ match the installed files. In that case you will get an error message
 saying so and you will need to run ``newt upgrade`` to overwrite the
 existing files with the latest codebase.
 
-|  You need to create two targets for the Arduino Zero Pro board, one
-  for the bootloader and one for the Blinky application.
-|  Run the following ``newt target`` commands, from your project
-  directory, to create a bootloader target. We name the target
-  ``arduino_boot``.
+You need to create two targets for the Arduino Zero Pro board, one
+for the bootloader and one for the Blinky application.
+
+Run the following ``newt target`` commands, from your project
+directory, to create a bootloader target. We name the target
+``arduino_boot``.
 
 .. code-block:: console
 
-    $ newt target create arduino_boot 
-    $ newt target set arduino_boot bsp=@mynewt_arduino_zero/hw/bsp/arduino_zero 
-    $ newt target set arduino_boot app=@apache-mynewt-core/apps/boot 
+    $ newt target create arduino_boot
+    $ newt target set arduino_boot bsp=@mynewt_arduino_zero/hw/bsp/arduino_zero
+    $ newt target set arduino_boot app=@apache-mynewt-core/apps/boot
     $ newt target set arduino_boot build_profile=optimized
     Target targets/arduino_boot successfully set target.build_profile to optimized
     $ newt target set arduino_boot syscfg=BSP_ARDUINO_ZERO_PRO=1
@@ -130,9 +162,13 @@ These commands perform the following:
 -  Sets the system configuration setting for Board Support Package to
    support the Arduino Zero Pro.
 
-See the `Concepts <../get_started/vocabulary.html>`__ section for more
-information on setting options. ###Create a Target for the Blinky
-Application Run the following ``newt target`` commands to create the
+See the :doc:`concepts` for more
+information on setting options.
+
+Create a Target for the Blinky Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the following ``newt target`` commands to create the
 Blinky application target. We name the application target
 ``arduino_blinky``.
 
@@ -140,11 +176,11 @@ Blinky application target. We name the application target
 
     $ newt target create arduino_blinky
     Target targets/arduino_blinky successfully created
-    $ newt target set arduino_blinky app=apps/blinky 
+    $ newt target set arduino_blinky app=apps/blinky
     Target targets/arduino_blinky successfully set target.app to apps/blinky
     $ newt target set arduino_blinky bsp=@mynewt_arduino_zero/hw/bsp/arduino_zero
     Target targets/arduino_blinky successfully set target.bsp to @mynewt_arduino_zero/hw/bsp/arduino_zero
-    $ newt target set arduino_blinky build_profile=debug 
+    $ newt target set arduino_blinky build_profile=debug
     Target targets/arduino_blinky successfully set target.build_profile to debug
     $ newt target set arduino_blinky syscfg=BSP_ARDUINO_ZERO_PRO=1
     Target targets/arduino_boot successfully set target.syscfg to BSP_ARDUINO_ZERO_PRO=1
@@ -209,8 +245,7 @@ application image:
     Target successfully built: targets/arduino_blinky
 
 Connect to the Board
-~~~~~~~~~~~~~~~
-
+~~~~~~~~~~~~~~~~~~~~
 
 Connect your computer to the Arduino Zero (from now on we'll call this
 the target) with a Micro-USB cable through the Programming Port as shown
@@ -222,6 +257,16 @@ No external debugger is required. The Arduino Zero comes with an
 internal debugger that can be accessed by Mynewt.
 
 The images below show the Arduino Zero Programming Port.
+
+    .. figure:: ../../images/Zero_Usb_Ports.jpg
+       :alt:  Arduino Zero
+       :width: 280
+       :align: left
+
+    .. figure:: ../../images/ArduinoZeroPro-flat-org.jpg
+       :alt:  Arduino Zero Pro
+       :width: 240
+
 
 Load the Bootloader onto the Board
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -238,13 +283,12 @@ the board:
 The bootloader is loaded onto your board succesfully when the
 ``newt load`` command returns to the command prompt after the
 ``Loading bootloader`` status message. You can proceed to load and run
-your Blinky application image (See `Run the Blinky
-Application <#runimage>`__).
+your Blinky application image (See `Run the Blinky Application`_).
 
 If the ``newt load`` command outputs the following error messages, you
 will need to erase the board.
 
-::
+.. code-block:: console
 
     $ newt load arduino_boot -v
     Loading bootloader
@@ -277,11 +321,27 @@ when you quit gdb. In addition, the output of openocd is logged to the
 openocd.log file in your project's base directory instead of the
 terminal.
 
-``hl_lines="2, 5, 14"   $ newt debug arduino_blinky (gdb) mon at91samd chip-erase chip erased chip erased (gdb) x/32wx 0 0x0:    0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x10:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x20:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x30:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x40:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x50:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x60:   0xffffffff  0xffffffff  0xffffffff  0xffffffff 0x70:   0xffffffff  0xffffffff  0xffffffff  0xffffffff (gdb) q``
+.. code-block:: console
+
+    $ newt debug arduino_blinky
+    (gdb) mon at91samd chip-erase
+    chip erased
+    chip erased
+    (gdb) x/32wx 0
+    0x0:    0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x10:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x20:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x30:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x40:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x50:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x60:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    0x70:   0xffffffff  0xffffffff  0xffffffff  0xffffffff
+    (gdb) q
+
 Run the ``newt load arduino_boot`` command again after erasing the
 board.
 
-Reminder if you are using Docker: When working with actual hardware,
+:red:`Reminder if you are using Docker`: When working with actual hardware,
 remember that each board has an ID. If you swap boards and do not
 refresh the USB Device Filter on the VirtualBox UI, the ID might be
 stale and the Docker instance may not be able to see the board
@@ -300,7 +360,7 @@ After you load the bootloader successfully onto your board, you can load
 and run the Blinky application.
 
 Run the ``newt run arduino_blinky 1.0.0`` command to build the
-arduino\_blinky target (if necessary), create an image with version
+arduino_blinky target (if necessary), create an image with version
 1.0.0, load the image onto the board, and start a debugger session.
 
 **Note** The output of the debug session below is for Mac OS and Linux
@@ -334,7 +394,7 @@ you quit gdb.
     Info : SWD IDCODE 0x0bc11477
     Info : at91samd21g18.cpu: hardware has 4 breakpoints, 2 watchpoints
     target state: halted
-    target halted due to debug-request, current mode: Thread 
+    target halted due to debug-request, current mode: Thread
     xPSR: 0x21000000 pc: 0x0000fca6 psp: 0x20002408
     GNU gdb (GNU Tools for ARM Embedded Processors) 7.8.0.20150604-cvs
     Copyright (C) 2014 Free Software Foundation, Inc.
@@ -355,10 +415,10 @@ you quit gdb.
     Info : SAMD MCU: SAMD21G18A (256KB Flash, 32KB RAM)
     0x0000fca6 in os_tick_idle ()
     target state: halted
-    target halted due to debug-request, current mode: Thread 
+    target halted due to debug-request, current mode: Thread
     xPSR: 0x21000000 pc: 0x000000b8 msp: 0x20008000
     target state: halted
-    target halted due to debug-request, current mode: Thread 
+    target halted due to debug-request, current mode: Thread
     xPSR: 0x21000000 pc: 0x000000b8 msp: 0x20008000
     (gdb) r
     The "remote" target does not support "run".  Try "help target" or "continue".

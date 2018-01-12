@@ -1,5 +1,5 @@
-Blinky, your "Hello World!" on a Target Board
-=============================================
+Project Blinky
+==============
 
 .. toctree::
    :hidden:

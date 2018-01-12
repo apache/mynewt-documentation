@@ -31,9 +31,9 @@ Prerequisites
    know how to as explained in :doc:`../get_started/project_create`.
 -  You have at least one of the supported development boards:
 
-   -  :doc:`blinky/arduino_zero`
-   -  :doc:`blinky/olimex`
-   -  :doc:`blinky/nRF52`
+   -  :doc:`Arduino Zero <blinky/arduino_zero>`
+   -  :doc:`Olimex <blinky/olimex>`
+   -  :doc:`nRF52 <blinky/nRF52>`
 
 The Nordic nrf52 developer kit supports Bluetooth Low Energy. We are
 always looking to add new hardware to the list, so if you want to
