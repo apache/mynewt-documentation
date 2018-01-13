@@ -1,3 +1,5 @@
+.. _blinky_tutorials:
+
 Project Blinky
 ==============
 

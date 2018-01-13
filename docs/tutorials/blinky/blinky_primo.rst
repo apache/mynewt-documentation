@@ -4,33 +4,39 @@ Blinky, your "Hello World!", on Arduino Primo
 This tutorial shows you how to create, build, and run the Blinky
 application on an Arduino Primo board.
 
+.. contents::
+  :local:
+  :depth: 2
+
 Note that the Mynewt OS will run on the nRF52 chip in the Arduino Primo
 board. However, the board support package for the Arduino Primo is
-different from the nRF52 dev kit board support package. ###
-Prerequisites
+different from the nRF52 dev kit board support package.
 
--  Meet the the prerequisites listed in `Project
-   Blinky </os/tutorials/blinky.html>`__.
+Prerequisites
+~~~~~~~~~~~~~
+
+-  Meet the the prerequisites listed in :doc:`Project Blinky <blinky>`.
 -  Have an Arduino Primo board.
 -  Install a debugger. Choose one of the two options below: Option 1
    requires additional hardware but very easy to set up.
 
-# Option 1
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Option 1
+^^^^^^^^
 
- \* `Segger J-Link Debug Probe <https://www.segger.com/jlink-debug-probes.html>`__ - any model
-(this tutorial has been tested with J-Link EDU and J-Link Pro) \*
-`J-Link 9 pin Cortex-M
-Adapter <https://www.segger.com/jlink-adapters.html#CM_9pin>`__ that
-allows JTAG, SWD and SWO connections between J-Link and Cortex M based
-target hardware systems \* Install the `Segger JLINK Software and
-documentation pack <https://www.segger.com/jlink-software.html>`__.
+* `Segger J-Link Debug Probe <https://www.segger.com/jlink-debug-probes.html>`__ - any model
+  (this tutorial has been tested with J-Link EDU and J-Link Pro)
+* `J-Link 9 pin Cortex-M
+  Adapter <https://www.segger.com/jlink-adapters.html#CM_9pin>`__ that
+  allows JTAG, SWD and SWO connections between J-Link and Cortex M based
+  target hardware systems
+* Install the `Segger JLINK Software and
+  documentation pack <https://www.segger.com/jlink-software.html>`__.
 
 Option 2
-''''''''
+^^^^^^^^
 
 This board requires a patch version of OpenOCD 0.10.0 that is in
-development. See `Install OpenOCD </os/get_started/cross_tools.html>`__
+development. See :doc:`Install OpenOCD <../../get_started/native_install/cross_tools>`
 instructions to install it if you do not have this version installed.
 
 You can now use openocd to upload to Arduino Primo board via the USB
@@ -40,7 +46,7 @@ Create a Project
 ~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip
-this step and proceed to `create the targets <#create_targets>`__ if you
+this step and proceed to `Create the Targets`_ if you
 already created a project.
 
 Run the following commands to create a new project:
@@ -59,8 +65,7 @@ Run the following commands to create a new project:
         $
 
 Create the Targets
-~~~~~~~~~~~~~~~
-
+~~~~~~~~~~~~~~~~~~~
 
 Create two targets for the Arduino Primo board - one for the bootloader
 and one for the Blinky application.
@@ -149,6 +154,7 @@ application:
     Compiling repos/apache-mynewt-core/hw/drivers/uart/uart_bitbang/src/uart_bitbang.c
     Compiling repos/apache-mynewt-core/hw/bsp/arduino_primo_nrf52/src/hal_bsp.c
 
+          ...
 
     Archiving sys_mfg.a
     Archiving sys_sysinit.a
@@ -178,7 +184,7 @@ Connect to the Board
    adapter and cable. Note that there are two JTAG ports on the board.
    Use the one nearest to the reset button as shown in the picture.
 
-.. figure:: pics/primo-jlink.jpg
+.. figure:: ../pics/primo-jlink.jpg
    :alt: Connecting J-Link debug probe to Arduino Primo
 
    J-Link debug probe to Arduino
@@ -287,9 +293,10 @@ when you quit gdb. In addition, the output of openocd is logged to the
 openocd.log file in your project's base directory instead of the
 terminal.
 
-.. code:: hl_lines="11"
+.. code-block:: console
+    emphasize-lines: 9
 
-    $newt debug primoblinky
+    $ newt debug primoblinky
     [~/dev/myproj/repos/apache-mynewt-core/hw/bsp/arduino_primo_nrf52/primo_debug.sh ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/arduino_primo_nrf52 ~/dev/myproj/bin/targets/primoblinky/app/apps/blinky/blinky]
     Open On-Chip Debugger 0.10.0-dev-snapshot (2017-03-28-11:24)
 

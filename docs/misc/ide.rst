@@ -31,7 +31,7 @@ Prerequisites:
 -  Create a project space (directory structure) and populate it with the
    core code repository (apache-mynewt-core) or know how to as explained
    in Creating Your First Project.
--  Complete one of the :doc:`Blinky Tutorials <../tutorials/blinky/blinky>`.
+-  Complete one of the :ref:`Blinky Tutorials <blinky_tutorials>`.
 
 **Notes:**
 
