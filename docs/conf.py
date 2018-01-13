@@ -166,9 +166,9 @@ texinfo_documents = [
 ]
 
 breathe_projects = {
-    "mynewt": "xml"
+    "mynewt-core": "mynewt-core-xml"
 }
-breathe_default_project = "mynewt"
+breathe_default_project = "mynewt-core"
 
 edit_on_github_project = 'apache/mynewt-documentation'
 edit_on_github_branch = 'master/docs'
