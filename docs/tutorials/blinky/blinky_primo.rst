@@ -233,7 +233,7 @@ additional notes about the installation:
 Run the ``newt load primo_boot`` command again.
 
 Load the Blinky Application Image
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run the ``newt load primoblinky`` command to load the Blinky application image onto the board.
 
@@ -249,7 +249,7 @@ blink!
 Note: If the LED does not blink, try resetting the board.
 
 Erase Flash
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
 
 If you want to erase the flash and load the image again, use JLinkExe and issue the ``erase`` command when you are using the
 Jlink debug probe:
@@ -294,7 +294,7 @@ openocd.log file in your project's base directory instead of the
 terminal.
 
 .. code-block:: console
-    emphasize-lines: 9
+    :emphasize-lines: 9
 
     $ newt debug primoblinky
     [~/dev/myproj/repos/apache-mynewt-core/hw/bsp/arduino_primo_nrf52/primo_debug.sh ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/arduino_primo_nrf52 ~/dev/myproj/bin/targets/primoblinky/app/apps/blinky/blinky]

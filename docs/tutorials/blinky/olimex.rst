@@ -20,7 +20,7 @@ Prerequisites
 -  Install the :doc:`OpenOCD debugger <../../get_started/native_install/cross_tools>`.
 
 Create a Project
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip this step and proceed to `Create the Targets`_ if
 you already created a project.
@@ -93,7 +93,7 @@ Run the ``newt build boot_olimex`` command to build the bootloader:
     Target successfully built: targets/boot_olimex
 
 Build the Blinky Application
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run the ``newt build olimex_blinky`` command to build the blinky application:
 
