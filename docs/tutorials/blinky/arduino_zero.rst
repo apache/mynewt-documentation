@@ -161,8 +161,7 @@ These commands perform the following:
 -  Sets the system configuration setting for Board Support Package to
    support the Arduino Zero Pro.
 
-See the :doc:`concepts` for more
-information on setting options.
+See the :ref:`concepts` for more information on setting options.
 
 Create a Target for the Blinky Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

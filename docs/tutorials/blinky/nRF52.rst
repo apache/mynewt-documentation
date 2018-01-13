@@ -4,6 +4,10 @@ Blinky, your "Hello World!", on a nRF52 Development Kit
 This tutorial shows you how to create, build, and run the Blinky
 application on a nRF52 Development Kit.
 
+.. contents::
+  :local:
+  :depth: 2
+
 Note that there are several versions of the nRF52 Development Kit in the
 market. The boards tested with this tutorial are listed under
 "Prerequisites".
@@ -26,7 +30,7 @@ Create a Project
 ~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip
-this step and proceed to `create the targets <#create_targets>`__ if you
+this step and proceed to `Create the Targets`_ if you
 already have a project created.
 
 Run the following commands to create a new project:
@@ -63,7 +67,8 @@ the correct bsp for the board you are using.
 -  For the Rigado Eval Kit choose @apache-mynewt-core/hw/bsp/bmd300eval
    instead (in the highlighted lines)
 
-.. code:: hl_lines="3"
+.. code-block:: console
+    :emphasize-lines: 3
 
     $ newt target create nrf52_boot
     $ newt target set nrf52_boot app=@apache-mynewt-core/apps/boot
@@ -73,7 +78,8 @@ the correct bsp for the board you are using.
 Run the following ``newt target`` commands to create a target for the
 Blinky application. We name the target ``nrf52_blinky``.
 
-.. code:: hl_lines="3"
+.. code-block:: console
+    :emphasize-lines: 3
 
     $ newt target create nrf52_blinky
     $ newt target set nrf52_blinky app=apps/blinky
@@ -112,6 +118,7 @@ Run the ``newt build nrf52_boot`` command to build the bootloader:
     Compiling repos/apache-mynewt-core/boot/bootutil/src/image_validate.c
     Compiling repos/apache-mynewt-core/boot/bootutil/src/bootutil_misc.c
     Compiling repos/apache-mynewt-core/apps/boot/src/boot.c
+
         ...
 
     Archiving sys_mfg.a
