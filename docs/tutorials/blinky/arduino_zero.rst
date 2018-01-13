@@ -13,13 +13,12 @@ application on an Arduino Zero board.
 Prerequisites
 ~~~~~~~~~~~~~
 
--  Meet the prerequisites listed in `Project
-   Blinky </os/tutorials/blinky.html>`__.
+-  Meet the prerequisites listed in :doc:`Project Blinky <blinky>`.
 -  Have an Arduino Zero board.
    Note: There are many flavors of Arduino. Make sure you are using an
    Arduino Zero. See below for the versions of Arduino Zero that are
    compatible with this tutorial.
--  Install the `OpenOCD debugger </os/get_started/cross_tools/>`__.
+-  Install the :doc:`OpenOCD debugger <../../get_started/native_install/cross_tools>`.
 
 This tutorial uses the Arduino Zero Pro board. The tutorial has been
 tested on the following three Arduino Zero boards - Zero, M0 Pro, and

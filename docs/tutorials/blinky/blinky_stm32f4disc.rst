@@ -7,12 +7,10 @@ application on the STM32F4-Discovery board.
 Prerequisites
 ~~~~~~~~~~~~~
 
--  Meet the prerequisites listed in `Project
-   Blinky </os/tutorials/blinky.html>`__.
+-  Meet the prerequisites listed in :doc:`Project Blinky <blinky>`.
 -  Have a STM32F4-Discovery board.
 -  Have a USB type A to Mini-B cable.
--  Install a patched version of OpenOCD 0.10.0 described in `Install
-   OpenOCD </os/get_started/cross_tools/>`__.
+-  Install a patched version of OpenOCD 0.10.0 described in :doc:`Install OpenOCD <../../get_started/native_install/cross_tools>`.
 
 Create a Project
 ~~~~~~~~~~~~~~~~
@@ -67,7 +65,7 @@ settings:
 
 .. code-block:: console
 
-    $ newt target show 
+    $ newt target show
     targets/my_blinky_sim
         app=apps/blinky
         bsp=@apache-mynewt-core/hw/bsp/native
@@ -123,7 +121,7 @@ application:
     Compiling repos/apache-mynewt-core/hw/drivers/uart/uart_hal/src/uart_hal.c
     Compiling repos/apache-mynewt-core/hw/hal/src/hal_common.c
     Compiling repos/apache-mynewt-core/hw/hal/src/hal_flash.c
-         
+
         ...
 
     Archiving sys_sysinit.a
@@ -256,4 +254,3 @@ terminal.
     (gdb)
 
 .. |stm32f4-discovery| image:: pics/stm32f4_disc.jpg
-

@@ -11,8 +11,7 @@ market. The boards tested with this tutorial are listed under
 Prerequisites
 ~~~~~~~~~~~~~
 
--  Meet the prerequisites listed in `Project
-   Blinky </os/tutorials/blinky.html>`__.
+-  Meet the prerequisites listed in :doc:`Project Blinky <blinky>`.
 -  Have a nRF52 Development Kit (one of the following)
 
    -  Nordic nRF52-DK Development Kit - PCA 10040
@@ -86,7 +85,7 @@ settings:
 
 .. code-block:: console
 
-    $ newt target show 
+    $ newt target show
     targets/nrf52_blinky
         app=apps/blinky
         bsp=@apache-mynewt-core/hw/bsp/nrf52pdk

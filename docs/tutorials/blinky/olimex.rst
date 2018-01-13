@@ -2,22 +2,28 @@ Blinky, your "Hello World!", on Olimex
 --------------------------------------
 
 This tutorial shows you how to create, build, and run the Blinky
-application on an Olimex STM32-E407 board. ### Prerequisites
+application on an Olimex STM32-E407 board.
 
--  Meet the prerequisites listed in `Project
-   Blinky </os/tutorials/blinky.html>`__.
+.. contents::
+  :local:
+  :depth: 2
+
+Prerequisites
+~~~~~~~~~~~~~
+
+-  Meet the prerequisites listed in :doc:`Project Blinky <blinky>`.
 -  Have a STM32-E407 development board from Olimex.
 -  Have a ARM-USB-TINY-H connector with JTAG interface for debugging ARM
    microcontrollers (comes with the ribbon cable to hook up to the
    board)
 -  Have a USB A-B type cable to connect the debugger to your computer.
--  Install the `OpenOCD debugger </os/get_started/cross_tools/>`__.
+-  Install the :doc:`OpenOCD debugger <../../get_started/native_install/cross_tools>`.
 
 Create a Project
 ~~~~~~~~~~~~~~~
 
-Create a new project if you do not have an existing one. You can skip this step and proceed to `create the
-targets <#create_targets>`__ if you already created a project.
+Create a new project if you do not have an existing one. You can skip this step and proceed to `Create the Targets`_ if
+you already created a project.
 
 Run the following commands to create a new project:
 
@@ -30,7 +36,7 @@ Run the following commands to create a new project:
         Installing skeleton in myproj...
         Project myproj successfully created.
 
-        $cd myproj
+        $ cd myproj
 
         $ newt install
         apache-mynewt-core
@@ -138,21 +144,17 @@ diagram are reversed. The port labeled USB-OTG1 on the diagram is the
 USB-OTG2 port and the port labeled USB-OTG2 on the diagram is the
 USB-OTG1 port.
 
-.. raw:: html
+.. figure:: ../pics/STM32-E407_top_small.jpg
 
-   <p align="center">
-
-.. raw:: html
-
-   </p>
+.. figure:: ../pics/STM32-E407_bot_small.jpg
 
 -  Locate the boot jumpers on the lower right corner of the board.
-   **B1\_1/B1\_0** and **B0\_1/B0\_0** are PTH jumpers to control the
+   **B1_1/B1_0** and **B0_1/B0_0** are PTH jumpers to control the
    boot mode when a bootloader is present. These two jumpers must be
    moved together. The board searches for the bootloader in three
    places: User Flash Memory, System Memory or the Embedded SRAM. For
    this Blinky project, we configure the board to boot from flash by
-   jumpering **B0\_0** and **B1\_0**. **Note:** The markings on the
+   jumpering **B0_0** and **B1_0**. **Note:** The markings on the
    board may not always be accurate, and you should always refer to the
    manual for the correct positioning.
 
@@ -170,15 +172,17 @@ USB-OTG1 port.
 -  Connect the USB A-B cable to the ARM-USB-TINY-H connector and your
    computer.
 
--  Check that the red PWR LED lights up. ### Load the Bootloader and
-   Blinky Application
+-  Check that the red PWR LED lights up.
+
+Load the Bootloader and Blinky Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run the ``newt load boot_olimex`` command to load the bootloader image
 onto the board:
 
 .. code-block:: console
 
-    $newt load -v boot_olimex
+    $ newt load -v boot_olimex
     Loading bootloader
     Load command: ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/olimex_stm32-e407_devboard/olimex_stm32-e407_devboard_download.sh ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/olimex_stm32-e407_devboard ~/dev/myproj/bin/targets/boot_olimex/app/apps/boot/boot
     Successfully loaded image.
@@ -199,7 +203,7 @@ application image onto the board:
 
 .. code-block:: console
 
-    newt load -v olimex_blinky
+    $ newt load -v olimex_blinky
     Loading app image into slot 1
     Load command: ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/olimex_stm32-e407_devboard/olimex_stm32-e407_devboard_download.sh ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/olimex_stm32-e407_devboard ~/dev/myproj/bin/targets/olimex_blinky/app/apps/blinky/blinky
     Successfully loaded image.
@@ -253,7 +257,7 @@ it to erase sectors 0 through x. When you ask it to display (in hex
 notation) the contents of the sector starting at location 'lma,' you
 should see all f's. The memory location 0x8000000 is the start or origin
 of the flash memory contents and is specified in the
-olimex\_stm32-e407\_devboard.ld linker script. The flash memory
+olimex_stm32-e407_devboard.ld linker script. The flash memory
 locations is specific to the processor.
 
 .. code-block:: console

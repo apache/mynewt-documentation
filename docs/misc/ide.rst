@@ -112,7 +112,7 @@ Defining Visual Studio Code Tasks to Build and Debug Mynewt Applications
 You define Visual Studio Code tasks to build and debug your Mynewt
 targets in Visual Studio Code. We use the Blinky application for the
 Arduino Zero board from the :doc:`Blinky On Arduino Zero
-Tutorial <../tutorials/arduino_zero>` to illustrate how to define
+Tutorial <../tutorials/blinky/arduino_zero>` to illustrate how to define
 the tasks to build and debug the Arduino blinky bootloader and
 application targets.
 
