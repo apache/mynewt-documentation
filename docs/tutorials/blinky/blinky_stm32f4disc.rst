@@ -95,6 +95,7 @@ Run the ``newt build stm32f4disc_boot`` command to build the bootloader:
     Compiling repos/apache-mynewt-core/boot/bootutil/src/image_rsa.c
     Compiling repos/apache-mynewt-core/boot/bootutil/src/image_validate.c
     Compiling repos/apache-mynewt-core/boot/bootutil/src/loader.c
+
         ...
 
     Archiving sys_flash_map.a
@@ -147,7 +148,7 @@ Connect to the Board
 Connect a USB type A to Mini-B cable from your computer to the port the
 board indicated on the diagram:
 
- |stm32f4-discovery|
+.. figure:: ../pics/stm32f4_disc.jpg
 
 You should see the small PWR red LED light up.
 
@@ -159,7 +160,7 @@ onto the board:
 
 .. code-block:: console
 
-    $newt load stm32f4disc_boot
+    $ newt load stm32f4disc_boot
     Loading bootloader
 
 Note: If you are using Windows and get an ``open failed`` or
@@ -200,7 +201,7 @@ application image onto the board.
 
 .. code-block:: console
 
-    $newt load stm32f4disc_blinky
+    $ newt load stm32f4disc_blinky
     Loading app image into slot 1
 
 You should see the small green LD4 LED on the board blink!
@@ -219,7 +220,7 @@ terminal.
 
 .. code-block:: console
 
-    $newt debug stm32f4disc_blinky
+    $ newt debug stm32f4disc_blinky
     [~/dev/myproj/repos/apache-mynewt-core/hw/bsp/stm32f4discovery/stm32f4discovery_debug.sh ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/stm32f4discovery ~/dev/myproj/bin/targets/stm32f4disc_blinky/app/apps/blinky/blinky]
     Open On-Chip Debugger 0.10.0
     Licensed under GNU GPL v2
@@ -252,5 +253,3 @@ terminal.
     stm32x mass erase complete
     stm32x mass erase complete
     (gdb)
-
-.. |stm32f4-discovery| image:: pics/stm32f4_disc.jpg
