@@ -4,12 +4,16 @@ Enabling The Console and Shell for Blinky
 This tutorial shows you how to add the Console and Shell to the Blinky
 application and interact with it over a serial line connection.
 
+.. contents::
+  :local:
+  :depth: 2
+
 Prerequisites
 ~~~~~~~~~~~~~
 
 -  Work through one of the Blinky Tutorials to create and build a Blinky
    application for one of the boards.
--  Have a `serial setup </os/get_started/serial_access.html>`__.
+-  Have a `serial setup <../../get_started/serial_access>`.
 
 Use an Existing Project
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +40,7 @@ file as follows:
 
 The updated ``pkg.yml`` file should have the following two lines:
 
-.. code-block:: console
+.. code-block:: yaml
 
     pkg.deps:
         - "@apache-mynewt-core/sys/console/full"
@@ -49,7 +53,7 @@ Modify the system configuration settings to enable Shell and Console
 ticks and prompt. Add the following to your application target's
 ``syscfg.yml`` file:
 
-.. code-block:: console
+.. code-block:: yaml
 
     syscfg.vals:
         # Enable the shell task.
@@ -69,7 +73,7 @@ Blinky's main.c is very simple. It only has a ``main()`` function that
 executes an infinite loop to toggle the LED and sleep for one second. We
 will modify blinky:
 
--  To use os\_callout to generate a timer event every one second instead
+-  To use os_callout to generate a timer event every one second instead
    of sleeping. The timer events are added to the OS default event
    queue.
 -  To process events from the OS default event queue inside the infinite
@@ -81,11 +85,11 @@ events to toggle the LED from the OS default event queue.
 Modify main.c
 ~~~~~~~~~~~~~
 
-Initialize a os\_callout timer and move the toggle code from the while
+Initialize a os_callout timer and move the toggle code from the while
 loop in ``main()`` to the event callback function. Add the following
 code above the ``main()`` function:
 
-.. code:: c
+.. code-block:: cpp
 
     /* The timer callout */
     static struct os_callout blinky_callout;
@@ -120,38 +124,31 @@ In ``main()``, add the call to the ``init_timer()`` function before the
 while loop and modify the while loop to process events from the OS
 default event queue:
 
-\`\`\`c hl\_lines="15 17" int main(int argc, char \*\*argv) {
+.. code-block:: cpp
+    :emphasize-lines: 14,16
 
-::
+    int
+    main(int argc, char **argv)
+    {
 
-    int rc;
+        int rc;
 
-ifdef ARCH\_sim
-===============
+    #ifdef ARCH_sim
+        mcu_sim_parse_args(argc, argv);
+    #endif
 
-::
+        sysinit();
 
-    mcu_sim_parse_args(argc, argv);
-
-endif
-=====
-
-::
-
-    sysinit();
-
-    g_led_pin = LED_BLINK_PIN;
-    hal_gpio_init_out(g_led_pin, 1);
-    init_timer();
-    while (1) {
-        os_eventq_run(os_eventq_dflt_get());
+        g_led_pin = LED_BLINK_PIN;
+        hal_gpio_init_out(g_led_pin, 1);
+        init_timer();
+        while (1) {
+            os_eventq_run(os_eventq_dflt_get());
+        }
+        assert(0);
+        return rc;
     }
-    assert(0);
-    return rc;
 
-}
-
-\`\`\`
 
 Build, Run, and Upload the Blinky Application Target
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -189,8 +186,7 @@ Set Up a Serial Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You'll need a Serial connection to see the output of your program. You
-can reference the `Serial Port
-Setup <../get_started/serial_access.html>`__ Tutorial for more information
+can reference the :doc:`../../get_started/serial_access` Tutorial for more information
 on setting up your serial communication.
 
 Communicate with the Application
