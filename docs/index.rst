@@ -10,6 +10,7 @@ Introduction
    self
    get_started/index
    concepts
+   tutorials/tutorials
    os/os_user_guide
    newt/index
    misc/index

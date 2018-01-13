@@ -31,7 +31,7 @@ Prerequisites:
 -  Create a project space (directory structure) and populate it with the
    core code repository (apache-mynewt-core) or know how to as explained
    in Creating Your First Project.
--  Complete one of the :doc:`Blinky Tutorials <../tutorials/blinky/index>`.
+-  Complete one of the :ref:`Blinky Tutorials <blinky_tutorials>`.
 
 **Notes:**
 
@@ -112,7 +112,7 @@ Defining Visual Studio Code Tasks to Build and Debug Mynewt Applications
 You define Visual Studio Code tasks to build and debug your Mynewt
 targets in Visual Studio Code. We use the Blinky application for the
 Arduino Zero board from the :doc:`Blinky On Arduino Zero
-Tutorial <../tutorials/arduino_zero>` to illustrate how to define
+Tutorial <../tutorials/blinky/arduino_zero>` to illustrate how to define
 the tasks to build and debug the Arduino blinky bootloader and
 application targets.
 

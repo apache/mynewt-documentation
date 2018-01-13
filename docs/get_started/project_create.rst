@@ -12,7 +12,7 @@ need to create the blinky application for a target board. We recommend
 that you read the section on creating a new project and fetching the
 source repository to understand the Mynewt repository structure, create
 a new project, and fetch the source dependencies before proceeding to
-one of the :doc:`../tutorials/blinky/index`.
+one of the :ref:`blinky_tutorials`.
 
 This guide shows you how to:
 
@@ -377,7 +377,7 @@ Building and Running the Simulated Blinky Application
 The section shows you how to build and run the blinky application to run
 on Mynewt's simulated hardware.
 
-**Note**: This is not yet supported on Windows. Refer to the :doc:`../tutorials/blinky/index` to create a blinky application
+**Note**: This is not yet supported on Windows. Refer to the :ref:`blinky_tutorials` to create a blinky application
 for a target board.
 
 Building the Application
@@ -449,7 +449,7 @@ you'll need to cross-compile your application, run it on real hardware
 and develop a full featured application.
 
 If you're interested in learning more, a good next step is to dig in to
-one of the :doc:`../tutorials/index` and get a Mynewt
+one of the :ref:`tutorials` and get a Mynewt
 project running on real hardware.
 
 Happy Hacking!
