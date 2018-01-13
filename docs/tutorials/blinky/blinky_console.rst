@@ -11,9 +11,9 @@ application and interact with it over a serial line connection.
 Prerequisites
 ~~~~~~~~~~~~~
 
--  Work through one of the Blinky Tutorials to create and build a Blinky
+-  Work through one of the :doc:`Blinky Tutorials <blinky>` to create and build a Blinky
    application for one of the boards.
--  Have a `serial setup <../../get_started/serial_access>`.
+-  Have a :doc:`serial setup <../../get_started/serial_access>`.
 
 Use an Existing Project
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,7 +21,7 @@ Use an Existing Project
 Since all we're doing is adding the shell and console capability to
 blinky, we assume that you have worked through at least some of the
 other tutorials, and have an existing project. For this example, we'll
-be modifying the `blinky on nrf52 <./nRF52.html>`__ project to enable the
+be modifying the :doc:`blinky on nRF52 <nRF52>` project to enable the
 shell and console connectivity. You can use blinky on a different board.
 
 Modify the Dependencies and Configuration

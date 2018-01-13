@@ -6,13 +6,13 @@ Project Blinky
 .. toctree::
    :hidden:
 
-   arduino_zero
-   blinky_primo
-   olimex
-   nRF52
-   rbnano2
-   blinky_stm32f4disc
-   blinky_console
+   Blinky on Arduino Zero <arduino_zero>
+   Blinky on Arduino Primo <blinky_primo>
+   Blinky on Olimex <olimex>
+   Blinky on nRF52 DK <nRF52>
+   Blinky on RedBear Nano 2 <rbnano2>
+   Blinky on STM32F4-Discovery <blinky_stm32f4disc>
+   Add Console and Shell to Blinky <blinky_console>
 
 The set of Blinky tutorials show you how to create, build, and run a
 "Hello World" application that blinks a LED on the various target boards
