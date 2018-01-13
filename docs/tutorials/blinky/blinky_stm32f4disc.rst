@@ -16,7 +16,7 @@ Create a Project
 ~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip
-this step and proceed to `create the targets <#create_targets>`__ if you
+this step and proceed to Create the Targets if you
 already have a project created.
 
 Run the following commands to create a new project:

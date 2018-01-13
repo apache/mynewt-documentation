@@ -4,6 +4,10 @@ Blinky, your "Hello World!", on RedBear Nano 2
 This tutorial shows you how to create, build and run the Blinky
 application on a RedBear Nano 2 board.
 
+.. contents::
+  :local:
+  :depth: 2
+
 Prerequisites
 ~~~~~~~~~~~~~
 
@@ -15,7 +19,7 @@ Create a Project
 ~~~~~~~~~~~~~~~~
 
 Create a new project if you do not have an existing one. You can skip
-this step and proceed to `create the targets <#create_targets>`__ if you
+this step and proceed to Create the Targets if you
 already have a project created.
 
 Run the following commands to create a new project:
@@ -81,7 +85,7 @@ Run the ``newt build rbnano2_boot`` command to build the bootloader:
 
 .. code-block:: console
 
-    $newt build rbnano2_boot
+    $ newt build rbnano2_boot
     Building target targets/rbnano2_boot
     Compiling repos/apache-mynewt-core/boot/bootutil/src/image_rsa.c
     Compiling repos/apache-mynewt-core/boot/bootutil/src/image_ec256.c
@@ -104,7 +108,7 @@ application:
 
 .. code-block:: console
 
-    $newt build rbnano2_blinky
+    $ newt build rbnano2_blinky
     Building target targets/rbnano2_blinky
     Assembling repos/apache-mynewt-core/hw/bsp/rb-nano2/src/arch/cortex_m4/gcc_startup_nrf52_split.s
     Compiling repos/apache-mynewt-core/hw/drivers/uart/src/uart.c
@@ -128,7 +132,7 @@ sign the application image. You may assign an arbitrary version (e.g.
 
 .. code-block:: console
 
-    $newt create-image rbnano2_blinky 1.0.0
+    $ newt create-image rbnano2_blinky 1.0.0
     App image succesfully generated: ~/dev/myproj/bin/targets/rbnano2_blinky/app/apps/blinky/blinky.img
 
 Connect to the Board
@@ -165,10 +169,10 @@ additional notes about the installation:
 
 Run the ``newt load rbnano2_boot`` command again.
 
-Clear the Write Protection on the Flash Memory The flash memory on
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Clear the Write Protection on the Flash Memory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the RedBear Nano 2 comes write protected from the factory. If you get an
+The flash memory on the RedBear Nano 2 comes write protected from the factory. If you get an
 error loading the bootloader and you are using a brand new chip, you
 need to clear the write protection from the debugger and then load the
 bootloader again. Run the ``newt debug rbnano2_blinky`` command and
@@ -181,30 +185,42 @@ when you quit gdb. In addition, the output of openocd is logged to the
 openocd.log file in your project's base directory instead of the
 terminal.
 
-\`\`\`hl\_lines="8 9 11 14" $newt debug rbnano2\_blinky
-[~/dev/myproj/repos/apache-mynewt-core/hw/bsp/rb-nano2/rb-nano2\_debug.sh
-~/dev/myproj/repos/apache-mynewt-core/hw/bsp/rb-nano2
-~/dev/myproj/bin/targets/rbnano2\_blinky/app/apps/blinky/blinky] Open
-On-Chip Debugger 0.10.0-dev-snapshot (2017-03-28-11:24) Licensed under
-GNU GPL v2
+.. code-block:: console
+    :emphasize-lines: 8,9,11,14
 
-::
+    $ newt debug rbnano2_blinky
+    [~/dev/myproj/repos/apache-mynewt-core/hw/bsp/rb-nano2/rb-nano2_debug.sh  ~/dev/myproj/repos/apache-mynewt-core/hw/bsp/rb-nano2 ~/dev/myproj/bin/targets/rbnano2_blinky/app/apps/blinky/blinky]
+    Open On-Chip Debugger 0.10.0-dev-snapshot (2017-03-28-11:24)
+    Licensed under GNU GPL v2
 
-     ...
+        ...
 
-(gdb) set {unsigned long}0x4001e504=2 (gdb) x/1wx 0x4001e504
-0x4001e504:0x00000002 (gdb) set {unsigned long}0x4001e50c=1 Info : SWD
-DPIDR 0x2ba01477 Error: Failed to read memory at 0x00009ef4 (gdb) x/32wx
-0x00 0x0:0xffffffff0xffffffff0xffffffff0xffffffff
-0x10:0xffffffff0xffffffff0xffffffff0xffffffff
-0x20:0xffffffff0xffffffff0xffffffff0xffffffff
-0x30:0xffffffff0xffffffff0xffffffff0xffffffff
-0x40:0xffffffff0xffffffff0xffffffff0xffffffff
-0x50:0xffffffff0xffffffff0xffffffff0xffffffff
-0x60:0xffffffff0xffffffff0xffffffff0xffffffff
-0x70:0xffffffff0xffffffff0xffffffff0xffffffff (gdb)
-``<br> ### Load the Blinky Application Image <br> Run the `newt load rbnano2_blinky` command to load the Blinky application image onto the board:``\ no-highlight
-$ newt load rbnano2\_blinky Loading app image into slot 1 \`\`\`
+    (gdb) set {unsigned long}0x4001e504=2
+    (gdb) x/1wx 0x4001e504
+    0x4001e504:0x00000002
+    (gdb) set {unsigned long}0x4001e50c=1
+    Info : SWD DPIDR 0x2ba01477
+    Error: Failed to read memory at 0x00009ef4
+    (gdb) x/32wx 0x00
+    0x0:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x10:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x20:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x30:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x40:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x50:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x60:0xffffffff0xffffffff0xffffffff0xffffffff
+    0x70:0xffffffff0xffffffff0xffffffff0xffffffff
+    (gdb)
+
+Load the Blinky Application Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the ``newt load rbnano2_blinky`` command to load the Blinky application image onto the board:
+
+.. code-block:: console
+
+    $ newt load rbnano2_blinky
+    Loading app image into slot 1
 
 You should see a blue LED on the board blink!
 
