@@ -9,7 +9,7 @@ Tutorials
    Project Blinky <blinky/blinky>
    Working with repositories <repo/add_repos>
    Project Slinky for Remote Comms <slinky/project-slinky>
-   Bluetooth Low Energy <ble/ble_bare_bones>
+   Bluetooth Low Energy <ble/ble>
 
 If the introduction to Mynewt has piqued your interest and you want to
 familiarize yourself with some of its functionality, this series of
@@ -69,7 +69,7 @@ category are listed below.
 
 -  Bluetooth Low Energy
 
-   -  `Building a Bare Bones BLE Application <ble_bare_bones.html>`__
+   -  :doc:`Building a Bare Bones BLE Application <ble_bare_bones>`
    -  `Building a BLE iBeacon Application <ibeacon.html>`__
 
 -  OS Fundamentals
