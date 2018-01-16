@@ -12,6 +12,7 @@ Introduction
    concepts
    tutorials/tutorials
    os/os_user_guide
+   network/ble/ble_intro
    newt/index
    misc/index
 

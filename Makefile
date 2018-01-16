@@ -26,6 +26,13 @@ _scratch:
 	cp -a ../mynewt-core/docs/os/core_os/API.rst _scratch/os/core_os/API.rst
 	mkdir _scratch/os/core_os/context_switch
 	cp -a ../mynewt-core/docs/os/core_os/context_switch/context_switch.rst _scratch/os/core_os/context_switch/context_switch.rst
+	#
+	mkdir _scratch/os/modules
+	cp -a ../mynewt-core/docs/os/modules/sysinitconfig _scratch/os/modules/
+	#
+	mkdir _scratch/network
+	cp -a ../mynewt-core/docs/network/ble _scratch/network/
+	#
 	cp -a ../mynewt-newt/docs _scratch/newt
 	doxygen doxygen-mynewt-core.xml
 
