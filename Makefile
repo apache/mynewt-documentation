@@ -26,6 +26,8 @@ _scratch:
 	cp -a ../mynewt-core/docs/os/core_os/API.rst _scratch/os/core_os/API.rst
 	mkdir _scratch/os/core_os/context_switch
 	cp -a ../mynewt-core/docs/os/core_os/context_switch/context_switch.rst _scratch/os/core_os/context_switch/context_switch.rst
+	mkdir _scratch/os/core_os/cputime
+	cp -a ../mynewt-core/docs/os/core_os/cputime/os_cputime.rst _scratch/os/core_os/cputime/os_cputime.rst
 	#
 	mkdir _scratch/os/modules
 	cp -a ../mynewt-core/docs/os/modules/sysinitconfig _scratch/os/modules/
