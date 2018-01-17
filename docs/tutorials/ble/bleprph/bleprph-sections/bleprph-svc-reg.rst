@@ -188,7 +188,8 @@ listing shows the last service in the array, including terminating zeros
 for the characteristic array and service array.
 
 .. code-block:: console
-    :emphasize-lines: 26,31
+    :emphasize-lines: 16,21
+
     {
         /*** Service: Security test. */
         .type = BLE_GATT_SVC_TYPE_PRIMARY,

@@ -44,7 +44,7 @@ behave:
 Let's take these one at a time.
 
 1. Wait for host-controller sync
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 The first step, waiting for host-controller-sync, is mandatory in all
@@ -94,7 +94,7 @@ control flow that we specified above. Now we need to fill in the two
 stub functions.
 
 2. Configure the NimBLE stack with an address
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 A BLE device needs an address to do just about anything. Some devices
@@ -148,7 +148,7 @@ You can click either of the function names for more detailed
 documentation.
 
 3. Advertise indefinitely
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 The first step in advertising is to configure the host with advertising
