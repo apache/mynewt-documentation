@@ -171,6 +171,9 @@ breathe_projects = {
     "mynewt-core": "mynewt-core-xml"
 }
 breathe_default_project = "mynewt-core"
+breathe_domain_by_extension = {
+    "h" : "c",
+}
 
 edit_on_github_project = 'apache/mynewt-documentation'
 edit_on_github_branch = 'master/docs'
