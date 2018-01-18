@@ -14,6 +14,7 @@ Introduction
    os/os_user_guide
    network/ble/ble_intro
    newt/index
+   newtmgr/index
    misc/index
 
 Welcome to Apache Mynewt
@@ -84,9 +85,9 @@ In order to enable a user to communicate with remote instances of Mynewt
 OS and query, configure, and operate them, Mynewt provides an
 application tool called Newt Manager or *newtmgr*.
 
-You can install *newtmgr* for :doc:`Mac OS <newtmgr/install_mac/>`,
-:doc:`Linux <newtmgr/install_linux/>`, or
-:doc:`Windows <newtmgr/install_windows/>`.
+You can install *newtmgr* for :doc:`Mac OS <newtmgr/install/install_mac>`,
+:doc:`Linux <newtmgr/install/install_linux>`, or
+:doc:`Windows <newtmgr/install/install_windows>`.
 
 Build your first Mynewt App with Newt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

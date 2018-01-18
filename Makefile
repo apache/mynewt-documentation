@@ -37,6 +37,9 @@ _scratch:
 	cp -a ../mynewt-core/docs/network/ble _scratch/network/
 	#
 	cp -a ../mynewt-newt/docs _scratch/newt
+	#
+	cp -a ../mynewt-newtmgr/docs _scratch/newtmgr
+	#
 	doxygen doxygen-mynewt-core.xml
 
 clean:
