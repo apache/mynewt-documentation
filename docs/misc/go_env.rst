@@ -26,7 +26,7 @@ This guide shows you how to perform the following:
   :depth: 2
 
 **Note:** You will also need to read and follow the instructions from
-the :doc:`FAQ </misc/faq>` to set up your git repos to submit changes.
+the :doc:`faq` to set up your git repos to submit changes.
 
 Step 1: Installing Go
 ~~~~~~~~~~~~~~~~~~~~~
