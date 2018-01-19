@@ -22,10 +22,10 @@ documentation using `Sphinx`_'s C domain. For example:
 
 Documents can then refer to code elements using the C domain syntax:
 http://www.sphinx-doc.org/en/stable/domains.html#cross-referencing-c-constructs
-For example: ``:c:func:\`console_read()\``` or ``:c:data:\`console_input\```.
+For example: ``:c:func:`console_read()``` or ``:c:data:`console_input```.
 
 Linking to other files should be relative for ease of deployment and multi-version
-support. For example ``:doc:\`../../newt/install/newt_mac\```.
+support. For example ``:doc:`../../newt/install/newt_mac```.
 
 Preview Changes
 =================
