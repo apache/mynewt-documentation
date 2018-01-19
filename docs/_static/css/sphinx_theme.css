@@ -1186,7 +1186,7 @@ body {
 
 /* line 4, ../scss/partials/_globals.scss */
 body {
-	font-family: "IntelClear-Light", "ClearSans-Light", Helvetica, "Helvetica Neue", verdana, sans-serif;
+	font-family: Helvetica, "Helvetica Neue", verdana, sans-serif;
 	font-size: 14px;
 	line-height: 1.4;
 }
@@ -1208,7 +1208,7 @@ h4,
 h5,
 .h5 {
 	color: #000;
-	font-family: "IntelClear-Light", "ClearSans-Light", Helvetica, "Helvetica Neue", verdana, sans-serif;
+	font-family: Helvetica, "Helvetica Neue", verdana, sans-serif;
 	font-weight: normal;
 	margin-top: 0;
 	padding-top: 0;
@@ -1462,124 +1462,6 @@ body.not-front div#main-content div#content div.views-row:last-child {
 	/* fixed header height*/
 	margin: -85px 0 0;
 	/* negative fixed header height */
-}
-
-@font-face {
-	font-family: "ClearSans-Light";
-	src: url("fonts/ClearSans-Light.eot");
-	src: url("fonts/ClearSans-Light.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-Light.ttf") format("truetype");
-	src: url("fonts/ClearSans-Light.svg") format("svg");
-	src: url("fonts/ClearSans-Light.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-Regular";
-	src: url("fonts/ClearSans-Regular.eot");
-	src: url("fonts/ClearSans-Regular.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-Regular.ttf") format("truetype");
-	src: url("fonts/ClearSans-Regular.svg") format("svg");
-	src: url("fonts/ClearSans-Regular.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-Medium";
-	src: url("fonts/ClearSans-Medium.eot");
-	src: url("fonts/ClearSans-Medium.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-Medium.ttf") format("truetype");
-	src: url("fonts/ClearSans-Medium.svg") format("svg");
-	src: url("fonts/ClearSans-Medium.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-Bold";
-	src: url("fonts/ClearSans-Bold.eot");
-	src: url("fonts/ClearSans-Bold.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-Bold.ttf") format("truetype");
-	src: url("fonts/ClearSans-Bold.svg") format("svg");
-	src: url("fonts/ClearSans-Bold.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-Italic";
-	src: url("fonts/ClearSans-Italic.eot");
-	src: url("fonts/ClearSans-Italic.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-Italic.ttf") format("truetype");
-	src: url("fonts/ClearSans-Italic.svg") format("svg");
-	src: url("fonts/ClearSans-Italic.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-MediumItalic";
-	src: url("fonts/ClearSans-MediumItalic.eot");
-	src: url("fonts/ClearSans-MediumItalic.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-MediumItalic.ttf") format("truetype");
-	src: url("fonts/ClearSans-MediumItalic.svg") format("svg");
-	src: url("fonts/ClearSans-MediumItalic.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "ClearSans-BoldItalic";
-	src: url("fonts/ClearSans-BoldItalic.eot");
-	src: url("fonts/ClearSans-BoldItalic.eot#iefix") format("embedded-opentype");
-	src: url("fonts/ClearSans-BoldItalic.ttf") format("truetype");
-	src: url("fonts/ClearSans-BoldItalic.svg") format("svg");
-	src: url("fonts/ClearSans-BoldItalic.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-Light";
-	src: url("fonts/IntelClear_WLat_Lt.eot");
-	src: url("fonts/IntelClear_WLat_Lt.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_Lt.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_Lt.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_Lt.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-Regular";
-	src: url("fonts/IntelClear_WLat_Rg.eot");
-	src: url("fonts/IntelClear_WLat_Rg.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_Rg.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_Rg.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_Rg.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-Bold";
-	src: url("fonts/IntelClear_WLat_Bd.eot");
-	src: url("fonts/IntelClear_WLat_Bd.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_Bd.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_Bd.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_Bd.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-Italic";
-	src: url("fonts/IntelClear_WLat_It.eot");
-	src: url("fonts/IntelClear_WLat_It.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_It.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_It.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_It.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-LightItalic";
-	src: url("fonts/IntelClear_WLat_LtIt.eot");
-	src: url("fonts/IntelClear_WLat_LtIt.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_LtIt.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_LtIt.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_LtIt.woff") format("woff");
-	font-weight: normal;
-}
-@font-face {
-	font-family: "IntelClear-BoldItalic";
-	src: url("fonts/IntelClear_WLat_BdIt.eot");
-	src: url("fonts/IntelClear_WLat_BdIt.eot#iefix") format("embedded-opentype");
-	src: url("fonts/IntelClear_WLat_BdIt.ttf") format("truetype");
-	src: url("fonts/IntelClear_WLat_BdIt.svg") format("svg");
-	src: url("fonts/IntelClear_WLat_BdIt.woff") format("woff");
-	font-weight: normal;
 }
 /* line 2, ../scss/partials/_sidebar.scss */
 .-expanded-submenu {

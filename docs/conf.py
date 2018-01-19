@@ -55,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Apache Mynewt'
-copyright = u'Copyright © 2017 The Apache Software Foundation, Licensed under the Apache License, Version 2.0 Apache and the Apache feather logo are trademarks of The Apache Software Foundation.'
+copyright = u'Apache Mynewt is available under Apache License, version 2.0.'
 author = u'The Apache Software Foundation'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -175,5 +175,11 @@ breathe_domain_by_extension = {
     "h" : "c",
 }
 
-edit_on_github_project = 'apache/mynewt-documentation'
-edit_on_github_branch = 'master/docs'
+edit_on_github_projects = {
+    "os/": ("apache/mynewt-core", "docs/os/"),
+    "network/": ("apache/mynewt-core", "docs/network/"),
+    "newt/": ("apache/mynewt-newt", "docs/"),
+    "newtmgr/": ("apache/mynewt-newtmgr", "docs/"),
+    "default": ("apache/mynewt-documentation", "docs/")
+}
+edit_on_github_branch = 'master'

@@ -16,8 +16,11 @@ docs: _scratch html
 _scratch:
 	mkdir _scratch
 	cp -a docs/* _scratch
+	# Copy in docs/ from each of the mynewt-* projects.
+	# NOTE: paths here nead to match edit_on_github in conf.py
 	# the mynewt-core cp will eventually be
 	# cp -a ../mynewt-core/docs/os _scratch/os
+	# cp -a ../mynewt-core/docs/network _scratch/network
 	# once redundant files are pruned
 	mkdir _scratch/os
 	cp -a ../mynewt-core/docs/os/*.rst _scratch/os/
