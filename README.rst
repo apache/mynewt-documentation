@@ -5,21 +5,27 @@ Apache Mynewt Documentation
 
 This is the project documentation for the `Apache Mynewt`_ project. It is built using `Sphinx`_.
 
-Each component of Mynewt contains its own specific documentation in its repo under ``docs``. At build time these are
-combined to create the full document set for publication.
+Each component of Mynewt contains its own specific documentation in its repo under ``docs``. At
+build time these are combined to create the full document set for publication.
 
 The `Apache Mynewt`_ source code also contains inline comments in `Doxygen`_ format to document its APIs.
 
 Writing Documentation
 =======================
 
-`Sphinx`_ use reStructuredText. http://www.sphinx-doc.org/en/1.5.1/rest.html.
+`Sphinx`_ use reStructuredText. http://www.sphinx-doc.org/en/stable/rest.html.
 
-Embedding `Doxygen`_ generated source documentation is through the `Breathe`_ bridge. http://breathe.readthedocs.io/en/latest/.
+Embedding `Doxygen`_ generated source documentation is through the `Breathe`_
+bridge. http://breathe.readthedocs.io/en/latest/. This bridge embeds source
+documentation using `Sphinx`_'s C domain. For example:
+``.. doxygenfile:: full/include/console/console.h``
 
-Linking to source uses `Sphinx`_'s C++ domain. http://www.sphinx-doc.org/en/1.5.1/domains.html#id2
+Documents can then refer to code elements using the C domain syntax:
+http://www.sphinx-doc.org/en/stable/domains.html#cross-referencing-c-constructs
+For example: ``:c:func:`console_read()``` or ``:c:data:`console_input```.
 
-Linking to other files should be relative for ease of deployment and multi-version support.
+Linking to other files should be relative for ease of deployment and multi-version
+support. For example ``:doc:`../../newt/install/newt_mac```.
 
 Preview Changes
 =================
