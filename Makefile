@@ -25,6 +25,8 @@ _scratch:
 	mkdir _scratch/os
 	cp -a ../mynewt-core/docs/os/*.rst _scratch/os/
 	mkdir _scratch/os/core_os
+	cp -a ../mynewt-core/docs/os/core_os/porting _scratch/os/core_os/
+	#
 	cp -a ../mynewt-core/docs/os/core_os/mynewt_os.rst _scratch/os/core_os/mynewt_os.rst
 	cp -a ../mynewt-core/docs/os/core_os/API.rst _scratch/os/core_os/API.rst
 	mkdir _scratch/os/core_os/context_switch
