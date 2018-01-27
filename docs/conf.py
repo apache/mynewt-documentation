@@ -110,6 +110,8 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+html_favicon = '_static/mynewt-logo-only-newt32x32.png'
+
 
 # -- Options for HTMLHelp output ------------------------------------------
 
