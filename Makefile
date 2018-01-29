@@ -45,6 +45,8 @@ _scratch:
 	#
 	cp -a ../mynewt-newtmgr/docs _scratch/newtmgr
 	#
+	cp -a ../mynewt-core/docs/os/tutorials/*.rst _scratch/tutorials/
+	#
 	doxygen doxygen-mynewt-core.xml
 
 clean:
