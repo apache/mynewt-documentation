@@ -35,6 +35,8 @@ _scratch:
 	cp -a ../mynewt-core/docs/os/core_os/cputime/os_cputime.rst _scratch/os/core_os/cputime/os_cputime.rst
 	mkdir _scratch/os/core_os/time
 	cp -a ../mynewt-core/docs/os/core_os/time/os_time.rst _scratch/os/core_os/time/os_time.rst
+	mkdir _scratch/os/core_os/task
+	cp -a ../mynewt-core/docs/os/core_os/task/task.rst _scratch/os/core_os/task/task.rst
 	#
 	mkdir _scratch/os/modules
 	cp -a ../mynewt-core/docs/os/modules/console _scratch/os/modules/
@@ -46,8 +48,6 @@ _scratch:
 	cp -a ../mynewt-newt/docs _scratch/newt
 	#
 	cp -a ../mynewt-newtmgr/docs _scratch/newtmgr
-	#
-	cp -a ../mynewt-core/docs/os/tutorials/*.rst _scratch/tutorials/
 	#
 	doxygen doxygen-mynewt-core.xml
 
