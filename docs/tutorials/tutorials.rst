@@ -11,6 +11,12 @@ Tutorials
    Project Slinky for Remote Comms <slinky/project-slinky>
    Bluetooth Low Energy <ble/ble>
    LoRa <lora/lorawanapp>
+   Sensors
+       Sensor Framework <sensors/sensors>
+       :section: Air Quality Sensor Project
+           Basic Air Quality Sensor <air_quality_sensor>
+           BLE Enabled Air Quality Sensor <air_quality_ble>
+       Add an Analog Sensor<nrf52_adc>
 
 If the introduction to Mynewt has piqued your interest and you want to
 familiarize yourself with some of its functionality, this series of
@@ -25,7 +31,7 @@ automatically.
   :depth: 2
 
 Prerequisites
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 -  You have installed Docker container of Newt tool and toolchains or
    you have installed them natively on your machine
@@ -45,7 +51,7 @@ Abstraction Layer (HAL) for a new board, you can look
 :doc:`../os/core_os/porting/port_os` to get started.
 
 Tutorial categories
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 The tutorials fall into a few broad categories. Some examples in each
 category are listed below.
