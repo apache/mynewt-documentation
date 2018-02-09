@@ -11,12 +11,7 @@ Tutorials
    Project Slinky for Remote Comms <slinky/project-slinky>
    Bluetooth Low Energy <ble/ble>
    LoRa <lora/lorawanapp>
-   Sensors
-       Sensor Framework <sensors/sensors>
-       :section: Air Quality Sensor Project
-           Basic Air Quality Sensor <air_quality_sensor>
-           BLE Enabled Air Quality Sensor <air_quality_ble>
-       Add an Analog Sensor<nrf52_adc>
+   Sensors <sensors/sensors>
 
 If the introduction to Mynewt has piqued your interest and you want to
 familiarize yourself with some of its functionality, this series of
@@ -66,43 +61,43 @@ category are listed below.
 
 -  Navigating the Code and Adding Functionality
 
-   -  `Adding More Repositories to Your Project <repo/add_repos.html>`__
-   -  `Adding a Unit Test For a Package <unit_test.html>`__
+   -  :doc:`Adding More Repositories to Your Project <repo/add_repos>`
+   -  :doc:`Adding a Unit Test For a Package <unit_test>`
 
 -  Using Newtmgr
 
-   -  `Enabling Remote Communication With a Device Running Mynewt
-      OS <project-slinky.html>`__
+   -  :doc:`Enabling Remote Communication With a Device Running Mynewt
+      OS <slinky/project-slinky>`
 
 -  Bluetooth Low Energy
 
-   -  :doc:`Building a Bare Bones BLE Application <ble_bare_bones>`
-   -  `Building a BLE iBeacon Application <ibeacon.html>`__
+   -  :doc:`Building a Bare Bones BLE Application <ble/ble_bare_bones>`
+   -  :doc:`Building a BLE iBeacon Application <ble/ibeacon>`
 
 -  OS Fundamentals
 
-   -  `Events and Event Queues <event_queue.html>`__
-   -  `Task and Priority Management <tasks_lesson.html>`__
+   -  :doc:`Events and Event Queues <event_queue>`
+   -  :doc:`Task and Priority Management <tasks_lesson>`
 
 -  Remote Device Management
 
-   -  `Enabling Newt Manager in Any App <add_newtmgr.html>`__
-   -  `Upgrading an Image Over-The-Air <ota_upgrade_nrf52.html>`__
+   -  :doc:`Enabling Newt Manager in Any App <add_newtmgr>`
+   -  :doc:`Upgrading an Image Over-The-Air <ota_upgrade_nrf52>`
 
 -  Sensors
 
-   -  `Enabling an Off-Board Sensor in an Existing
-      Application <sensors/sensor_nrf52_bno055.html>`__
-   -  `Developing an Application for an Onboard
-      Sensor <sensors/sensor_thingy_lis2dh12_onb.html>`__
-   -  `Enabling OIC Sensor Data
-      Monitoring <sensors/sensor_oic_overview.html>`__
+   -  :doc:`Enabling an Off-Board Sensor in an Existing
+      Application <sensors/sensor_nrf52_bno055>`
+   -  :doc:`Developing an Application for an Onboard
+      Sensor <sensors/sensor_thingy_lis2dh12_onb>`
+   -  :doc:`Enabling OIC Sensor Data 
+      Monitoring <sensors/sensor_oic_overview>`
 
 -  Tooling
 
-   -  `SEGGER RTT <segger_rtt.html>`__
-   -  `SEGGER SystemView <segger_sysview.html>`__
+   -  :doc:`SEGGER RTT <segger_rtt>`
+   -  :doc:`SEGGER SystemView <segger_sysview>`
 
 **Send us an email on the dev@ mailing list if you have comments or
 suggestions!** If you haven't joined the mailing list, you will find the
-links `here <../../community.html>`__.
+links :doc:`here <community>`

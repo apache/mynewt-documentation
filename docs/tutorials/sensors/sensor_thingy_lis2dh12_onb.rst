@@ -24,7 +24,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 -  Meet the prerequisites listed in the :doc:`Sensor Tutorials
-   Overview <sensors>`
+   Overview <sensors_framework>`
 -  Have a Nordic Thingy.
 -  `Segger J-Link Debug
    Probe <https://www.segger.com/jlink-debug-probes.html>`__.

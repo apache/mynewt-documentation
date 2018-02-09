@@ -27,8 +27,10 @@ Prerequisites
    Framework <sensor_oic_overview>`
 -  Complete the tasks described in the :doc:`Enabling OIC Sensor Data 
    Monitoring in the sensors_test Application <sensor_nrf52_bno055_oic>`
-   tutorial. ### Overview on How to Add OIC Sensor Support to a BLE
-   Application
+   tutorial. 
+   
+Overview on How to Add OIC Sensor Support to a BLE Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The sensor framework makes it very easy to add OIC sensor support to an
 existing BLE application. The sensor framework exports the
@@ -81,21 +83,23 @@ off-board sensor support.
 do not need to include the ``net/oic`` package as a dependency in this
 package.
 
-
- pkg.deps: 
-    - kernel/os
-    - net/nimble/controller 
-    - net/nimble/host 
-    - net/nimble/host/services/gap 
-    - net/nimble/host/services/gatt
-    - net/nimble/host/store/ram 
-    - net/nimble/transport/ram
+.. code-block:: console
+   :emphasize-lines: 13, 14
+   
+    pkg.deps: 
+        - kernel/os
+        - net/nimble/controller 
+        - net/nimble/host 
+        - net/nimble/host/services/gap 
+        - net/nimble/host/services/gatt
+        - net/nimble/host/store/ram 
+        - net/nimble/transport/ram
 
  
 
-        ...
-    - hw/sensor
-    - hw/sensor/creator
+             ...
+        - hw/sensor
+        - hw/sensor/creator
 
 
 Step 3: Setting Syscfg Values to Enable OIC Support
@@ -117,11 +121,11 @@ Add the following setting values to ``syscfg.vals`` in the
    Apps on the iOS and Android devices only sees 128 bit UUID
    advertisements.
 
-.. code:: hl\_lines="4 5 6 7 8"
+.. code-block:: console
+   :emphasize-lines: 4, 5, 6, 7, 8
 
-syscfg.vals: ...
-
-::
+     syscfg.vals: 
+            ...
 
     SENSOR_OIC: 1
     OC_SERVER: 1
@@ -129,7 +133,8 @@ syscfg.vals: ...
     ADVERTISE_128BIT_UUID: 1
     ADVERTISE_16BIT_UUID: 0
 
-### Step 4: Modifying main.c
+Step 4: Modifying main.c
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The bleprph\_oic application defines the ``omgr_app_init()`` function
 for the OIC application initialization handler. The function creates an
@@ -153,8 +158,8 @@ Adding the Sensor Package Header File:
 Add the sensor package header file ``sensor/sensor.h`` below
 ``#include "bleprph.h"`` file:
 
-.. code:: hl_lines="3"
-
+.. code-block:: console
+   :emphasize-lines: 4
 
     #include "bleprph.h"
 
@@ -168,61 +173,62 @@ Make the following modifications to the ``omgr_app_init()`` function:
 1. Delete the code segment that creates the OIC device and resource.
 The lines to delete are highlighted below:
 
-.. code:: hl\_lines="4 7 8 9 10 11 12 13 14 15 16 17 18 19"
+.. code-block:: console
+   :emphasize-lines: 4, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 19
 
-| static void omgr\_app\_init(void) {
-| oc\_resource\_t \*res;
+     static void 
+     omgr_app_init(void) 
+     {
+         oc\_resource_t *res;
 
-::
+         oc_init_platform("MyNewt", NULL, NULL);
+         oc_add_device("/oic/d", "oic.d.light", "MynewtLed", "1.0", "1.0", NULL,
+                       NULL);
 
-    oc_init_platform("MyNewt", NULL, NULL);
-    oc_add_device("/oic/d", "oic.d.light", "MynewtLed", "1.0", "1.0", NULL,
-                  NULL);
+         res = oc_new_resource("/light/1", 1, 0);
+         oc_resource_bind_resource_type(res, "oic.r.light");
+         oc_resource_bind_resource_interface(res, OC_IF_RW);
+         oc_resource_set_default_interface(res, OC_IF_RW);
 
-    res = oc_new_resource("/light/1", 1, 0);
-    oc_resource_bind_resource_type(res, "oic.r.light");
-    oc_resource_bind_resource_interface(res, OC_IF_RW);
-    oc_resource_set_default_interface(res, OC_IF_RW);
+         oc_resource_set_discoverable(res);
+         oc_resource_set_periodic_observable(res, 1);
+         oc_resource_set_request_handler(res, OC_GET, app_get_light);
+         oc_resource_set_request_handler(res, OC_PUT, app_set_light);
+         oc_add_resource(res);
 
-    oc_resource_set_discoverable(res);
-    oc_resource_set_periodic_observable(res, 1);
-    oc_resource_set_request_handler(res, OC_GET, app_get_light);
-    oc_resource_set_request_handler(res, OC_PUT, app_set_light);
-    oc_add_resource(res);
+     }
 
-}
-
-2. Add the following``\ oc\_add\_device()\` function call
+2. Add the following``oc_add_device()`` function call
 to create an OIC resource for the sensor device:
 
-.. code:: hl_lines="7"
+.. code-block:: c 
+   :emphasize-lines: 7
 
-
-    static void
-    omgr_app_init(void)
+     static void
+     omgr_app_init(void)
     {
 
-        oc_init_platform("MyNewt", NULL, NULL);
+         oc_init_platform("MyNewt", NULL, NULL);
 
-        oc_add_device("/oic/d", "oic.d.sensy", "sensy", "1.0", "1.0", NULL, NULL);
+         oc_add_device("/oic/d", "oic.d.sensy", "sensy", "1.0", "1.0", NULL, NULL);
 
     }
 
 3. Add the call to the ``sensor_oic_init()`` function to initialize the
 sensor framework OIC server support:
 
-.. code:: hl_lines="9"
+.. code-block:: c 
+   :emphasize-lines: 9
 
-
-    static void
-    omgr_app_init(void)
+     static void
+     omgr_app_init(void)
     {
 
-        oc_init_platform("MyNewt", NULL, NULL);
+         oc_init_platform("MyNewt", NULL, NULL);
 
-        oc_add_device("/oic/d", "oic.d.sensy", "sensy", "1.0", "1.0", NULL, NULL);
+         oc_add_device("/oic/d", "oic.d.sensy", "sensy", "1.0", "1.0", NULL, NULL);
 
-        sensor_oic_init();
+         sensor_oic_init();
 
     }
 
@@ -314,41 +320,19 @@ Step 7: Viewing Sensor Data from the Mynewt Smart Device Controller
 Start the Mynewt Smart Device Controller app on your iOS or Android
 device to view the sensor data. You should already have the app
 installed from the :doc:`Enabling OIC Sensor Data Monitoring in the
-sensors\_test Application Tutorial <sensor_nrf52_bno055_oic>`
+sensors_test Application Tutorial <sensor_nrf52_bno055_oic>`
 
 The Mynewt Smart Device Controller scans for the devices when it starts
 up and displays the sensors it can view. The following is an example
 from the Android App:
 
-.. raw:: html
-
-   <p>
-
-.. raw:: html
-
-   <p align="center">
-
-.. raw:: html
-
-   </p>
+.. image:: ../pics/smart_controller_main.png
+   :align: center
 
 1. Select ``Accelerometer`` to see the sensor data samples:
 
-   .. raw:: html
-
-      <p>
-
-   .. raw:: html
-
-      <p align="center">
-
-.. raw:: html
-
-   </p>
-
-.. raw:: html
-
-   <p>
+.. image:: ../pics/smart_controller_accelerometer.png
+   :align: center
 
 2. Move your BNO055 sensor device around to see the values for the
 coordinates change.

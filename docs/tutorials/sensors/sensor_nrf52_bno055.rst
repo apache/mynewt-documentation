@@ -7,8 +7,8 @@ to quickly bring up and run a Mynewt application on a device to view
 sensor data from a sensor device.
 
 We use the **sensors\_test** application running on an nRF52-DK board to
-communicate, via the I2C interface, with the `Adafruit
-BNO055 <https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor/overview>`__
+communicate, via the I2C interface, with the :doc:`Adafruit
+BNO055 <https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor/overview>`
 sensor. The sensors\_test application is a sample application that
 demonstrates all the features of the Mynewt sensor framework. The
 application includes the sensor framework ``sensor`` shell command that
@@ -26,7 +26,7 @@ This tutorial shows you how to:
 .. contents::
   :local:
   :depth: 2
-  
+
 Prerequisites
 ~~~~~~~~~~~~~
 

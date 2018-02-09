@@ -4,6 +4,9 @@ Enabling OIC Sensor Data Monitoring
 .. toctree::
    :hidden:
 
+   Enable OIC Sensor Support in the sensors_test Application <sensor_nrf52_bno055_oic>
+   Add OIC Sensor Support to the bleprph_oic Application <sensor_bleprph_oic>
+   
 This tutorial shows you how to enable sensor data monitoring via the OIC
 protocol over BLE transport in an application. It extends the example
 application in the :doc:`Enabling an Off-Board Sensor in an Existing
@@ -26,8 +29,8 @@ This tutorial has two parts:
 
 .. contents::
   :local:
-  :depth: 2   
-  
+  :depth: 2  
+
 Prerequisites 
 ~~~~~~~~~~~~~
 Ensure that you meet the following prerequisites before continuing with the tutorials:

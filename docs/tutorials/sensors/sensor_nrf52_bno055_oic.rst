@@ -1,4 +1,4 @@
-Enabling OIC Sensor Data Monitoring in the sensors\_test Application
+Enabling OIC Sensor Data Monitoring in the sensors_test Application
 --------------------------------------------------------------------
 
 This tutorial shows you how to enable sensor data monitoring via the OIC
@@ -123,35 +123,13 @@ The Mynewt Smart Device Controller scans for the devices when it starts
 up and displays the sensors it can view. The following is an example
 from the Android App:
 
-.. raw:: html
+.. image:: ../pics/smart_controller_main.png
+   :align: center
 
-   <p>
+1. Select ``Accelerometer`` to see the sensor data samples:
 
-.. raw:: html
+.. image:: ../pics/smart_controller_accelerometer.png
+   :align: center
 
-   <p align="center">
-
-.. raw:: html
-
-   </p>
-
-2. Select ``Accelerometer`` to see the sensor data samples:
-
-   .. raw:: html
-
-      <p>
-
-   .. raw:: html
-
-      <p align="center">
-
-.. raw:: html
-
-   </p>
-
-.. raw:: html
-
-   <p>
-
-3. Move your BNO055 sensor device around to see the values for the
+2. Move your BNO055 sensor device around to see the values for the
    coordinates change.
