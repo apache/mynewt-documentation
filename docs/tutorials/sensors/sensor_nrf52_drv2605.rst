@@ -1,25 +1,19 @@
 Enabling and Calibrating Off-Board DRV2605 LRA Actuator
 -------------------------------------------------------
 
-This tutorial shows you how to enable an existing application to run on
-a device with an off-board DRV2605 device connected to it. It allows you
-to quickly bring up and run a Mynewt application on a device to calibrate
-and actuate the device from the application console.
-
-We use the **sensors\_test** application running on an nRF52-DK board to
-communicate, via the I2C interface, with the :doc:`Adafruit
+This tutorial shows you how to run the **sensors\_test** application
+on an nRF52-DK board to communicate, via the I2C interface, with the :doc:`Adafruit
 DRV2605 <https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview>`
-sensor. The sensors\_test application is a sample application that
-demonstrates all the features of the Mynewt sensor framework. The
-driver includes the ``drv2605`` shell command that allows you to view the
-status, calibrate and actuate your motor.
+device. The DRV2605 driver includes the ``drv2605`` shell command that allows you
+to quickly to view the status, calibrate and actuate your motor in
+preperation for using it programmatically in your own app.
 
 This tutorial shows you how to:
 
 -  Create and build the application and bootloader targets.
 -  Connect a DRV2605 actuator device to an nRF52-DK board.
 -  Run ``drv2605`` shell commands to view the actuator data
-   and control the drv2605 sensor device.
+   and control the drv2605 device.
 
 .. contents::
   :local:
@@ -40,9 +34,9 @@ Step 1: Creating the Application Target
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this step, you create a target for the sensors\_test application that enables the DRV2605
-off-board sensor.
+off-board device.
 
-To add the DRV2605 sensor support, you create the application target with
+To add the DRV2605 device support, you create the application target with
 the following syscfg settings enabled:
 
 -  ``I2C_0``: Enables the I2C interface 0 in the nRF52 BSP HAL setting.
@@ -53,8 +47,8 @@ the following syscfg settings enabled:
 
    -  Includes the DRV2605 driver package (``hw/drivers/drv2605``)
       as a package dependency.
-   -  Creates an os device for the sensor in the Mynewt kernel.
-   -  Configures the sensor device with default values.
+   -  Creates an os device for the device in the Mynewt kernel.
+   -  Configures the device with default values.
 
 -  ``DRV2605_CLI``: Enables the ``drv2605`` shell command in the DRV2605
    device driver package. The sensors\_test application also uses this
@@ -116,7 +110,7 @@ build\_profile variables for the target:
 
     $
 
-Step 2: Creating an Application Image and load it
+Step 2: Creating an Application Image and loading it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This tutorial assumes you have a functioning bootloader as taught in
@@ -131,19 +125,13 @@ assign an arbitrary version (e.g. 1.0.0) to the image.
     App image succesfully generated: ~/dev/myproj/bin/targets/nrf52_drv2605_test/app/apps/sensors_test/sensors_test.img
 
 
-Step 3: Controlling and Viewing Sensor Device Hardware and Sensor Data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 3: Communicating with and Calibrating the DRV2605 device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This tutorial assumes you have a functioning application console as
 taught in :doc:`add an offboard sensor <sensor_nrf52_bno055>`
 The DRV2605 device driver implements the ``drv2605`` shell command
 that allows you to:
-
--  Read sensor data samples for all the sensor types that the device
-   supports.
-
-   **Note:** The ``sensor`` shell command discussed previously only
-   reads sensor data for configured sensor types.
 
 -  Query the chip id, content of registers, calibrations.
 -  Reset the device.
@@ -152,7 +140,7 @@ that allows you to:
 -  Load waveforms to actuate.
 -  Actuate the device.
 
- \*\* Example 1: \*\* Query the device chip id:
+ **Example 2:** Query the device chip id:
 
 .. code-block:: console
 
@@ -169,12 +157,14 @@ that allows you to:
     drv2605 op_mode diag
     829717 op_mode succeeded
 
-If that didnt work or you didnt have to compute different DRV2605_RATED_VOLTAGE,
-DRV2605_OD_CLAMP, and DRV2605_DRIVE_TIME values or talk to your motor manufacturer.
+If that didn't work or you will have to compute different DRV2605_RATED_VOLTAGE,
+DRV2605_OD_CLAMP, and DRV2605_DRIVE_TIME values and try again or maybe talk to your
+motor manufacturer or TI for more help.
 
 **Example 3:** Run Calibration on your motor:
 Theres a lot more setup numbers you could enter here for the DRV2605 to figure out
-how to drive your motor, but some of them it can figure out itself through auto calibration.
+how to actuate your motor, but some of them it can figure out itself through auto calibration.
+Lets run autocalibration and then dump the fresh calibration numbers:
 .. code-block:: console
 
 
@@ -186,13 +176,15 @@ how to drive your motor, but some of them it can figure out itself through auto 
     DRV2605_CALIBRATED_BEMF: 0x79
     DRV2605_CALIBRATED_BEMF_GAIN: 1
 
-You could programmatically run this on every startup, but more likely youd want to save these
-as overrides in your syscfg.yml and restart. Presumably youd never have to do these steps ever again.
+You could programmatically run this on every startup, but more likely you'd want to save these
+as in your syscfg.yml and restart. Presumably you'd never have to do these steps ever again.
 
 Step 4: Actually Actuate
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now you're ready to (sigh) rumble. Enable the rom mode to use the stored patterns. Technically you dont need to do this after first configure as this is the default mode:
+Now you're ready to (sigh) rumble. One way to use the DRV2605 device is to enable
+the ROM mode to use it's stored patterns. Technically you dont need to do this after
+first configure as ROM mode is the default mode:
 .. code-block:: console
 
 
@@ -200,7 +192,9 @@ Now you're ready to (sigh) rumble. Enable the rom mode to use the stored pattern
     drv2605 op_mode rom
     037245 op_mode succeeded
 
-Load some of the internal roms, 4 hard clicks (1) with max delays in between (255). You may only have to do this once per boot if you want this same sequence every time you trigger.
+Now you can load up to 8 internal roms or delays. In this case well use four hard
+clicks (1) with max delays (255) in between. You may only have to do this once per
+boot if you wanted to use this same sequence every time you trigger the DRV2605 device.
 .. code-block:: console
 
 
@@ -208,7 +202,7 @@ Load some of the internal roms, 4 hard clicks (1) with max delays in between (25
     drv2605 load 1 255 1 255 1 255 1 255
     122555 Load succeeded
 
-The motor is in standby by default after a mode change, so enable it
+The motor is in standby by default after a mode change, so enable it:
 .. code-block:: console
 
 
@@ -216,7 +210,7 @@ The motor is in standby by default after a mode change, so enable it
     drv2605 power_mode active
     003263 power_mode succeeded
 
-Now you can trigger those forms, as many times as you want, or load new forms and trigger again.
+Now you can trigger those forms as many times as you want or load new forms and trigger again:
 .. code-block:: console
 
 
@@ -229,7 +223,7 @@ Conclusion
 ~~~~~~~~~~
 
 
-You've successfully enabled an application to communicate with a drv2605 driver,
+You've successfully enabled a mynewt application to communicate with a drv2605 device,
 calibrated it and actuated a motor! Next youll want to look at the code comments
 on the drv2605.c file and how the drv2605_shell.c file is implemented so you can
 setup and actuate your device programmatically within your application.
