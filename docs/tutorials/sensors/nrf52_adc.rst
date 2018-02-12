@@ -44,47 +44,11 @@ commands below.
         $ cd myadc
         
 
-Add Additional Repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The board-specific libraries for the NRF52dk board are in an external
-repository at present, so you'll need to include that remote repository
-and install it as well. If you're not familiar with using repositories,
-see the section on :doc:`repositories <../repo/add_repos>` before
-continuing. Or just copy and paste the following.
-
-In your ``project.yml`` file, add ``mynewt_nordic`` to the
-``project.repositories`` section, and then add the proper repository
-definition. When you're done, your ``project.yml`` file should look like
-this:
-
-.. code-block:: console
-  :emphasize-lines: 5, 15, 16, 17, 18, 19
-
-    project.name: "my_project"
-
-    project.repositories:
-        - apache-mynewt-core 
-        - mynewt_nordic
-
-    # Use github's distribution mechanism for core ASF libraries.
-    # This provides mirroring automatically for us.
-
-    repository.apache-mynewt-core:
-        type: github
-        vers: 1-latest
-        user: apache
-        repo: incubator-mynewt-core
-    repository.mynewt_nordic:
-        type: github
-        vers: 1-latest
-        user: runtimeco 
-        repo: mynewt_nordic
 
 Install Everything
 ~~~~~~~~~~~~~~~~~~
 
-Now that you have defined the needed repositories, it's time to install everything so
+It's time to install everything so
 that you can get started.
 
 .. code-block:: console
@@ -94,11 +58,6 @@ that you can get started.
     Downloading repository description for apache-mynewt-core... success!
     ...
     apache-mynewt-core successfully installed version 0.9.0-none
-    ...
-    mynewt_nordic
-    Downloading repository description for mynewt_nordic... success!
-    ...
-    mynewt_nordic successfully installed version 0.9.9-none
 
 
 Create the targets
@@ -322,7 +281,7 @@ the driver, and then header stub followed by source stub.
     pkg.name: libs/my_drivers/myadc
     pkg.deps:
         - "@apache-mynewt-core/hw/hal"
-        - "@mynewt_nordic/hw/drivers/adc/adc_nrf52"
+        - "@apache-mynewt-core/hw/drivers/adc/adc_nrf52"
 
 First, let's create the required header file ``myadc.h`` in the includes
 directory i.e. ``libs/my_drivers/myadc/include/myadc/myadc.h``. It's a
