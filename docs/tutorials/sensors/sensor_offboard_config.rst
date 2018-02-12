@@ -3,7 +3,7 @@ Changing the Default Configuration for a Sensor
 
 This tutorial shows you how to change default configuration values for
 an off-board sensor. It continues with the example in the :doc:`Enabling an
-Off-Board Sensor in an Existing Application tutorial <sensor_offboard_config>`
+Off-Board Sensor in an Existing Application tutorial <sensor_nrf52_bno055>`
 
 **Note:** You can also follow most of the instructions in this
 tutorial to change the default configuration for an onboard sensor. The
@@ -20,7 +20,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 Complete the tasks described in the :doc:`Enabling an Off-Board Sensor in an
-Existing Application tutorial <sensor_offboard_config>`
+Existing Application tutorial <sensor_nrf52_bno055>`
 
 Overview on How to Initialize the Configuration Values for a Sensor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

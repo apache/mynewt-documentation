@@ -98,7 +98,7 @@ Perform the following steps to reboot the board with the new images:
 
 1. Connect the BNO055 sensor to the nRF52-DK board. See the :doc:`Enabling
    an Off-Board Sensor in an Existing Application Tutorial
-   <sensor_offboard_config>` for instructions.
+   <sensor_nrf52_bno055>` for instructions.
 
    **Note**: You do not need the serial connection from your computer to
    the nRF52-DK board for this tutorial because we are not using the
