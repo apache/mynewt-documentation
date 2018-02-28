@@ -19,28 +19,9 @@ _scratch:
 	# Copy in docs/ from each of the mynewt-* projects.
 	# NOTE: paths here nead to match edit_on_github in conf.py
 	# the mynewt-core cp will eventually be
-	# cp -a ../mynewt-core/docs/os _scratch/os
+	cp -a ../mynewt-core/docs/os _scratch/os
 	# cp -a ../mynewt-core/docs/network _scratch/network
 	# once redundant files are pruned
-	mkdir _scratch/os
-	cp -a ../mynewt-core/docs/os/*.rst _scratch/os/
-	mkdir _scratch/os/core_os
-	cp -a ../mynewt-core/docs/os/core_os/porting _scratch/os/core_os/
-	#
-	cp -a ../mynewt-core/docs/os/core_os/mynewt_os.rst _scratch/os/core_os/mynewt_os.rst
-	cp -a ../mynewt-core/docs/os/core_os/API.rst _scratch/os/core_os/API.rst
-	mkdir _scratch/os/core_os/context_switch
-	cp -a ../mynewt-core/docs/os/core_os/context_switch/context_switch.rst _scratch/os/core_os/context_switch/context_switch.rst
-	mkdir _scratch/os/core_os/cputime
-	cp -a ../mynewt-core/docs/os/core_os/cputime/os_cputime.rst _scratch/os/core_os/cputime/os_cputime.rst
-	mkdir _scratch/os/core_os/time
-	cp -a ../mynewt-core/docs/os/core_os/time/os_time.rst _scratch/os/core_os/time/os_time.rst
-	mkdir _scratch/os/core_os/task
-	cp -a ../mynewt-core/docs/os/core_os/task/task.rst _scratch/os/core_os/task/task.rst
-	#
-	mkdir _scratch/os/modules
-	cp -a ../mynewt-core/docs/os/modules/console _scratch/os/modules/
-	cp -a ../mynewt-core/docs/os/modules/sysinitconfig _scratch/os/modules/
 	#
 	mkdir _scratch/network
 	cp -a ../mynewt-core/docs/network/ble _scratch/network/

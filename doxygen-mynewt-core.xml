@@ -790,6 +790,7 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ../mynewt-core/kernel/os \
+                         ../mynewt-core/hw/hal \
                          ../mynewt-core/sys/console/full \
                          ../mynewt-core/net/nimble/host/mesh/include/mesh
 
