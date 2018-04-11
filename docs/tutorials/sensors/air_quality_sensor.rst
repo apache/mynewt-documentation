@@ -672,7 +672,7 @@ You'll have to do a little soldering. I soldered some header pins to the SenseAi
 
 Here's what your SenseAir board should look like once it's wired up:
 
-.. figure:: ../pics/K30 labeled.JPG
+.. figure:: ../pics/K30labeled.JPG
    :alt: SenseAir Wiring
 
    SenseAir Wiring
