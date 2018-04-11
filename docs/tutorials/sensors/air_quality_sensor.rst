@@ -672,15 +672,15 @@ You'll have to do a little soldering. I soldered some header pins to the SenseAi
 
 Here's what your SenseAir board should look like once it's wired up:
 
-.. figure:: ../pics/Senseair1.png
+.. figure:: ../pics/K30 labeled.JPG
    :alt: SenseAir Wiring
 
    SenseAir Wiring
 
 Now that you have that wired up, let's connect it to the nRF52DK board. Since we will be using the built-in UART, we can simply connect it to the pre-configured pins for TX (P.06) and RX (P.08). Here's what your board should look like once everything is connected: 
 
-.. figure:: ../pics/Senseair2.png
-   :alt: SenseAir and Arduino Primo Wiring
+.. figure:: ../pics/nrf52labeled.JPG
+   :alt: SenseAir and nRF52DK Wiring
 
    SenseAir and nRF52DK Wiring
 
