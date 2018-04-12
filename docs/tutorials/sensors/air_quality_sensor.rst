@@ -295,7 +295,7 @@ Add a call to your main() to initialize this driver:
 Add CLI Commands For Testing Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While developing the driver, it may help to issue operations from the console to verify the driver is responding correctly. Since the nRF52DK only has one UART, which we will use to connect the CO2 sensor, we will use the :docs: `Segger RTT Console <segger_rtt>` instead. To configure this, make the following changes in your project's ``syscfg.yml`` file:
+While developing the driver, it may help to issue operations from the console to verify the driver is responding correctly. Since the nRF52DK only has one UART, which we will use to connect the CO2 sensor, we will use the :doc:`Segger RTT Console <segger_rtt>` instead. To configure this, make the following changes in your project's ``syscfg.yml`` file:
 
 .. code-block:: console
 
