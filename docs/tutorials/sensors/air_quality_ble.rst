@@ -133,7 +133,7 @@ Next we need to tell the GATT Server how to handle requests for CO2 readings :
 
 Now it's time to go into our ``apps/air_quality/src/main.c`` and change how we read CO2 readings and respond to requests.
 
-We'll need a task handler with an event queue for the CO2 readings -- they were handled by the shell task in the previous tutorial but now it needs to be replaced by a different handler as shown below.
+We'll need a task handler with an event queue for the CO2 readings.
 
 .. code-block:: c
 
@@ -144,9 +144,7 @@ We'll need a task handler with an event queue for the CO2 readings -- they were 
     struct os_task co2_task;
     bssnz_t os_stack_t co2_stack[CO2_STACK_SIZE];
 
-And of course we'll need to go to our ``main()`` and do all the standard
-task and event setup we normally do by adding the following. Again,
-remember to delete all the shell event queues and tasks.
+And of course we'll need to go to our ``main()`` and do all the standard task and event setup we normally do by adding the following:
 
 .. code-block:: c
 
