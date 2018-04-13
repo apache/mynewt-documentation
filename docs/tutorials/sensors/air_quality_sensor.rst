@@ -23,7 +23,7 @@ To start, create a new project under which you will do development for this appl
         $ cd $HOME/src
         $ newt new air_quality
 
-If you are using a different development board, you will need to know the board supportpackage for that hardware. You can look up its location, add it your project, and fetch that along with the core OS components. Since the nRF52DK is supported in the Mynewt Core, we don't need to do much here.
+If you are using a different development board, you will need to know the board support package for that hardware. You can look up its location, add it your project, and fetch that along with the core OS components. Since the nRF52DK is supported in the Mynewt Core, we don't need to do much here.
 
 Your project.yml file should look like this:
 
@@ -67,7 +67,7 @@ Next, create a target for the nRF52DK bootloader:
         bsp=hw/bsp/native
         build_profile=debug
         compiler=compiler/sim
-    targets/boot_primo
+    targets/boot_nrf52dk
         app=@apache-mynewt-core/apps/boot
         bsp=@apache-mynewt-core/hw/bsp/nrf52dk
         build_profile=optimized
@@ -76,7 +76,7 @@ Next, create a target for the nRF52DK bootloader:
         bsp=@apache-mynewt-core/hw/bsp/native
         build_profile=debug
 
-Build the bootloader target and load it onto the board.
+Build the bootloader target and load it onto the board:
 
 .. code-block:: console
 
@@ -98,7 +98,7 @@ Now that you have your system setup, you can start building the application. Fir
         [user@IsMyLaptop:~/src/air_quality]$ cp repos/apache-mynewt-core/apps/bleprph/pkg.yml apps/air_quality/
         [user@IsMyLaptop:~/src/air_quality]$ cp -Rp repos/apache-mynewt-core/apps/bleprph/src apps/air_quality/
 
-Modify the apps/air\_quality/pkg.yml for air_quality in order to change the *pkg.name* to be *apps/air\_quality*. You'll need to add the ``@apache-mynewt-core/`` path to all the package dependencies, sincethe app no longer resides within the apache-mynewt-core repository.
+Modify the apps/air\_quality/pkg.yml for air_quality in order to change the *pkg.name* to be *apps/air\_quality*. You'll need to add the ``@apache-mynewt-core/`` path to all the package dependencies, since the app no longer resides within the apache-mynewt-core repository.
 
 .. code-block:: console
 
@@ -152,7 +152,7 @@ Create Packages For Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We need to enable the SenseAir K30 CO2 sensor, which will connect to the board over a serial port. To start development of the
-driver, you first need to create a package description for it, and addstubs for sources.
+driver, you first need to create a package description for it, and add stubs for sources.
 
 The first thing to do is to create the directory structure for your
 driver:
@@ -281,7 +281,7 @@ Here's the listing from apps/air\_quality/pkg.yml:
         - "@apache-mynewt-core/sys/shell"
         - libs/my_drivers/senseair
 
-Add a call to your main() to initialize this driver:
+Add a call to your ``main()`` to initialize this driver:
 
 .. code-block:: console
 
@@ -295,7 +295,7 @@ Add a call to your main() to initialize this driver:
 Add CLI Commands For Testing Drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While developing the driver, it may help to issue operations from the console to verify the driver is responding correctly. Since the nRF52DK only has one UART, which we will use to connect the CO2 sensor, we will use the :doc:`Segger RTT Console <segger_rtt>` instead. To configure this, make the following changes in your project's ``syscfg.yml`` file:
+While developing the driver, it would be helpful to issue operations from the console to verify the driver is responding correctly. Since the nRF52DK only has one UART, which will be used to connect to the CO2 sensor, the console we'll use instead is the :doc:`Segger RTT Console <segger_rtt>`. To configure this, make the following changes in your project's ``syscfg.yml`` file:
 
 .. code-block:: console
 
@@ -307,8 +307,7 @@ While developing the driver, it may help to issue operations from the console to
         CONSOLE_UART: 0
         CONSOLE_RTT: 1
 
-Then register your senseair command with the shell by adding the
-following to ``libs/my_drivers/senseair/src/senseair.c``
+Then register your senseair command with the shell by adding the following to ``libs/my_drivers/senseair/src/senseair.c``
 
 .. code-block:: c
     
@@ -383,9 +382,9 @@ developing code for the driver itself.
 Using HAL for Drivers
 ~~~~~~~~~~~~~~~~~~~~~
 
-We will connect the CO2 sensor using a serial port connection to the UART. We'll also use the HAL UART abstraction to do the UART port setup and data transfer. That way you don't need to have any platform dependent pieces within your little driver. Moreover, this also gives you to option connect this sensor to another board, like Olimex or the Arduino Primo.
+We will connect the CO2 sensor using a serial port connection to the UART. We'll also use the HAL UART abstraction to do the UART port setup and data transfer. That way you don't need to have any platform dependent pieces within your little driver. Moreover, this also gives you the option to connect this sensor to another board, like Olimex or the Arduino Primo.
 
-You will now see what the driver code ends up looking like. Here's the header file, filled in from the stub you created earlier.
+You will now see what the driver code ends up looking like. Here's the header file, filled in from the stub you created earlier:
 
 .. code-block:: c
 
@@ -422,7 +421,7 @@ You will now see what the driver code ends up looking like. Here's the header fi
 
 As you can see, logical UART number has been added to the init routine. A 'read' function has also been added, which is a blocking read. If you were making a commercial product, you would probably have a callback for reporting the results.
 
-And here is the source for the driver.
+And here is the source for the driver:
 
 .. code-block:: c
 
