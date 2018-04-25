@@ -1,23 +1,17 @@
-FAQ
----
+FAQ - Administrative
+====================
 
-Here are some lists, grouped by categories, of frequently asked
-questions.
-
-Mynewt software questions:
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- :doc:`How do I reduce the code size for my Mynewt image? <../tutorials/codesize>`
+Here is a list of frequently asked questions about the project and administrative processes.
 
 Administrative questions:
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 .. contents::
   :local:
   :depth: 1
 
 How do I submit a bug?
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 If you do not have a JIRA account sign up
 for an account on
@@ -33,7 +27,7 @@ create a ticket. Choose "Bug" as the Issue Type. Fill in the bug
 description, how it is triggered, and other details.
 
 How do I request a feature?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you do not have a JIRA account sign up for an account on
 `JIRA <https://issues.apache.org/jira/secure/Signup!default.jspa>`__.
@@ -53,7 +47,7 @@ the committer list will have to review your request and assign it to
 you. You will have to refer to this JIRA ticket in your pull request.
 
 I am not on the committer list. How do I submit a patch?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **You submit your proposed changes for your peers with committer status
 to review and merge.**
@@ -63,7 +57,7 @@ The process to submit a Pull Request on github.com is described on the
 project <https://cwiki.apache.org/confluence/display/MYNEWT/Submitting+Pull+Requests>`__.
 
 I am a committer in the project. Can I merge my own Pull Request into the git repository?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, but only if your Pull Request has been reviewed and approved by
 another committer in Apache Mynewt. The process to merge a Pull Request
@@ -71,7 +65,7 @@ is described on the `Confluence page for the
 project <https://cwiki.apache.org/confluence/display/MYNEWT/Merging+Pull+Requests>`__.
 
 I would like to make some edits to the documentation. What do I do?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You submit your proposed changes for your peers with committer status
 to review and merge.
@@ -107,7 +101,7 @@ If you want to withdraw the pull request simply go to your fork
 the delete icon.
 
 I would like to make some edits to the documentation but want to use an editor on my own laptop. What do I do?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You submit your proposed changes for your peers with committer status
 to review and merge.
