@@ -1,17 +1,17 @@
 Adding an Analog Sensor on nRF52
---------------------------------
-
-Objective
-~~~~~~~~~
-
+================================
 We will be adding an analog sensor to the NRF52DK development board and
 using the Analog to Digital Converter (ADC) to read the values from the
 sensor. It's also using Bluetooth to allow you to connect to the app and
 read the value of the sensor. Please see the following section for the
 required hardware in order to complete this tutorial.
 
-Hardware needed
-~~~~~~~~~~~~~~~
+.. contents::
+   :local:
+   :depth: 1
+
+Required Hardware
+-----------------
 
 -  nRF52 Development Kit (one of the following)
 
@@ -25,8 +25,8 @@ Hardware needed
 -  It is assumed you already installed native tools as described
    :doc:`here <../../get_started/native_tools>`
 
-Create a project
-~~~~~~~~~~~~~~~~
+Create a Project
+----------------
 
 Create a new project to hold your work. For a deeper understanding, you
 can read about project creation in :doc:`Get Started -- Creating Your First
@@ -59,7 +59,6 @@ definition. When you're done, your ``project.yml`` file should look like
 this:
 
 .. code-block:: console
-  :emphasize-lines: 5, 15, 16, 17, 18, 19
 
     project.name: "my_project"
 
@@ -93,15 +92,9 @@ that you can get started.
     apache-mynewt-core
     Downloading repository description for apache-mynewt-core... success!
     ...
-    apache-mynewt-core successfully installed version 0.9.0-none
-    ...
-    mynewt_nordic
-    Downloading repository description for mynewt_nordic... success!
-    ...
-    mynewt_nordic successfully installed version 0.9.9-none
+    apache-mynewt-core successfully installed version 1.3.0-none
 
-
-Create the targets
+Create the Targets
 ~~~~~~~~~~~~~~~~~~
 
 Create two targets - one for the bootloader and one for the nrf52 board.
@@ -129,7 +122,6 @@ the full path of all the packages with the prefix
 ``@apache-mynewt-core/`` as shown in the third highlighted line.
 
 .. code-block:: console
-   :emphasize-lines: 3, 5, 11
 
     $ cat apps/nrf52_adc/pkg.yml 
     ... 
@@ -164,7 +156,6 @@ Great! We have our very own app so let's make sure we have all of our
 targets set correctly:
 
 .. code-block:: console
-   :emphasize-lines: 3, 8
 
     $ newt target create nrf52_adc 
     $ newt target set nrf52_adc app=apps/nrf52_adc 
@@ -191,7 +182,7 @@ targets set correctly:
 **Note**: If you've already built and installed a bootloader for your NRF52dk then you do 
 not need to create a target for it here, or build and load it as below.
 
-Build the target executables
+Build the Target Executables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
@@ -213,8 +204,8 @@ Build the target executables
     App successfully built: ~/dev/myadc/bin/nrf52\_adc/apps/nrf52_adc/nrf52_adc.elf
 
 
-Sign and create the nrf52_adc application image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sign and Create the ``nrf52_adc`` Application Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must sign and version your application image to download it using newt to the board. 
 Use the newt create-image command to perform this action. You may assign an arbitrary 
@@ -225,14 +216,12 @@ version (e.g. 1.0.0) to the image.
     App image successfully generated: ~/dev/myadc/bin/nrf52_adc/apps/nrf52_adc/nrf52_adc.img
     Build manifest: ~/dev/myadc/bin/nrf52_adc/apps/nrf52_adc/manifest.json
 
-
-
-Connect the board
+Connect the Board
 ~~~~~~~~~~~~~~~~~
 
 Connect the evaluation board via micro-USB to your PC via USB cable.
 
-Download to the target
+Download to the Target
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Download the bootloader first and then the nrf52_adc executable to the target platform. 
@@ -282,7 +271,7 @@ external repository. It adds another layer of indirection, but it will
 also give us a look at building our own driver, so we'll do it this way.
 
 Building a Driver
-~~~~~~~~~~~~~~~~~
+-----------------
 
 The first thing to do is to create the directory structure for your
 driver:
@@ -346,23 +335,24 @@ directory. This is where we'll implement the specifics of the driver:
 
 .. code-block:: c
 
-
     #include <assert.h>
     #include <os/os.h>
+    #include <string.h>
     /* ADC */
     #include "myadc/myadc.h"
     #include "nrf.h"
-    #include "app_util_platform.h"
-    #include "app_error.h"
     #include <adc/adc.h>
-    #include <adc_nrf52/adc_nrf52.h>
-    #include "nrf_drv_saadc.h"
-
+    
+    /* Nordic headers */
+    #include <nrfx.h>
+    #include <nrf_saadc.h>
+    #include <nrfx_saadc.h>
+    #include <nrfx_config.h>
 
     #define ADC_NUMBER_SAMPLES (2)
     #define ADC_NUMBER_CHANNELS (1)
 
-    nrf_drv_saadc_config_t adc_config = NRF_DRV_SAADC_DEFAULT_CONFIG;
+    nrfx_saadc_config_t adc_config = NRFX_SAADC_DEFAULT_CONFIG;
 
     struct adc_dev *adc;
     uint8_t *sample_buffer1;
@@ -374,6 +364,7 @@ directory. This is where we'll implement the specifics of the driver:
         .oversample         = MYNEWT_VAL(ADC_0_OVERSAMPLE),
         .interrupt_priority = MYNEWT_VAL(ADC_0_INTERRUPT_PRIORITY),
     };
+    
     void *
     adc_init(void)
     {
@@ -397,7 +388,6 @@ directory. This is where we'll implement the specifics of the driver:
             adc_buf_size(adc, ADC_NUMBER_CHANNELS, ADC_NUMBER_SAMPLES));
         return adc;
     }
-
 
     int
     adc_read(void *buffer, int buffer_len)
@@ -548,8 +538,7 @@ it in the package dependency defined by ``pkg.deps`` in the ``pkg.yml``
 file of your app. Add it in ``apps/nrf52_adc/pkg.yml`` as shown by the
 highlighted line below.
 
-.. code-block:: console 
-   :emphasize-lines: 29
+.. code-block:: console
 
     # Licensed to the Apache Software Foundation (ASF) under one
     # <snip>
@@ -603,7 +592,6 @@ Next we'll need o initialize the task ``event_q`` so we'll add the
 highlighted code to ``main()`` as shown below:
 
 .. code-block:: c
-   :emphasize-lines:7, 8, 9, 10, 11, 12, 13, 14, 15 
    
     /* Set the default device name. */ 
     rc = ble_svc_gap_device_name_set("nimble-adc"); 
@@ -686,7 +674,7 @@ fail. Instead, move on to the next section and get all of those services
 defined.
 
 Building the BLE Services
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 If the nrf52\_adc app is going to be a Bluetooth-enabled sensor app that
 will allow you to read the value of the eTape Water Level Sensor via
@@ -696,11 +684,13 @@ Characteristics.
 As with the :doc:`ble peripheral <../ble/bleprph/bleprph-app>` app, we will
 advertise a couple of values from our app. The first is not strictly
 necessary, but it will help us build an iOS app later. We've defined a
-service and the characteristics in that service in ``bleadc.h`` in the
-``apps/nrf52_adc/src/`` directory as follows:
+service and the characteristics in that service in ``bleprph.h`` in the
+``apps/nrf52_adc/src/`` directory. Make sure to include the ``host/ble_uuid.h`` header:
 
 .. code-block:: c
 
+    #include "host/ble_uuid.h"
+    ....
     /* Sensor Data */
     /* e761d2af-1c15-4fa7-af80-b5729002b340 */
     static const ble_uuid128_t gatt_svr_svc_adc_uuid =
@@ -709,7 +699,7 @@ service and the characteristics in that service in ``bleadc.h`` in the
     #define ADC_SNS_TYPE          0xDEAD
     #define ADC_SNS_STRING "eTape Liquid Level Sensor"
     #define ADC_SNS_VAL           0xBEAD
-    extern uint16_t gatt_adc_val; 
+    uint16_t gatt_adc_val; 
 
 The first is the UUID of the service, followed by the 2 characteristics
 we are going to offer. The first characteristic is going to advertise
@@ -724,11 +714,11 @@ We're using these values for illustrative purposes only.
 The value that we'll be updating is also defined here as
 ``gatt_adc_val``.
 
-If we then go look at ``gatt_srv.c`` we can see the structure of the
+If we then go look at ``gatt_svr.c`` we can see the structure of the
 service and characteristic offering that we set up:
 
 .. code-block:: c
-   :emphasize-lines: 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
+   
     static const struct ble_gatt_svc_def gatt_svr_svcs[] = {
         {
             /*** Service: Security test. */
@@ -776,7 +766,7 @@ Peripheral <../ble/bleprph/bleprph-intro>` tutorial earlier. We're just
 adding another Service, with 2 new Characteristics, to that application.
 
 We'll need to fill in the function that will be called for this service,
-``gatt_srv_sns_access`` next so that the service knows what to do.
+``gatt_svr_sns_access`` next so that the service knows what to do.
 
 .. code-block:: c
 
@@ -820,27 +810,12 @@ You can see that when request is for the ``ADC_SNS_TYPE``, we return the
 Sensor Type we defined earlier. If the request if for ``ADC_SNS_VAL``
 we'll return the ``gatt_adc_val`` value.
 
-Don't forget to include the ``bleadc.h`` include file at the top of the
-``gatt_svr.c`` file!
-
-.. code-block:: c
-   :emphasize-lines: 8
-
-    #include <assert.h>
-    #include <stdio.h>
-    #include <string.h>
-    #include "bsp/bsp.h"
-    #include "host/ble_hs.h"
-    #include "host/ble_uuid.h"
-    #include "bleprph.h"
-    #include "bleadc.h"
-
 If you build, load and run this application now, you will see all those
 Services and Characteristics advertised, and you will even be able to
 read the "Sensor Type" String via the ADC_SNS_TYPE Characteristic.
 
 Adding the eTape Water Sensor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Now that we have a fully functioning BLE App that we can subscribe to
 sensor values from, it's time to actually wire up the sensor!
