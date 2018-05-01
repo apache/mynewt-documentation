@@ -1,10 +1,7 @@
-Air quality sensor project via Bluetooth
+Air Quality Sensor Project via Bluetooth
 ----------------------------------------
 
-This is a follow-on project to the :doc:`Basic Air Quality
-Sensor <air_quality_sensor>` project; so it is assumed that you
-have worked through that project and have your CO2 sensor working
-properly with your nRF52DK board.
+This is a follow-on project to the :doc:`Basic Air Quality Sensor <air_quality_sensor>` project; so it is assumed that you have worked through that project and have your CO2 sensor working properly with your nRF52DK board.
 
 So let's get started making this thing Bluetooth enabled!
 
