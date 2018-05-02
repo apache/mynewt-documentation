@@ -43,6 +43,33 @@ commands below.
         Project myadc successfully created.
         $ cd myadc
 
+Change the Repo Version in ``project.yml``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Recently, members of the Mynewt community have contributed great efforts to integrate the nrfx drivers, but to take advantage of such resources, we will need to use the master of the Mynewt repo (pre v1.4.0 release). To be set at the master of the Mynewt repo, we will need to change the repo version in our ``project.yml`` file. If you're not familiar with using repositories,
+see the section on :doc:`repositories <../repo/add_repos>` before continuing. 
+
+In your ``project.yml`` file, change the ``vers`` field under ``repository.apache-mynewt-core`` from ``1-latest`` to ``0-dev``. When you're done, your ``project.yml`` file should look like this:
+
+.. code-block:: console
+
+    project.name: "my_project"
+
+    project.repositories:
+        - apache-mynewt-core 
+        - mynewt_nordic
+
+    # Use github's distribution mechanism for core ASF libraries.
+    # This provides mirroring automatically for us.
+
+    repository.apache-mynewt-core:
+        type: github
+        vers: 0-dev
+        user: apache
+        repo: incubator-mynewt-core
+        
+If you already have newt previously installed, you can still change the repo version in your ``project.yml`` file, but you will need to run ``newt upgrade`` for the change to take effect. 
+
 Install Everything
 ~~~~~~~~~~~~~~~~~~
 
@@ -53,36 +80,23 @@ that you can get started.
 
     $ newt install -v 
     apache-mynewt-core
-    Downloading repository description for apache-mynewt-core... success!
-    ...
-    apache-mynewt-core successfully installed version 1.3.0-none
+    Downloading repository mynewt-core (commit: master) ...
+    ....
+    Downloading repository mynewt-nimble (commit: master) ...
+    ....
+    apache-mynewt-core successfully installed version 0.0.0
+    apache-mynewt-nimble successfully installed version 0.0.0
 
-Create the Targets
-~~~~~~~~~~~~~~~~~~
-
-Create two targets - one for the bootloader and one for the nrf52 board.
-
-**Note**: The correct bsp must be chosen for the board you are using.
-
--  For the Nordic Dev Kit choose @apache-mynewt-core/hw/bsp/nrf52dk
-   instead (in the highlighted lines)
--  For the Rigado Eval Kit choose @apache-mynewt-core/hw/bsp/bmd300eval
-   instead (in the highlighted lines)
-
-For the app itself we're going to extend the
-:doc:`bleprph <../ble/bleprph/bleprph-app>` app so that we get the Bluetooth
-communications built in, so the first thing we'll need to do is copy
-that app into our own app directory:
+Create the App and Targets
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+For the sensor app we will be building and modifying on top of the :doc:`bleprph <../ble/bleprph/bleprph-app>` app so that we get the Bluetooth communications built in. The first thing we'll need to do is copy that app into our own app directory:
 
 .. code-block:: console
 
     $ mkdir -p apps/nrf52_adc
     $ cp -Rp repos/apache-mynewt-core/apps/bleprph/* apps/nrf52_adc
 
-Next, you'll modify the ``pkg.yml`` file for your app. Note the change
-in ``pkg.name`` and ``pkg.description``. Also make sure that you specify
-the full path of all the packages with the prefix
-``@apache-mynewt-core/`` as shown in the third highlighted line.
+Next, you'll modify the ``pkg.yml`` file for your app. Note the change in ``pkg.name`` and ``pkg.description``. Also make sure that you specify the full path of all the packages with the prefix ``@apache-mynewt-core/`` as shown in the third highlighted line.
 
 .. code-block:: console
 
@@ -97,32 +111,36 @@ the full path of all the packages with the prefix
     pkg.keywords:
 
     pkg.deps: 
-        - "@apache-mynewt-core/boot/split" 
-        - "@apache-mynewt-core/kernel/os" 
-        - "@apache-mynewt-core/mgmt/imgmgr" 
-        - "@apache-mynewt-core/mgmt/newtmgr" 
-        - "@apache-mynewt-core/mgmt/newtmgr/transport/ble" 
-        - "@apache-mynewt-core/net/nimble/controller" 
-        - "@apache-mynewt-core/net/nimble/host" 
-        - "@apache-mynewt-core/net/nimble/host/services/ans" 
-        - "@apache-mynewt-core/net/nimble/host/services/gap" 
-        - "@apache-mynewt-core/net/nimble/host/services/gatt" 
-        - "@apache-mynewt-core/net/nimble/host/store/ram" 
-        - "@apache-mynewt-core/net/nimble/transport/ram" 
-        - "@apache-mynewt-core/sys/console/full" 
-        - "@apache-mynewt-core/sys/log/full" 
-        - "@apache-mynewt-core/sys/stats/full" 
+        - "@apache-mynewt-core/boot/split"
+        - "@apache-mynewt-core/boot/bootutil"
+        - "@apache-mynewt-core/kernel/os"
+        - "@apache-mynewt-core/mgmt/imgmgr"
+        - "@apache-mynewt-core/mgmt/newtmgr"
+        - "@apache-mynewt-core/mgmt/newtmgr/transport/ble"
+        - "@apache-mynewt-core/net/nimble/host"
+        - "@apache-mynewt-core/net/nimble/host/services/ans"
+        - "@apache-mynewt-core/net/nimble/host/services/gap"
+        - "@apache-mynewt-core/net/nimble/host/services/gatt"
+        - "@apache-mynewt-core/net/nimble/host/store/config"
+        - "@apache-mynewt-core/net/nimble/host/util"
+        - "@apache-mynewt-core/net/nimble/transport"
+        - "@apache-mynewt-core/sys/console/full"
+        - "@apache-mynewt-core/sys/log/full"
+        - "@apache-mynewt-core/sys/stats/full"
         - "@apache-mynewt-core/sys/sysinit"
         - "@apache-mynewt-core/sys/id"
 
-Great! We have our very own app so let's make sure we have all of our
-targets set correctly:
+Create two targets - one for the bootloader and one for the nrf52 board.
+
+**Note**: The correct bsp must be chosen for the board you are using.
+
+-  For the Nordic Dev Kit choose ``@apache-mynewt-core/hw/bsp/nrf52dk`` for the bsp
+-  For the Rigado Eval Kit choose ``@apache-mynewt-core/hw/bsp/bmd300eval`` for the bsp
 
 .. code-block:: console
 
     $ newt target create nrf52_adc 
-    $ newt target set nrf52_adc app=apps/nrf52_adc 
-    Target targets nrf52_adc successfully set target.app to apps/nrf52_adc 
+    $ newt target set nrf52_adc app=apps/nrf52_adc
     $ newt target set nrf52_adc bsp=@apache-mynewt-core/hw/bsp/nrf52dk 
     $ newt target set nrf52_adc build_profile=debug
 
@@ -141,9 +159,8 @@ targets set correctly:
         bsp=@apache-mynewt-core/hw/bsp/nrf52dk 
         build_profile=optimized
 
-
 **Note**: If you've already built and installed a bootloader for your NRF52dk then you do 
-not need to create a target for it here, or build and load it as below.
+not need to create a target, build and load it here.
 
 Build the Target Executables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,7 +188,7 @@ Sign and Create the ``nrf52_adc`` Application Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must sign and version your application image to download it using newt to the board. 
-Use the newt create-image command to perform this action. You may assign an arbitrary 
+Use the ``newt create-image`` command to perform this action. You may assign an arbitrary 
 version (e.g. 1.0.0) to the image.
 
 .. code-block:: console
@@ -227,10 +244,8 @@ Don't forget to reset the board if you don't see the LED blinking right away!
 So you have a BLE app, but really all you've done is change the name of
 the **bleprph** app to **nrf52_adc** and load that. Not all that
 impressive, and it certainly won't read an Analog Sensor right now. So
-let's do that next. In order to read an ADC sensor, and since the ADC
-package is in an external, licensed, repository, we'll create a driver
-for it here in our app that will leverage the existing driver in the
-external repository. It adds another layer of indirection, but it will
+let's do that next. In order to read an ADC sensor, we'll create a driver
+for it here in our app that will leverage the existing nrfx driver. It adds another layer of indirection, but it will
 also give us a look at building our own driver, so we'll do it this way.
 
 Building a Driver
@@ -241,15 +256,15 @@ driver:
 
 .. code-block:: console
 
-    [user@IsMyLaptop:~/src/air_quality]$ mkdir -p libs/my_drivers/myadc/include/myadc
-    [user@IsMyLaptop:~/src/air_quality]$ mkdir -p libs/my_drivers/myadc/src
+    $ mkdir -p libs/my_drivers/myadc/include/myadc
+    $ mkdir -p libs/my_drivers/myadc/src
 
 Now you can add the files you need. You'll need a pkg.yml to describe
 the driver, and then header stub followed by source stub.
 
 .. code-block:: console
 
-    [user@IsMyLaptop:~/src/air_quality]$ cat libs/my_drivers/myadc/pkg.yml
+    $ cat libs/my_drivers/myadc/pkg.yml
 
 .. code-block:: console
 
@@ -274,10 +289,9 @@ the driver, and then header stub followed by source stub.
     pkg.name: libs/my_drivers/myadc
     pkg.deps:
         - "@apache-mynewt-core/hw/hal"
-        - "@mynewt_nordic/hw/drivers/adc/adc_nrf52"
 
-First, let's create the required header file ``myadc.h`` in the includes
-directory i.e. ``libs/my_drivers/myadc/include/myadc/myadc.h``. It's a
+First, let's create the required header file ``myadc.h`` in the include
+directory (i.e. ``libs/my_drivers/myadc/include/myadc/myadc.h``). It's a
 pretty straightforward header file, since we only need to do 2 things:
 
 -  Initialize the ADC device
@@ -301,6 +315,7 @@ directory. This is where we'll implement the specifics of the driver:
     #include <assert.h>
     #include <os/os.h>
     #include <string.h>
+    
     /* ADC */
     #include "myadc/myadc.h"
     #include "nrf.h"
@@ -361,34 +376,14 @@ directory. This is where we'll implement the specifics of the driver:
 
 There's a lot going on in here, so let's walk through it step by step.
 
-First, we define a default configuration, with the resolution,
-oversample and interrupt priority. You'll see that these are
-``MYNEWT_VAL`` values, which means that we'll define them shortly in a
-``syscfg.yml`` file to be passed to the compiler at build time.
-
-.. code-block:: c
-
-    static struct adc_dev os_bsp_adc0;
-    static nrf_drv_saadc_config_t os_bsp_adc0_config = {
-        .resolution         = MYNEWT_VAL(ADC_0_RESOLUTION),
-        .oversample         = MYNEWT_VAL(ADC_0_OVERSAMPLE),
-        .interrupt_priority = MYNEWT_VAL(ADC_0_INTERRUPT_PRIORITY),
-    };
-
-Next, in ``adc_init()`` , we need to tell the OS to create the device.
+First, we don't need to define a default configuration for our ADC - this has already been created. So we initialize the ADC in ``adc_init()``:
 
 .. code-block:: c
 
     void *
     adc_init(void)
     {
-        int rc = 0;
-        
-        rc = os_dev_create((struct os_dev *) &os_bsp_adc0, "adc0",
-                OS_DEV_INIT_KERNEL, OS_DEV_INIT_PRIO_DEFAULT,
-                nrf52_adc_dev_init, &os_bsp_adc0_config);
-        assert(rc == 0);
-        nrf_saadc_channel_config_t cc = NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+        nrf_saadc_channel_config_t cc = NRFX_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
         cc.gain = NRF_SAADC_GAIN1_6;
         cc.reference = NRF_SAADC_REFERENCE_INTERNAL;
         adc = (struct adc_dev *) os_dev_open("adc0", 0, &adc_config);
@@ -405,7 +400,7 @@ Next, in ``adc_init()`` , we need to tell the OS to create the device.
 
 A few things need to be said about this part, as it is the most
 confusing. First, we're using a **default** configuration for the ADC
-Channel via the ``NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE`` macro. The
+Channel via the ``NRFX_SAADC_DEFAULT_CHANNEL_CONFIG_SE`` macro. The
 important part here is that we're actually using ``AIN1``. I know what
 you're thinking, "But we want ADC-0!" and that's true. The board is
 actually labelled 'A0, A1, A2' etc., and the actual pin numbers are also
@@ -461,32 +456,19 @@ to a millivolt equivalent, and return the result.
         return (rc);
     }
 
-Finally, we'll need some settings for our driver, as mentioned earlier.
-In the ``myadc`` directory you'll need to add a ``syscfg.yml`` file:
+Finally, we'll need to enable the ADC, which is disabled by default. To override this setting, we need to add a ``syscfg.yml`` file to our nrf52_adc target:
 
 .. code-block:: console
 
-    # Package: libs/my_driver/myadc
-
-    syscfg.defs:
-        ADC_0:
-            description: 'TBD'
-            value:  1
-        ADC_0_RESOLUTION:
-            description: 'TBD'
-            value: 'SAADC_CONFIG_RESOLUTION'
-        ADC_0_OVERSAMPLE:
-            description: 'TBD'
-            value: 'SAADC_CONFIG_OVERSAMPLE'
-        ADC_0_INTERRUPT_PRIORITY:
-            description: 'TBD'
-            value: 'SAADC_CONFIG_IRQ_PRIORITY'
+   $ cat targets/nrf52_adc/syscfg.yml
+   syscfg.vals:
+    # Enable ADC 0
+    ADC_0: 1
 
 Once that's all done, you should have a working ADC Driver for your
-NRF52DK board. The last step in getting the driver set up is to include
+nRF52dk board. The last step in getting the driver set up is to include
 it in the package dependency defined by ``pkg.deps`` in the ``pkg.yml``
-file of your app. Add it in ``apps/nrf52_adc/pkg.yml`` as shown by the
-highlighted line below.
+file of your app. You will also need to add the ``mcu/nordic`` package. Add them in ``apps/nrf52_adc/pkg.yml`` as shown below:
 
 .. code-block:: console
 
@@ -499,26 +481,28 @@ highlighted line below.
     pkg.author: "Apache Mynewt <dev@mynewt.incubator.apache.org>"
     pkg.homepage: "http://mynewt.apache.org/"
     pkg.keywords:
-
+   
     pkg.deps: 
         - "@apache-mynewt-core/boot/split"
+        - "@apache-mynewt-core/boot/bootutil"
         - "@apache-mynewt-core/kernel/os"
         - "@apache-mynewt-core/mgmt/imgmgr"
         - "@apache-mynewt-core/mgmt/newtmgr"
         - "@apache-mynewt-core/mgmt/newtmgr/transport/ble"
-        - "@apache-mynewt-core/net/nimble/controller"
         - "@apache-mynewt-core/net/nimble/host"
         - "@apache-mynewt-core/net/nimble/host/services/ans"
         - "@apache-mynewt-core/net/nimble/host/services/gap"
         - "@apache-mynewt-core/net/nimble/host/services/gatt"
-        - "@apache-mynewt-core/net/nimble/host/store/ram"
-        - "@apache-mynewt-core/net/nimble/transport/ram"
+        - "@apache-mynewt-core/net/nimble/host/store/config"
+        - "@apache-mynewt-core/net/nimble/host/util"
+        - "@apache-mynewt-core/net/nimble/transport"
         - "@apache-mynewt-core/sys/console/full"
         - "@apache-mynewt-core/sys/log/full"
         - "@apache-mynewt-core/sys/stats/full"
         - "@apache-mynewt-core/sys/sysinit"
         - "@apache-mynewt-core/sys/id"
-        - libs/my_drivers/myadc
+        - "@apache-mynewt-core/hw/mcu/nordic"
+        - "libs/my_drivers/myadc"
 
 Creating the ADC Task
 ~~~~~~~~~~~~~~~~~~~~~
@@ -529,8 +513,10 @@ update the includes, and add a task for our ADC sampling.
 
 .. code-block:: c
 
+    #include <adc/adc.h>
+    ....
     #include "myadc/myadc.h"
-    ...
+    ....
     /* ADC Task settings */
     #define ADC_TASK_PRIO           5
     #define ADC_STACK_SIZE          (OS_STACK_ALIGN(336))
@@ -538,15 +524,19 @@ update the includes, and add a task for our ADC sampling.
     struct os_task adc_task;
     bssnz_t os_stack_t adc_stack[ADC_STACK_SIZE];
 
-Next we'll need o initialize the task ``event_q`` so we'll add the
-highlighted code to ``main()`` as shown below:
+Next we'll need to initialize the task ``event_q`` so we'll add the
+highlighted code to ``main()`` as shown below. You can also change the name of your Bluetooth device in ``ble_svc_gap_device_name_set``:
 
 .. code-block:: c
    
     /* Set the default device name. */ 
     rc = ble_svc_gap_device_name_set("nimble-adc"); 
     assert(rc == 0);
-
+    
+    #if MYNEWT_VAL(BLEPRPH_LE_PHY_SUPPORT)
+      phy_init();
+    #endif
+    
     conf_load();
 
     /* Initialize adc sensor task eventq */
@@ -626,7 +616,7 @@ defined.
 Building the BLE Services
 -------------------------
 
-If the nrf52\_adc app is going to be a Bluetooth-enabled sensor app that
+If the ``nrf52_adc`` app is going to be a Bluetooth-enabled sensor app that
 will allow you to read the value of the eTape Water Level Sensor via
 Bluetooth we'll need to actually define those Services and
 Characteristics.
@@ -762,7 +752,7 @@ we'll return the ``gatt_adc_val`` value.
 
 If you build, load and run this application now, you will see all those
 Services and Characteristics advertised, and you will even be able to
-read the "Sensor Type" String via the ADC_SNS_TYPE Characteristic.
+read the "Sensor Type" String via the ``ADC_SNS_TYPE`` Characteristic.
 
 Adding the eTape Water Sensor
 -----------------------------
@@ -776,11 +766,10 @@ Sensor. You can get one from
 
 We're going to use the sensor as a resistive sensor, and the setup is
 very simple. I'll be using a breadboard to put this all together for
-illustrative purposes. First, attach a jumper-wire from V\ :sub:`DD`\ on the board
+illustrative purposes. First, attach a jumper-wire from V\ :sub:`DD`\  on the board
 to the breadboard. Next, attach a jumper wire from pin P0.03 on the
 board to the breadboard. This will be our ADC-in. The sensor should have
-come with a 560 ohm resistor, so plug that into the board between V\ :sub:`DD`\
-and ADC-in holes. Finally, attach a jumper from GND on the board to your
+come with a 560 ohm resistor, so plug that into the board between V\ :sub:`DD`\  and ADC-in holes. Finally, attach a jumper from GND on the board to your
 breadboard. At this point, your breadboard should look like this:
 
 .. figure:: ../pics/breadboard.png
@@ -812,7 +801,12 @@ application and see it properly sending readings.
 
 View Data Remotely via Bluetooth
 --------------------------------
-To view these sensor readings via Bluetooth, you can use LightBlue or a similar app that can connect to Bluetooth devices and read data. Once your sensor application is running, you should see your device show up in LightBlue as ``nimble-adc`` (or whatever you named your Bluetooth device).  
+To view these sensor readings via Bluetooth, you can use LightBlue or a similar app that can connect to Bluetooth devices and read data. Once your sensor application is running, you should see your device show up in LightBlue as ``nimble-adc`` (or whatever you named your Bluetooth device):
+
+.. figure:: ../pics/lightblue-adc.png
+   :alt: LightBlue connected to the ADC app
+   
+   LightBlue connected to the ADC app
 
 Conclusion
 ----------
@@ -828,7 +822,5 @@ Page <community>`
 
 Keep on hacking and sensing!
 
-
-   My Newt Sensor Reader
 
 Enjoy!
