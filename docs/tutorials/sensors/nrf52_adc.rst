@@ -42,43 +42,6 @@ commands below.
         Installing skeleton in myadc...
         Project myadc successfully created.
         $ cd myadc
-        
-
-Add Additional Repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The board-specific libraries for the NRF52dk board are in an external
-repository at present, so you'll need to include that remote repository
-and install it as well. If you're not familiar with using repositories,
-see the section on :doc:`repositories <../repo/add_repos>` before
-continuing. Or just copy and paste the following.
-
-In your ``project.yml`` file, add ``mynewt_nordic`` to the
-``project.repositories`` section, and then add the proper repository
-definition. When you're done, your ``project.yml`` file should look like
-this:
-
-.. code-block:: console
-
-    project.name: "my_project"
-
-    project.repositories:
-        - apache-mynewt-core 
-        - mynewt_nordic
-
-    # Use github's distribution mechanism for core ASF libraries.
-    # This provides mirroring automatically for us.
-
-    repository.apache-mynewt-core:
-        type: github
-        vers: 1-latest
-        user: apache
-        repo: incubator-mynewt-core
-    repository.mynewt_nordic:
-        type: github
-        vers: 1-latest
-        user: runtimeco 
-        repo: mynewt_nordic
 
 Install Everything
 ~~~~~~~~~~~~~~~~~~
@@ -357,24 +320,11 @@ directory. This is where we'll implement the specifics of the driver:
     struct adc_dev *adc;
     uint8_t *sample_buffer1;
     uint8_t *sample_buffer2;
-
-    static struct adc_dev os_bsp_adc0;
-    static nrf_drv_saadc_config_t os_bsp_adc0_config = {
-        .resolution         = MYNEWT_VAL(ADC_0_RESOLUTION),
-        .oversample         = MYNEWT_VAL(ADC_0_OVERSAMPLE),
-        .interrupt_priority = MYNEWT_VAL(ADC_0_INTERRUPT_PRIORITY),
-    };
     
     void *
     adc_init(void)
     {
-        int rc = 0;
-        
-        rc = os_dev_create((struct os_dev *) &os_bsp_adc0, "adc0",
-                OS_DEV_INIT_KERNEL, OS_DEV_INIT_PRIO_DEFAULT,
-                nrf52_adc_dev_init, &os_bsp_adc0_config);
-        assert(rc == 0);
-        nrf_saadc_channel_config_t cc = NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+        nrf_saadc_channel_config_t cc = NRFX_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
         cc.gain = NRF_SAADC_GAIN1_6;
         cc.reference = NRF_SAADC_REFERENCE_INTERNAL;
         adc = (struct adc_dev *) os_dev_open("adc0", 0, &adc_config);
@@ -826,10 +776,10 @@ Sensor. You can get one from
 
 We're going to use the sensor as a resistive sensor, and the setup is
 very simple. I'll be using a breadboard to put this all together for
-illustrative purposes. First, attach a jumper-wire from Vdd on the board
+illustrative purposes. First, attach a jumper-wire from V\ :sub:`DD`\ on the board
 to the breadboard. Next, attach a jumper wire from pin P0.03 on the
 board to the breadboard. This will be our ADC-in. The sensor should have
-come with a 560 ohm resistor, so plug that into the board between Vdd
+come with a 560 ohm resistor, so plug that into the board between V\ :sub:`DD`\
 and ADC-in holes. Finally, attach a jumper from GND on the board to your
 breadboard. At this point, your breadboard should look like this:
 
@@ -860,8 +810,12 @@ That concludes the hardware portion. Easy!
 At this point you should be able to build, create-image and load your
 application and see it properly sending readings.
 
+View Data Remotely via Bluetooth
+--------------------------------
+To view these sensor readings via Bluetooth, you can use LightBlue or a similar app that can connect to Bluetooth devices and read data. Once your sensor application is running, you should see your device show up in LightBlue as ``nimble-adc`` (or whatever you named your Bluetooth device).  
+
 Conclusion
-~~~~~~~~~~
+----------
 
 Congratulations, you've now completed both a hardware project and a
 software project by connecting a sensor to your device and using Mynewt
@@ -874,24 +828,6 @@ Page <community>`
 
 Keep on hacking and sensing!
 
-Note
-~~~~
-
-If you're wondering how to actually view these sensor readings via
-Bluetooth, you have a couple of options. On Mac OS or iOS you can
-download the `LightBlue
-app <https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8>`__.
-This app lets you connect to, and interrogate, BLE devices like the one
-you just built.
-
-If you used the BLE Service and Characteristic UUIDs used in this
-tutorial, you can also download and use a Mac OS `MyNewt Sensor Reader
-App <https://dragonflyiot.com/MyNewtSensorReader.zip>`__ (Zip Archive)
-that allows you to graph your data, etc. An iOS version is in Beta
-testing and should be available soon.
-
-.. figure:: ../pics/MyNewtSensorReader006.jpg
-   :alt: My Newt Sensor Reader
 
    My Newt Sensor Reader
 
