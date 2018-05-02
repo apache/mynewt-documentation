@@ -3,8 +3,7 @@ Adding an Analog Sensor on nRF52
 We will be adding an analog sensor to the NRF52DK development board and
 using the Analog to Digital Converter (ADC) to read the values from the
 sensor. It's also using Bluetooth to allow you to connect to the app and
-read the value of the sensor. Please see the following section for the
-required hardware in order to complete this tutorial.
+read the value of the sensor.
 
 .. contents::
    :local:
