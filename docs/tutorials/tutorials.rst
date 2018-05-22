@@ -11,6 +11,7 @@ Tutorials
    Project Slinky for Remote Comms <slinky/project-slinky>
    Bluetooth Low Energy <ble/ble>
    LoRa <lora/lorawanapp>
+   OS Fundamentals <os_fundamentals/os_fundamentals>
    Sensors <sensors/sensors>
    Tooling <tooling/tooling>
    Other <other/other>
