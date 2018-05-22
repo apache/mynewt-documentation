@@ -79,6 +79,21 @@ Toolchain Install:
 
    $ sudo pip install recommonmark
 
+Setup (Linux)
+===============
+
+Most Linux distributions provide necessary packages in their repositories.
+
+Ubuntu/Debian
+.. code-block:: bash
+
+   sudo apt-get install doxygen python3-breathe python3-recommonmark
+
+Fedora
+.. code-block:: bash
+
+   sudo dnf install doxygen python3-breathe python3-recommonmark
+
 
 .. _Apache Mynewt: https://mynewt.apache.org/
 .. _Sphinx: http://www.sphinx-doc.org/
