@@ -79,8 +79,8 @@ category are listed below.
 
 -  OS Fundamentals
 
-   -  :doc:`Events and Event Queues <event_queue>`
-   -  :doc:`Task and Priority Management <tasks_lesson>`
+   -  :doc:`Events and Event Queues <os_fundamentals/event_queue>`
+   -  :doc:`Task and Priority Management <os_fundamentals/tasks_lesson>`
 
 -  Remote Device Management
 
