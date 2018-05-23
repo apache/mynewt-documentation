@@ -9,17 +9,21 @@ encountered when building applications using Mynewt. Specifically, this
 lesson will cover tasks, simple multitasking, and priority management
 running on an Arduino M0 Pro.
 
+.. contents::
+   :local:
+   :depth: 1
+
 Prerequisites
 -------------
 
 Before starting, you should read about Mynewt in the
-:doc:`Introduction <http://mynewt.apache.org/os/introduction/>` section and
+:doc:`Introduction <../../index>` section and
 complete the
-:doc:`QuickStart <http://mynewt.apache.org/os/get_started/get_started/>`
+:doc:`QuickStart <../../get_started/index>`
 guide and the
-:doc:`Blinky <http://mynewt.apache.org/os/tutorials/arduino_zero/>`
+:doc:`Blinky <../blinky/arduino_zero>`
 tutorial. Furthermore, it may be helpful to take a peek at the :doc:`task
-documentation <http://mynewt.apache.org/os/core_os/task/task/>` for
+documentation <../../../os/core_os/task/task>` for
 additional insights.
 
 Equipment
@@ -38,7 +42,7 @@ Build Your Application
 To save time, we will simply modify the Blinky application. We’ll add
 the Task Management code to the Blinky application. Follow the :doc:`Arduino
 Zero Blinky
-tutorial <os/tutorials/arduino_zero/>` to
+tutorial <../blinky/arduino_zero>` to
 create a new project and build your bootloader and application. Finally,
 build and load the application to your Arduino to verify that everything
 is in order. Now let’s get started!
@@ -68,7 +72,7 @@ apps/blinky/src):
    struct os_task work_task;
 
 A task is represented by the
-:doc:`os_task <http://mynewt.apache.org/os/core_os/task/task/#data-structures>`
+:doc:`os_task <../../../core_os/task/task>`
 struct which will hold the task’s information (name, state, priority,
 etc.). A task is made up of two main elements, a task function (also
 known as a task handler) and a task stack.
@@ -142,8 +146,7 @@ that work is more important than blinking.
 Initialization
 ~~~~~~~~~~~~~~
 
-To initialize a new task we use
-:doc:`os_task_init() <http://mynewt.apache.org/os/core_os/task/os_task_init/>`
+To initialize a new task we use ``os_task_init()``
 which takes a number of arguments including our new task function,
 stack, and priority.
 
@@ -197,7 +200,7 @@ When GDB appears press C then Enter to continue and … *wait, why
 doesn’t our LED blink anymore?*
 
 Review
-++++++
+^^^^^^
 
 Before we run our new app, let’s review what we need in
 order to create a task. This is a general case for a new task called
@@ -312,7 +315,7 @@ The diagram below shows the different scheduling patterns we would
 expect when we set the ``work_task`` priority higher and lower than the
 ``main`` task priority.
 
-.. figure:: pics/task_lesson.png
+.. figure:: ../pics/task_lesson.png
    :alt: Task Scheduling
 
    Task Scheduling
@@ -322,5 +325,5 @@ In the second case where the ``main`` task has a higher priority,
 saving us idle time compared to the first case.
 
 **Note:** Defining the same priority for two tasks fires an assert in
-os_task_init() and must be avoided. Priority 127 is reserved for main
+``os_task_init()`` and must be avoided. Priority 127 is reserved for main
 task, 255 for idle task.
