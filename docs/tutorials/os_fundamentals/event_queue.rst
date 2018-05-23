@@ -19,10 +19,7 @@ interrupt context is that other interrupts and high priority tasks are
 not blocked waiting for the interrupt handler to complete processing. A
 task can also access other OS facilities and sleep.
 
-This tutorial assumes that you have read about :docs:`Event
-Queues <mynewt-core/docs/os/core_os/event_queue/event_queue.rst>`, the :docs:`Hardware
-Abstraction Layer <mynewt-core/docs/os/modules/hal/hal.rst>`, and :docs:`OS
-Callouts <mynewt-core/os/core_os/callout/callout.rst>` in the OS User’s Guide.
+This tutorial assumes that you have read about :doc:`Event Queues <../../../os/core_os/event_queue/event_queue>`, the :doc:`Hardware Abstraction Layer <../../../os/modules/hal/hal>`, and :doc:`OS Callouts <../../../os/core_os/callout/callout>` in the OS User’s Guide.
 
 This tutorial shows you how to create an application that uses events
 for:
