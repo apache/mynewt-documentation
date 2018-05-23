@@ -17,6 +17,10 @@ image management over BLE transport support in your application.
 **Note:** Over-the-air upgrade via newtmgr BLE transport is supported on
 Mac OS and Linux. It is not supported on Windows platforms.
 
+.. contents::
+   :local:
+   :depth: 2
+
 Prerequisites
 -------------
 
@@ -29,15 +33,14 @@ Ensure that you meet the following prerequisites:
 -  Have a Nordic nRF52-DK Development Kit - PCA 10040
 -  Install the :doc:`Segger JLINK software and documentation
    pack <https://www.segger.com/jlink-software.html>`.
--  Install the newt tool and toolchains (See :doc:`Basic
-   Setup </os/get_started/get_started.md>`).
--  Read the Mynewt OS :doc:`Concepts </os/get_started/vocabulary.md>`
+-  Install the newt tool and toolchains (See :doc:`Setup & Get Started <../../get_started/index>`).
+-  Read the Mynewt OS :doc:`Concepts <../../concepts>`
    section.
--  Read the :doc:`Bootloader </os/modules/bootloader/bootloader>`__ section
+-  Read the :doc:`Secure Bootloader <../../../os/modules/bootloader/bootloader>` section
    and understand the Mynewt bootloader concepts.
 -  Build and load the **bleprph** application on to an nRF52-DK board
    via a serial connection. See :doc:`BLE Peripheral
-   App </os/tutorials/bleprph/bleprph-app/>`__.
+   App <../ble/bleprph/bleprph>`.
 
 Reducing the Log Level
 ----------------------
@@ -69,7 +72,7 @@ device over BLE. Step 2: Upload the image to the secondary slot (slot 1)
 on the device. Step 3: Test the image. Step 4: Confirm and make the
 image permanent.
 
-See the :doc:`Bootloader </os/modules/bootloader/bootloader>`__ section for
+See the :doc:`Secure Bootloader <../../../os/modules/bootloader/bootloader>` section for
 more information on the bootloader, image slots, and boot states.
 
 Step 1: Creating a Newtmgr Connection Profile
