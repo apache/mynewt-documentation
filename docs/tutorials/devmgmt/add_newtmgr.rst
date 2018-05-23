@@ -8,7 +8,7 @@ application. This tutorial explains how to add the support to your
 application.
 
 This tutorial assumes that you have read the :doc:`Device Management with
-Newt Manager </os/modules/devmgmt/newtmgr/>`__ guide and are familiar
+Newt Manager <../../../os/modules/devmgmt/newtmgr>` guide and are familiar
 with the ``newtmgr`` and ``oicmgr`` frameworks and all the options that
 are available to customize your application.
 
@@ -18,8 +18,12 @@ This tutorial shows you how to configure your application to:
 -  Use serial transport to communicate with the newtmgr tool.
 -  Support all Newt Manager commands.
 
-See :doc:`Other Configuration Options <#other-configuration-options>`__ on
+See :doc:`Other Configuration Options <#other-configuration-options>` on
 how to customize your application.
+
+.. contents::
+   :local:
+   :depth: 2
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -31,8 +35,8 @@ with this tutorial:
 -  Have a cable to establish a serial USB connection between the board
    and the laptop.
 -  Install the newt tool and toolchains (See :doc:`Basic
-   Setup </os/get_started/get_started.md>`__).
--  Install the :doc:`newtmgr tool <../../newtmgr/install_mac.md>`__.
+   Setup <../../get_started/index>`).
+-  Install the :doc:`newtmgr tool <../../newtmgr/docs/install/index>`.
 
 Use an Existing Project
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,7 +119,7 @@ This example uses the Mynewt default event queue and you do not need to
 modify your application source.
 
 If you choose to use a different event queue, see :doc:`Events and Event
-Queues <event_queue.md>`__ for details on how to initialize an event
+Queues <../os_fundamentals/event_queue>` for details on how to initialize an event
 queue and create a task to process the events. You will also need to
 modify your ``main.c`` to add the call to the ``mgmt_evq_set()``
 function as follows:
@@ -182,7 +186,7 @@ Set Up a Connection Profile
 
 The newtmgr tool requires a connection profile in order to connect to
 your board. If you have not done so, follow the
-:doc:`instructions <../../newtmgr/command_list/newtmgr_conn.md>`__ for
+:doc:`instructions <../../newtmgr/command_list/newtmgr_conn>` for
 setting up your connection profile.
 
 Communicate with Your Application
@@ -252,12 +256,12 @@ modify the ``pkg.yml`` and ``syscfg.yml`` files as follows:
    ``pkg.deps`` parameter, and add ``SHELL_TASK: 1`` and
    ``SHELL_NEWTMGR`` to the ``syscfg.vals`` parameter to enable serial
    transport when your application also uses the
-   :doc:`Shell </os/modules/shell/shell.md>`__.
+   :doc:`Shell <../../../os/modules/shell/shell>`.
 -  Add the ``mgmt/newtmgr/transport/nmgr_uart`` package to the
    ``pkg.deps`` parameter to enable serial transport over a UART port.
    You can use this package instead of the ``nmgr_shell`` package when
    your application does not use the
-   :doc:`Shell </os/modules/shell/shell.md>`__ or you want to use a dedicated
+   :doc:`Shell <../../../os/modules/shell/shell>` or you want to use a dedicated
    UART port to communicate with newtmgr. You can change the
    ``NMGR_UART`` and ``NMGR_URART_SPEED`` sysconfig values to specify a
    different port.
