@@ -81,7 +81,7 @@ Extended Advertising with ``btshell``
 
 .. code-block:: console
 
-  newt target amend <your_target> syscfg=BLE_EXT_ADV=1:BLE_EXT_ADV_MAX_SIZE=1650``
+  newt target amend <your_target> syscfg=BLE_EXT_ADV=1:BLE_EXT_ADV_MAX_SIZE=1650
 
 The default is 31 bytes, and the max is 1650. 
 
@@ -174,7 +174,7 @@ Difference Between ``newt`` Commands ``install``, ``upgrade``, and ``sync``
 
 .. code-block:: console 
 
-  arm-none-eabi-objcopy -R .bss -R .bss.core -R .bss.core.nz -O binary ...``
+  arm-none-eabi-objcopy -R .bss -R .bss.core -R .bss.core.nz -O binary ...
 
 Newtmgr
 -------
@@ -190,7 +190,7 @@ For BLE, you can send an echo command to your device with something like this:
 
 .. code-block:: console 
 
-  newtmgr --conntype ble --connstring peer_name=nimble-bleprph echo Hello``
+  newtmgr --conntype ble --connstring peer_name=nimble-bleprph echo Hello
 
 That ``peer_name string`` is correct if your device is running the ``bleprph`` app.  You'll need to adjust it if your device has a different BLE name. The ``--conntype ble --connstring peer_name=nimble-bleprph`` part is what would go in a connection profile. If you create one, then you can just specify the profile's name rather than typing that long string each time you send a command.
 
@@ -216,7 +216,7 @@ This is accomplished with the ``-e`` command line option. Your command line shou
    
 .. code-block:: console
 
-  $ newtmgr --conntype serial --connextra 'dev=/dev/ttyUSB0,mtu=128' image upload -e <image-path>``
+  $ newtmgr --conntype serial --connextra 'dev=/dev/ttyUSB0,mtu=128' image upload -e <image-path>
    
 This change is needed because the serial boot loader doesn't support the standalone "erase image" command - as a result, it drops the request. The newtmgr image upload command starts by sending an erase command, then times out when it doesn't receive a response. The older version of newtmgr would use smaller chunk size for images, and it did not send the standalone erase command. When newtmgr was changed in versions 1.2 and 1.3, the serial boot loader changed along with it. The latest newtmgr is not compatible with an older version of the boot loader (which your board will probably ship with) without the above workarounds.
 
