@@ -792,6 +792,8 @@ WARN_LOGFILE           =
 INPUT                  = ../mynewt-core/kernel/os \
                          ../mynewt-core/hw/hal \
                          ../mynewt-core/sys \
+                         ../mynewt-core/test \
+                         ../mynewt-core/encoding \
                          ../mynewt-core/net/nimble/host/mesh/include/mesh
 
 # This tag can be used to specify the character encoding of the source files
