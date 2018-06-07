@@ -24,7 +24,7 @@ _scratch:
 	# once redundant files are pruned
 	#
 	mkdir _scratch/network
-	cp -a ../mynewt-core/docs/network/ble _scratch/network/
+	cp -a ../mynewt-nimble/docs _scratch/network/
 	#
 	cp -a ../mynewt-newt/docs _scratch/newt
 	#
