@@ -792,6 +792,9 @@ WARN_LOGFILE           =
 INPUT                  = ../mynewt-core/kernel/os \
                          ../mynewt-core/hw/hal \
                          ../mynewt-core/sys \
+                         ../mynewt-core/fs \
+                         ../mynewt-core/fs/fcb \
+                         ../mynewt-core/hw/sensor \
                          ../mynewt-core/test \
                          ../mynewt-core/encoding \
                          ../mynewt-core/net/nimble/host/mesh/include/mesh

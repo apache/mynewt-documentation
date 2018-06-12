@@ -128,7 +128,7 @@ Newt
 ----
 
 Difference Between ``newt`` Commands ``install``, ``upgrade``, and ``sync``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   **Q**: What’s the difference between ``newt install``, ``newt upgrade``, and ``newt sync``?
 
@@ -137,7 +137,7 @@ Difference Between ``newt`` Commands ``install``, ``upgrade``, and ``sync``
   Sync - fetches and pulls the latest for each repo, but does not change the branch (version).
 
 ``newt size`` Command vs. Elf File Size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   **Q**: I did a test build of blinky for nrf52 and got an elf-file of size 295424 bytes. If I use the newt size command for the application it says something like: 18764 bytes. What does this mean?
 
@@ -178,7 +178,7 @@ Newtmgr with the Adafruit nRF52DK
   1. Specify a reduced MTU:
 
   You can specify the reduced MTU by adding ``mtu=128`` to your connection string. The reason for this change is that MTU is the serial boot loader used to have a smaller receive buffer (128 bytes). The newtmgr tool sends larger image chunks by default, so specifying the MTU will reduce the image size. 
-\
+
 
   2. Indicate that the existing image should not be erased:
 
