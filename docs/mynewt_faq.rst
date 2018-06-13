@@ -365,6 +365,16 @@ Enable Trace in Mynewt
     ​
     pkg.cflags:
       - -DENABLE_TRACE
+      
+Version Control Applications with Git 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Q**: What's the recommended way to work with git when you want to version control your application? As apache-mynewt-core is already a repository, there is a repo in repo problem. Are there any good alternatives/tools to submodules, mirror, etc? Ideally, I want to version control everything from the top level project directory as well as upgrading apache-mynewt-core, pushing pull requests back to Mynewt if needed, etc.
+
+**A**: You can simply have a separate git for your app. For example, if you followed the Blinky tutorial, your git would be in ``apps/foo``, while repos gits are in repos. You may also keep your app in the core repo, just have your own working branch for it. 
+
+Another option is to have your git repository with local packages (including apps) and have ``repository.yml`` there so ``newt install`` can download all dependencies. Just make sure to put e.g. ``bin``, ``repos``, and ``project.state``, and others in ``.gitignore``so they are not in version control. 
+
 
 Alternatives to ``cmsis_nvic.c``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
