@@ -351,7 +351,7 @@ Enable Trace in Mynewt
 
 **Q**: I’m trying to use gdb with Trace, but do not know how to enable it. How do I do this in Mynewt?
 
-**A**: To enable Trace, you can add cflags to pkg.yml in your target directory: 
+**A**: To enable Trace, you can add ``cflags`` to ``pkg.yml`` in your target directory: 
 
 .. code-block:: console
 
@@ -369,7 +369,7 @@ Enable Trace in Mynewt
 Version Control Applications with Git 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Q**: What's the recommended way to work with git when you want to version control your application? As apache-mynewt-core is already a repository, there is a repo in repo problem. Are there any good alternatives/tools to submodules, mirror, etc? Ideally, I want to version control everything from the top level project directory as well as upgrading apache-mynewt-core, pushing pull requests back to Mynewt if needed, etc.
+**Q**: What's the recommended way to work with git when you want to version control your application? As ``apache-mynewt-core`` is already a repository, there is a repo in repo problem. Are there any good alternatives/tools to submodules, mirror, etc? Ideally, I want to version control everything from the top level project directory as well as upgrading apache-mynewt-core, pushing pull requests back to Mynewt if needed, etc.
 
 **A**: You can simply have a separate git for your app. For example, if you followed the Blinky tutorial, your git would be in ``apps/foo``, while repos gits are in repos. You may also keep your app in the core repo, just have your own working branch for it. 
 
