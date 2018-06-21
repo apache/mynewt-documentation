@@ -190,7 +190,7 @@ loop:
        }
    }
 
- And that’s it! Now run your application using the newt run command.
+And that’s it! Now run your application using the newt run command.
 
 .. code-block:: console
 
