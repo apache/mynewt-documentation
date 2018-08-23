@@ -19,10 +19,11 @@ Welcome to the Mynewt FAQ. Here are some commonly asked questions asked about th
    Porting Mynewt <faq_port>
    Troubleshooting <faq_troubleshoot>
 
-General FAQs / Troubleshooting Tips
------------------------------------
+General FAQs
+------------
 
 - Make sure to update to the latest available version to ensure everything remains functional. There may be some changes that break backwards compatibility or change how certain features work, so be sure to always update.
+- If you are making changes to code, adding new features, etc., please update to the latest branch to ensure that any changes you make work with the newest changes and features in Mynewt.
 
 Reduce Code Size for Mynewt Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

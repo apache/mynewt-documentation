@@ -34,6 +34,37 @@ NMP
 
 **A**: Newtmgr Management Protocol
 
+Communicate with a Device based on ``peer_id``
+----------------------------------------------
+
+**Q**: How do I communicate with a device using the newtmgr tool based on ``peer_id``?
+
+**A**: The command to use is:
+
+.. code-block:: console
+
+	newtmgr -c myprofile --connstring peer_id=aa:bb:cc:dd:ee:ff image list
+
+Where device address has to be lowercase You can also create connection profile so you do not need to specify address each time: 
+
+.. code-block:: console
+
+	newtmgr conn add mypeerprofile type=ble connstring="peer_id=aa:bb:cc:dd:ee:ff:"
+
+Afterwards, you can then use:
+
+.. code-block:: console
+
+	newtmgr -c mypeerprofile image list
+
+Just be aware that ``peer_id`` has an OS-specific meaning.  In Linux, it is the peer's Bluetooth address.  In macOS, it is the ``UUID`` that the OS chooses to assign to the peer.
+
+If you prefer to forgo connection profiles and see everything on the command line here is an alternative method:
+
+.. code-block:: console
+
+	newtmgr --conntype ble --connstring peer_id=aa:bb:cc:dd:ee:ff image list
+
 Newt Manager with the Adafruit nRF52DK
 --------------------------------------
 

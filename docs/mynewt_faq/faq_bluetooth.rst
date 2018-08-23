@@ -195,3 +195,15 @@ Multicast Messaging and Group Messaging
 **Q**: Is it possible to send a broadcast message by one of the devices present in the mesh (e.g. broadcast an event which happened)? Something like a push notification instead of continuously polling for it by a client. 
 
 **A**: It is possible to do so with a publish model. Group address or virtual address should help here, according to the Mesh spec. There is no real documentation on it but you can try it out on our ``btmesh_shell`` app. There is a ``shell.c`` file which exposes configuration client which you can use for testing (e.g. you can subscribe to virtual addresses). You can also trigger sending messages to devices. By playing with the ``dst`` command, you probably should be able to set destination to some group. However, since we do not support the provisioner role, there is a command provision which sets fixed keys so you can create a mesh network out of a couple of nodes without the actual provisioner. 
+
+Read the Value of a Characteristic of a Peripheral Device from a Central Device
+-------------------------------------------------------------------------------
+
+**Q**: I want to read the value of a characteristic of a peripheral device from a central device which runs on Mynewt OS. How can I obtain the value using the following function?
+
+.. code-block:: console
+
+	int ble_gattc_read(uint16_t conn_handle, uint16_t attr_handle,
+                   ble_gatt_attr_fn *cb, void *cb_arg);
+
+**A**: To see an example of this function being used, take a look at the ``blecent`` sample app. The data is in ``attr->om``, which is an ``mbuf`` struct. There are dedicated APIs to access data in mbufs (see ``os_mbuf.h``). ``attr->om->om_data`` is a raw pointer to access data in mbuf so you could also use it, but keep in mind that data in mbuf can be fragmented so you may not be able to access them easily like this. Thus, it is safer to use mbuf APIs instead. ``os_mbuf_copydata`` should be especially useful here since it can copy data from mbuf to flat buffer. 

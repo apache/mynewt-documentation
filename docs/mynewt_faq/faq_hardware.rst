@@ -28,6 +28,13 @@ for the particular MCU.
 If you need precision, the OS tick timer is probably not the right thing to use.  Take a look at :doc:`OS CPU Time <../../../../os/core_os/cputime/os_cputime>` for timer documentation. ``os_cputime`` has 1MHz frequency by default, and is enabled by default. 
 It is recommended to use this for higher precision applications. 
 
+Size Limit on Transaction Length for nRF52
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Q**: There appears to be a 256-byte size limit on the maximum transaction length that the nRF52xxx ``hal_i2c`` driver can support. When I try send transactions larger than this the transactions fail (even after playing with a larger timeout etc). Does anyone know if this limit is due to the way the driver is written or the nRF52's i2c peripheral itself?
+
+**A**: There shouldn’t be any limit here since TWI works basically by transferring data byte after byte. Check your slave device to see if it has some limit.
+
 Redbear BLE Nano 2
 ------------------
 
