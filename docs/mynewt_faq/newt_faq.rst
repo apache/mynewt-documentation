@@ -1,5 +1,5 @@
-Mynewt FAQ: Newt
-================
+Mynewt FAQ - Newt
+=================
 
 .. contents::
   :local:

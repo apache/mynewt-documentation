@@ -1,5 +1,5 @@
-Mynewt FAQ: Hardware-Specific Questions
-=======================================
+Mynewt FAQ - Hardware-Specific Questions
+========================================
 
 .. contents::
   :local:

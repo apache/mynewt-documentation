@@ -1,5 +1,5 @@
-Mynewt FAQ: Bluetooth
-=====================
+Mynewt FAQ - Bluetooth
+======================
 
 .. contents::
   :local:
@@ -180,13 +180,11 @@ Documentation for ``ble_gap_disc_params``
 
 **A**: Unfortunately, not at the moment. Here is a brief description of the fields:
 
-- ``itvl``: This is defined as the time interval from when the Controller started its last LE scan until it begins the subsequent LE 
-scan. (units=0.625 msec)
-- ``window``: The duration of the LE scan. ``LE_Scan_Window`` shall be less than or equal to ``LE_Scan_Interval`` (units=0.625 msec)
-- ``filter_policy``: The only useful documentation is the table in the Bluetooth spec (section 2.E.7.8.10).  This field controls which 
-types of devices to listen for.
-- ``limited``: If set, only discover devices in limited discoverable mode.
-- ``passive``: If set, don't send scan requests to advertisers (i.e., don't request additional advertising data).
+- ``itvl``: This is defined as the time interval from when the Controller started its last LE scan until it begins the subsequent LE scan. (units=0.625 msec)  
+- ``window``: The duration of the LE scan. ``LE_Scan_Window`` shall be less than or equal to ``LE_Scan_Interval`` (units=0.625 msec)  
+- ``filter_policy``: The only useful documentation is the table in the Bluetooth spec (section 2.E.7.8.10).  This field controls which types of devices to listen for.  
+- ``limited``: If set, only discover devices in limited discoverable mode.  
+- ``passive``: If set, don't send scan requests to advertisers (i.e., don't request additional advertising data).  
 - ``filter_duplicates``: If set, the controller ignores all but the first advertisement from each device.
 
 Multicast Messaging and Group Messaging
@@ -201,7 +199,7 @@ Read the Value of a Characteristic of a Peripheral Device from a Central Device
 
 **Q**: I want to read the value of a characteristic of a peripheral device from a central device which runs on Mynewt OS. How can I obtain the value using the following function?
 
-.. code-block:: console
+.. code-block:: c
 
 	int ble_gattc_read(uint16_t conn_handle, uint16_t attr_handle,
                    ble_gatt_attr_fn *cb, void *cb_arg);

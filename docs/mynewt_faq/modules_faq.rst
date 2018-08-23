@@ -1,5 +1,5 @@
-Mynewt FAQ: Drivers and Modules
-===============================
+Mynewt FAQ - Drivers and Modules
+================================
 
 .. contents::
   :local:

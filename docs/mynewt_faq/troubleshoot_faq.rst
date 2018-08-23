@@ -1,5 +1,5 @@
-Mynewt FAQ: Troubleshooting
-===========================
+Mynewt FAQ - Troubleshooting
+============================
 
 .. contents::
   :local:

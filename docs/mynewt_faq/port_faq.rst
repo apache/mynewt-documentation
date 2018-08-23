@@ -1,5 +1,5 @@
-Mynewt FAQ: Porting Mynewt
-==========================
+Mynewt FAQ - Porting Mynewt
+===========================
 
 .. contents::
   :local:

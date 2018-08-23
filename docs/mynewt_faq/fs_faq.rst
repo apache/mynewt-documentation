@@ -1,5 +1,5 @@
-Mynewt FAQ: File System
-=======================
+Mynewt FAQ - File System
+========================
 
 .. contents::
   :local:

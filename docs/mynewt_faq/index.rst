@@ -6,23 +6,23 @@ Welcome to the Mynewt FAQ. Here are some commonly asked questions asked about th
 .. toctree::
    :maxdepth: 1
 
-   Administrative <faq_admin>
-   Bluetooth <faq_bluetooth>
-   Bootloader and Firmware Upgrade <faq_boot>
-   Drivers and Modules <faq_modules>
-   File System <faq_fs>
-   Hardware-Specific <faq_hardware>
-   Mynewt Syntax and Semantics <faq_mynewt>
-   NFC <faq_nfc>
-   Newt <faq_newt>
-   Newt Manager <faq_newtmgr>
-   Porting Mynewt <faq_port>
-   Troubleshooting <faq_troubleshoot>
+   Administrative <admin_faq>
+   Bluetooth <bluetooth_faq>
+   Bootloader and Firmware Upgrade <boot_faq>
+   Drivers and Modules <modules_faq>
+   File System <fs_faq>
+   Hardware-Specific <hardware_faq>
+   Mynewt Syntax and Semantics <syntax_faq>
+   NFC <nfc_faq>
+   Newt <newt_faq>
+   Newt Manager <newtmgr_faq>
+   Porting Mynewt <port_faq>
+   Troubleshooting <troubleshoot_faq>
 
 General FAQs
 ------------
 
-- Make sure to update to the latest available version to ensure everything remains functional. There may be some changes that break backwards compatibility or change how certain features work, so be sure to always update.
+- Make sure to update to the latest available version to ensure everything remains functional. There may be some new additions that break backwards compatibility or change how certain features work, so be sure to always update.
 - If you are making changes to code, adding new features, etc., please update to the latest branch to ensure that any changes you make work with the newest changes and features in Mynewt.
 
 Reduce Code Size for Mynewt Image

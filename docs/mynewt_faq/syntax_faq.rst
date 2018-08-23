@@ -1,5 +1,5 @@
-Mynewt FAQ: Syntax and Semantics
-================================
+Mynewt FAQ - Syntax and Semantics
+=================================
 
 .. contents::
   :local:

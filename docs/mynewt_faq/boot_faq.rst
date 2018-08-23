@@ -1,5 +1,5 @@
-Mynewt FAQ: Bootloader and Firmware Upgrade
-===========================================
+Mynewt FAQ - Bootloader and Firmware Upgrade
+============================================
 
 .. contents::
   :local:

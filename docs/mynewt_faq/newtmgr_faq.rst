@@ -1,5 +1,5 @@
-Mynewt FAQ: Newt Manager
-========================
+Mynewt FAQ - Newt Manager
+=========================
 
 .. contents::
   :local:
