@@ -797,6 +797,7 @@ INPUT                  = ../mynewt-core/kernel/os \
                          ../mynewt-core/hw/sensor \
                          ../mynewt-core/test \
                          ../mynewt-core/encoding \
+                         ../mynewt-nimble/nimble \
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
