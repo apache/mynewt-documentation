@@ -179,7 +179,7 @@ breathe_domain_by_extension = {
 
 edit_on_github_projects = {
     "os/": ("apache/mynewt-core", "docs/os/"),
-    "network/": ("apache/mynewt-core", "docs/network/"),
+    "network/": ("apache/mynewt-nimble", "docs/"),
     "newt/": ("apache/mynewt-newt", "docs/"),
     "newtmgr/": ("apache/mynewt-newtmgr", "docs/"),
     "default": ("apache/mynewt-documentation", "docs/")
