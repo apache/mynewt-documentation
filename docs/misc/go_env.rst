@@ -69,7 +69,6 @@ Installing Go and git on Linux
 .. code-block:: console
     sudo apt-get install golang git
 
-
 Installing Go on and git Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
