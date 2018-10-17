@@ -66,9 +66,8 @@ brewing it.
 Installing Go and git on Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In terminal type
-
 .. code-block:: console
+
     sudo apt-get install golang git
 
 Installing Go on and git Windows
@@ -77,6 +76,7 @@ Installing Go on and git Windows
 In msys2 terminal type
 
 .. code-block:: console
+
     pacman -S mingw-w64-x64_64-go git
 
 Make sure to restart msys2 terminal after installation.
