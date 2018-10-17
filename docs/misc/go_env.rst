@@ -66,6 +66,8 @@ brewing it.
 Installing Go and git on Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+In terminal type
+
 .. code-block:: console
     sudo apt-get install golang git
 
