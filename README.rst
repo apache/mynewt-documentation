@@ -94,6 +94,51 @@ Fedora
 
    sudo dnf install doxygen python3-breathe python3-recommonmark
 
+Deploying the latest docs
+=========================
+
+NOTE: These instructions assume that your workspace has all the mynewt repos
+cloned under the same parent directory. 
+
+* Ensure that all changes are merged into ``master`` and that the ``master``
+  branch is checked out.
+* Repeat for any mynewt code repo that has documentation changes.
+* Follow the steps at `Site Docs`_ to release the docs.
+
+Creating a versioned set of docs
+================================
+
+When the master/latest documentation is deemed representative of a Mynewt
+version, it is time to create a versioned set.
+
+* Make sure all your mynewt-* repos are up to date and that all changes are
+  merged and committed.
+* Add the new version to mynewt-documentation/docs/themes/mynewt/versions.html
+
+  * Also add the new version to any existing archived set.
+  * i.e ``mynewt-documentation/versions/*/mynewt-documentation/docs/themes/mynewt/versions.html``
+  * Make sure the 'selected' flag is correct for the archived version
+
+* Make a versions/vX_Y_Z directory
+* Copy mynewt-documentation/* (except versions!) into versions/vX_Y_Z/mynewt-documentation
+* Copy the mynewt-core repo into versions/vX_Y_Z/mynewt-core
+* Repeat for other mynewt-* repos with doxygen docs and a /docs folder
+* Update the version fields in
+
+  * ``docs/conf.py``
+  * and ``versions/vX_Y_Z/mynewt-documentation/docs/conf.py``
+
+* Add a warning that this is not the most recent documentation to:
+
+  * mynewt-documentation/versions/vX_Y_Z/mynewt-documentation/docs/themes/mynewt/layout.html
+  * see an existing older version for example
+
+To preview the changes:
+
+.. code-block:: bash
+
+  cd mynewt-documentation/versions/vX_Y_Z/mynewt-documentation
+  make clean && make docs && (cd _build/html && python -m SimpleHTTPServer 8080)
 
 .. _Apache Mynewt: https://mynewt.apache.org/
 .. _Sphinx: http://www.sphinx-doc.org/
@@ -101,3 +146,4 @@ Fedora
 .. _Homebrew: http://brew.sh/
 .. _Pip: https://pip.readthedocs.io/en/stable/installing/
 .. _Breathe: http://breathe.readthedocs.io/en/latest/
+.. _Site Docs: https://github.com/apache/mynewt-site#deploying-the-latest-docs
