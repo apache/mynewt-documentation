@@ -112,7 +112,7 @@ want to talk to a human about what you're working on, you can contact us via the
 [developers mailing list](mailto:dev@mynewt.apache.org).
 
 Although not a formal channel, you can also find a number of core developers
-on the #mynewt channel on Freenode IRC or #general channel on [Mynewt Slack](https://join.slack.com/mynewt/shared_invite/MTkwMTg1ODM1NTg5LTE0OTYxNzQ4NzQtZTU1YmNhYjhkMg)
+on the #mynewt channel on Freenode IRC or #general channel on [Mynewt Slack](https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTZiYzgxNDQ3NmQ5ZWFkMTY4MjNjYTNmNGJjMDhiMmZiMWFjNDdkMzBlNzZjOWY0YzljYTBhYTg1YmRjYzljZDg)
 
 Also, be sure to checkout the [Frequently Asked Questions](https://mynewt.apache.org/faq/answers)
 for some help troubleshooting first.
