@@ -185,3 +185,5 @@ edit_on_github_projects = {
     "default": ("apache/mynewt-documentation", "docs/")
 }
 edit_on_github_branch = 'master'
+
+slack_url = 'https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTZiYzgxNDQ3NmQ5ZWFkMTY4MjNjYTNmNGJjMDhiMZiMWFjNDdkMzBlNzZjOWY0YzljYTBhYTg1YmRjYzljZDg'
