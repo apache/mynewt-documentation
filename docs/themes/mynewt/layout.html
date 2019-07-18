@@ -115,6 +115,16 @@ ga("send", "pageview");
             {% include "sidebar.html" %}
 
             <div class="col-xs-12 col-sm-9">
+              {% if cur_version != latest_version %}
+                <div class="alert alert-warning">
+                  <p>
+                    Version {{ cur_version }} is not the most recent version of the
+                    Apache Mynewt documentation. Click <a href="/latest">here</a> to
+                    read the latest version.
+                  </p>
+                </div>
+              {% endif %}
+
               {# PAGE CONTENT #}
               <div class="">
                 <div class="rst-content">
