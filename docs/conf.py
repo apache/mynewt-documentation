@@ -186,4 +186,4 @@ edit_on_github_projects = {
 }
 edit_on_github_branch = 'master'
 
-slack_url = 'https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTZiYzgxNDQ3NmQ5ZWFkMTY4MjNjYTNmNGJjMDhiMZiMWFjNDdkMzBlNzZjOWY0YzljYTBhYTg1YmRjYzljZDg'
+slack_url = 'https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTcyMmZiOGQzOGMxM2U4ODFmMTIwNjNmYTE5Y2UwYjQwZWIxNTE0MTUzY2JmMTEzOWFjYWZkNGM0YmM4MzAxNWQ'
