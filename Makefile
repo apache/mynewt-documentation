@@ -17,11 +17,10 @@ _scratch:
 	mkdir _scratch
 	cp -a docs/* _scratch
 	# Copy in docs/ from each of the mynewt-* projects.
-	# NOTE: paths here nead to match edit_on_github in conf.py
+	# NOTE: paths here need to match edit_on_github in conf.py
 	cp -a ../mynewt-core/docs/os _scratch/os
 	#
-	mkdir _scratch/network
-	cp -a ../mynewt-nimble/docs _scratch/network/
+	cp -a ../mynewt-nimble/docs _scratch/network
 	#
 	cp -a ../mynewt-newt/docs _scratch/newt
 	#
