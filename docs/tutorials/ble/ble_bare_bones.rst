@@ -139,7 +139,7 @@ access to a BLE stack. We do this by adding the necessary NimBLE
 packages to the app's dependency list in ``apps/ble_app/pkg.yml``:
 
 .. code-block:: console
-    :emphasize-lines: 5,6,7
+    :emphasize-lines: 6,7,8
 
     pkg.deps:
         - "@apache-mynewt-core/kernel/os"
