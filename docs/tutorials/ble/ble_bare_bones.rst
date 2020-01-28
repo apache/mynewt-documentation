@@ -160,7 +160,7 @@ NimBLE controller into build. For this update ``apps/ble_app/syscfg.yml``
 
 
 **Important note:** The controller package affects system configuration,
-see :doc:`this page <../../../ble_setup/ble_setup_intro/>` for
+see :doc:`this page <../../network/ble_setup/ble_lp_clock>` for
 details.
 
 Build the target
