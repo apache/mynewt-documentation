@@ -60,7 +60,7 @@ Run the following commands to create a new project:
         Project myproj successfully created.
         $ cd myproj
         $ newt upgrade
-        Downloading repository mynewt-core (commit: [...])
+        Downloading repository mynewt-core (commit: master) ...
         apache-mynewt-core successfully upgraded to version 1.7.0
         $
 
@@ -113,8 +113,8 @@ Install the project dependencies using the ``newt upgrade`` command
 .. code-block:: console
 
     $ newt upgrade
-    Downloading repository mynewt-core (commit: [...])
-    Downloading repository mynewt_arduino_zero (commit: [...])
+    Downloading repository mynewt-core (commit: master) ...
+    Downloading repository mynewt_arduino_zero (commit: master) ...
     apache-mynewt-core successfully upgraded to version 1.7.0
     mynewt_arduino_zero successfully upgraded to version 1.7.0
     $
