@@ -184,6 +184,7 @@ here:
                             char *url_body,
                          uint8_t  url_body_len,
                          uint8_t  url_suffix
+                          int8_t  measured_power
     )
 
 We'll advertise the Mynewt URL: *https://mynewt.apache.org*. Eddystone
@@ -219,7 +220,8 @@ arguments translate to the https://mynewt.apache.org URL:
                                             BLE_EDDYSTONE_URL_SCHEME_HTTPS,
                                             "mynewt.apache",
                                             13,
-                                            BLE_EDDYSTONE_URL_SUFFIX_ORG);
+                                            BLE_EDDYSTONE_URL_SUFFIX_ORG,
+                                            0);
         assert(rc == 0);
 
         /* TODO: Begin advertising. */
@@ -321,7 +323,8 @@ instance of the ``ble_gap_adv_params`` struct as our argument.
                                         BLE_EDDYSTONE_URL_SCHEME_HTTPS,
                                         "mynewt.apache",
                                         13,
-                                        BLE_EDDYSTONE_URL_SUFFIX_ORG);
+                                        BLE_EDDYSTONE_URL_SUFFIX_ORG,
+                                        0);
         assert(rc == 0);
     
         /* Begin advertising. */
@@ -378,7 +381,8 @@ For reference, here is the complete application source:
                                             BLE_EDDYSTONE_URL_SCHEME_HTTPS,
                                             "mynewt.apache",
                                             13,
-                                            BLE_EDDYSTONE_URL_SUFFIX_ORG);
+                                            BLE_EDDYSTONE_URL_SUFFIX_ORG,
+                                            0);
         assert(rc == 0);
 
         /* Begin advertising. */
