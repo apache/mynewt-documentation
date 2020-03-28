@@ -335,17 +335,17 @@ terminal.
 Run the ``newt load arduino_boot`` command again after erasing the
 board.
 
-:red:`Reminder if you are using Docker`: When working with actual hardware,
-remember that each board has an ID. If you swap boards and do not
-refresh the USB Device Filter on the VirtualBox UI, the ID might be
-stale and the Docker instance may not be able to see the board
-correctly. For example, you may see an error message like
-``Error: unable to find CMSIS-DAP device`` when you try to load or run
-an image on the board. In that case, you need to click on the USB link
-in VirtualBox UI, remove the existing USB Device Filter (e.g. "Atmel
-Corp. EDBG CMSIS-DAP[0101]") by clicking on the "Removes selected USB
-filter" button, and add a new filter by clicking on the "Adds new USB
-filter" button.
+.. warning:: Reminder if you are using Docker: When working with actual hardware,
+    remember that each board has an ID. If you swap boards and do not
+    refresh the USB Device Filter on the VirtualBox UI, the ID might be
+    stale and the Docker instance may not be able to see the board
+    correctly. For example, you may see an error message like
+    ``Error: unable to find CMSIS-DAP device`` when you try to load or run
+    an image on the board. In that case, you need to click on the USB link
+    in VirtualBox UI, remove the existing USB Device Filter (e.g. "Atmel
+    Corp. EDBG CMSIS-DAP[0101]") by clicking on the "Removes selected USB
+    filter" button, and add a new filter by clicking on the "Adds new USB
+    filter" button.
 
 Run the Blinky Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

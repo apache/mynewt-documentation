@@ -92,12 +92,12 @@ characteristics use:
             }
         }
 
-    /* Unknown characteristic; the nimble stack should not have called this
-     * function.
-     */
-    assert(0);
-    return BLE_ATT_ERR_UNLIKELY;
-}
+        /* Unknown characteristic; the nimble stack should not have called this
+        * function.
+        */
+        assert(0);
+        return BLE_ATT_ERR_UNLIKELY;
+    }
 
 After you've taken a moment to examine the structure of this function,
 let's explore some details.

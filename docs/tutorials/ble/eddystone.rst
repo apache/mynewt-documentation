@@ -332,7 +332,7 @@ instance of the ``ble_gap_adv_params`` struct as our argument.
         rc = ble_gap_adv_start(BLE_OWN_ADDR_RANDOM, NULL, BLE_HS_FOREVER,
                            &adv_params, NULL, NULL);
         assert(rc == 0);
-} 
+    } 
 
 Conclusion
 ~~~~~~~~~~
