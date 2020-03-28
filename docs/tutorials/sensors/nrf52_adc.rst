@@ -51,7 +51,7 @@ see the section on :doc:`repositories <../repo/add_repos>` before continuing.
 
 In your ``project.yml`` file, change the ``vers`` field under ``repository.apache-mynewt-core`` from ``1-latest`` to ``0-dev``. When you're done, your ``project.yml`` file should look like this:
 
-.. code-block:: console
+.. code-block:: yaml
 
     project.name: "my_project"
 
@@ -193,6 +193,7 @@ Use the ``newt create-image`` command to perform this action. You may assign an 
 version (e.g. 1.0.0) to the image.
 
 .. code-block:: console
+
     $ newt create-image nrf52_adc 1.0.0
     App image successfully generated: ~/dev/myadc/bin/nrf52_adc/apps/nrf52_adc/nrf52_adc.img
     Build manifest: ~/dev/myadc/bin/nrf52_adc/apps/nrf52_adc/manifest.json
