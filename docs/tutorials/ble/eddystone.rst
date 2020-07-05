@@ -70,7 +70,7 @@ We achieve this by configuring the NimBLE host with a callback function
 that gets called when sync takes place:
 
 .. code-block:: console
-    :emphasize-lines: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,24
+    :emphasize-lines: 1-17,24
     
     static void 
     ble_app_set_addr() 
