@@ -155,7 +155,8 @@ ga("send", "pageview");
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'{{ '' if no_search_suffix else file_suffix }}',
             HAS_SOURCE:  {{ has_source|lower }},
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: '.txt',
+            LINK_SUFFIX: '.html'
         };
     </script>
     {%- for scriptfile in script_files %}
