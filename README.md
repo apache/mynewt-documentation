@@ -23,7 +23,8 @@ The [Apache Mynewt](https://mynewt.apache.org/) source code also contains inline
 
 Embedding [Doxygen](https://www.doxygen.nl/) generated source documentation is through the [Breathe](https://breathe.readthedocs.io/)
 bridge. This bridge embeds source
-documentation using [Sphinx](https://www.sphinx-doc.org/)'s C domain. For example:
+documentation using [Sphinx](https://www.sphinx-doc.org/)'s C domain.
+For example:
 `.. doxygenfile:: full/include/console/console.h`
 
 Documents can then refer to code elements using the [C domain syntax](https://www.sphinx-doc.org/en/master/usage/domains/c.html#cross-referencing-c-constructs).
@@ -45,14 +46,14 @@ Note: This build toolchain is known to work on macOS 10.11.
 * [Homebrew](https://brew.sh/)
 
 ```bash
-  $ brew --version
-  Homebrew 1.1.7
+$ brew --version
+Homebrew 1.1.7
 ```
 * python
 
 ```bash
-  $ python --version
-  Python 2.7.10
+$ python --version
+Python 2.7.10
 ```
 * [pip](https://pip.pypa.io/en/stable/installation/)
 
@@ -129,6 +130,6 @@ version, it is time to create a versioned set.
 
 To preview the changes:
 ```bash
-  cd mynewt-documentation/versions/vX_Y_Z/mynewt-documentation
-  make clean && make docs && (cd _build/html && python -m SimpleHTTPServer 8080)
+cd mynewt-documentation/versions/vX_Y_Z/mynewt-documentation
+make clean && make docs && (cd _build/html && python -m SimpleHTTPServer 8080)
 ```
