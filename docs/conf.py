@@ -102,7 +102,7 @@ html_theme_path = ['./themes']
 # documentation.
 #
 html_theme_options = {
-    'google_analytics': ('UA-72162311-1', 'auto')
+    'google_analytics': False
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
