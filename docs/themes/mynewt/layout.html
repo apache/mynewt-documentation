@@ -115,7 +115,17 @@ ga("send", "pageview");
             {% include "sidebar.html" %}
 
             <div class="col-xs-12 col-sm-9">
-              {% if cur_version != latest_version %}
+
+              {% if cur_version == "master" %}
+                <div class="alert alert-warning">
+                  <p>
+                    Version {{ cur_version }} is the development version of the
+                    Apache Mynewt documentation. Click <a href="/latest">here</a> to
+                    read the latest released version.
+                  </p>
+                </div>
+
+              {% elif cur_version != latest_version %}
                 <div class="alert alert-warning">
                   <p>
                     Version {{ cur_version }} is not the most recent version of the
