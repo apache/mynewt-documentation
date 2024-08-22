@@ -72,7 +72,7 @@ release = u'latest'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -186,4 +186,6 @@ edit_on_github_projects = {
 }
 edit_on_github_branch = 'master'
 
-slack_url = 'https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTcyMmZiOGQzOGMxM2U4ODFmMTIwNjNmYTE5Y2UwYjQwZWIxNTE0MTUzY2JmMTEzOWFjYWZkNGM0YmM4MzAxNWQ'
+html_context = {
+    'slack_url': 'https://join.slack.com/t/mynewt/shared_invite/enQtNjA1MTg0NzgyNzg3LTcyMmZiOGQzOGMxM2U4ODFmMTIwNjNmYTE5Y2UwYjQwZWIxNTE0MTUzY2JmMTEzOWFjYWZkNGM0YmM4MzAxNWQ'
+}
