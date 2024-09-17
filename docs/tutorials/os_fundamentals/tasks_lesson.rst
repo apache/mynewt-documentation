@@ -72,7 +72,7 @@ apps/blinky/src):
    struct os_task work_task;
 
 A task is represented by the
-:doc:`os_task <../../../core_os/task/task>`
+:doc:`os_task <../../os/core_os/task/task>`
 struct which will hold the task’s information (name, state, priority,
 etc.). A task is made up of two main elements, a task function (also
 known as a task handler) and a task stack.
