@@ -2,8 +2,8 @@ Enabling and Calibrating Off-Board DRV2605 LRA Actuator
 -------------------------------------------------------
 
 This tutorial shows you how to run the **sensors\_test** application
-on an nRF52-DK board to communicate, via the I2C interface, with the :doc:`Adafruit
-DRV2605 <https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview>`
+on an nRF52-DK board to communicate, via the I2C interface, with the `Adafruit
+DRV2605 <https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview>`_
 device. The DRV2605 driver includes the ``drv2605`` shell command that allows you
 to quickly to view the status, calibrate and actuate your motor in
 preperation for using it programmatically in your own app.
