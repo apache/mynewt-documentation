@@ -9,7 +9,7 @@ Mynewt to build your first *Hello World* application (Blinky) on a
 target board. Once built using the *newt* tool, this application will
 blink the LED lights on the target board.
 
-Create a project with a simple app that blinks an LED on the stmf303
+Create a project with a simple app that blinks an LED on the STM F303
 discovery board. In the process import some external libraries into your
 project. Download the application to the target and watch it blink!
 
@@ -20,7 +20,7 @@ What you need
 -  Laptop running Mac OSX.
 -  It is assumed you have already installed newt tool.
 -  It is assumed you already installed native tools as described
-   `here <../get_started/native_tools.html>`__
+   :doc:`here <../../get_started/native_install/native_tools>`
 
 Also, we assume that you're familiar with UNIX shells. Let's gets
 started!
@@ -29,8 +29,8 @@ Create a project
 ~~~~~~~~~~~~~~~~
 
 Create a new project to hold your work. For a deeper understanding, you
-can read about project creation in `Get Started -- Creating Your First
-Project <../get_started/project_create.html>`__ or just follow the
+can read about project creation in :doc:`Get Started -- Creating Your First
+Project <../../get_started/project_create>` or just follow the
 commands below.
 
 If you've already created a project from another tutorial, you can
@@ -168,16 +168,14 @@ Want more?
 
 Want to make your board do something a little more exciting with the
 LEDs? Then try making the modifications to the Blinky app to make it a
-`pin-wheel app <pin-wheel-mods.html>`__ and you can light all the LEDs in
+:doc:`pin wheel app <blinky_pin-wheel-mods>` and you can light all the LEDs in
 a pin-wheel fashion.
 
 We have more fun tutorials for you to get your hands dirty. Be bold and
-try other Blinky-like `tutorials <../tutorials/nRF52.html>`__ or try
-enabling additional functionality such as `remote
-comms <project-slinky.html>`__ on the current board.
+try other Blinky-like :doc:`tutorials <nRF52>` or try
+enabling additional functionality such as :doc:`remote comms <../slinky/project-slinky>` on the current board.
 
 If you see anything missing or want to send us feedback, please do so by
-signing up for appropriate mailing lists on our `Community
-Page <../../community.html>`__.
+signing up for appropriate mailing lists on our `Community Page </community>`_
 
 Keep on hacking and blinking!

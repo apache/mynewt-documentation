@@ -57,7 +57,7 @@ the following syscfg settings enabled:
    the driver.
 
 -  ``DRV2605_EN_PIN``: The pin the driver needs to gpio in order to enable
-    your DRV2605 device.
+   your DRV2605 device.
 
 -  ``DRV2605_RATED_VOLTAGE``: I have no easy default for you here, it is 
    entirelay based on your purchased LRA motor. See 8.5.2.1 Rated Voltage
