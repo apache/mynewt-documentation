@@ -317,6 +317,7 @@ expect when we set the ``work_task`` priority higher and lower than the
 
 .. figure:: ../pics/task_lesson.png
    :alt: Task Scheduling
+   :width: 360
 
    Task Scheduling
 

@@ -5,7 +5,7 @@ Objective
 ~~~~~~~~~~~~~~~
 
 
-Learn how to modify an existing app -- the `blinky <STM32F303.html>`__ app
+Learn how to modify an existing app -- the :doc:`blinky <blinky_STM32F303>` app
 -- to light all the LEDs on the STM32F3 Discovery board.
 
 What you need
@@ -14,7 +14,7 @@ What you need
 -  Discovery kit with STM32F303VC MCU
 -  Laptop running Mac OSX.
 -  It is assumed you have already installed and run the
-   `blinky <STM32F303.html>`__ app succesfully.
+   :doc:`blinky <blinky_STM32F303>` app succesfully.
 
 Since you've already successfully created your blinky app project,
 you'll need to modify only one file, main.c, in order to get this app
@@ -100,7 +100,6 @@ all lit, they should then go off in the same order. This should repeat
 continuously.
 
 If you see anything missing or want to send us feedback, please do so by
-signing up for appropriate mailing lists on our `Community
-Page <../../community.html>`__.
+signing up for appropriate mailing lists on our `Community Page </community>`_.
 
 Keep on hacking and blinking!

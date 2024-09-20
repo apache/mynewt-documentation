@@ -46,6 +46,7 @@ Tutorials are available for the following boards:
 -  :doc:`rbnano2`
 -  :doc:`blinky_stm32f4disc`
 -  :doc:`blinky_STM32F303`
+-  :doc:`blinky_pin-wheel-mods`
 
 We also have a tutorial that shows you how to add :doc:`blinky_console`.
 
