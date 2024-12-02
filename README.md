@@ -133,3 +133,56 @@ To preview the changes:
 cd mynewt-documentation/versions/vX_Y_Z/mynewt-documentation
 make clean && make docs && (cd _build/html && python -m SimpleHTTPServer 8080)
 ```
+
+## Generating PDF File
+
+### Apply the Workaround
+
+Due to a potential issue with Sphinx's PDF builder, there is an additional step 
+that needs to be performed on each dependent repository before building the documentation.
+The issue is related to Sphinx's `.. toctree::` directive. 
+The output (PDF only) renders some sections in incorrect order when there is content in `index.rst`
+files used to chain source `RST` files together.
+
+The workaround is to manually alter the affected files, so that there is no content but the 
+toctree directive in those `index.rst` files.
+
+First, fetch the `sphinx-workaround` branch for one of the repositories:
+
+```bash
+git fetch https://github.com/wpiet/mynewt-documentation sphinx-workaround
+git checkout -b sphinx-workaround FETCH_HEAD 
+```
+
+Then, rebase onto the downloaded branch:
+
+```bash
+git checkout master
+git rebase sphinx-workaround
+```
+
+Repeat the above steps for all dependent repositories, changing the `git fetch` command accordingly:
+```bash
+git fetch https://github.com/wpiet/mynewt-core sphinx-workaround
+git fetch https://github.com/wpiet/mynewt-nimble sphinx-workaround
+git fetch https://github.com/wpiet/mynewt-newt sphinx-workaround
+git fetch https://github.com/wpiet/mynewt-newtmgr sphinx-workaround
+```
+
+### Build the Docs
+
+In the `mynewt-site` directory run:
+
+```shell
+./build.py
+```
+
+In the `mynewt-documentation` run:
+
+```shell
+make latexpdf
+```
+
+This will generate the PDF file (for the version set as the `latest` in `mkdocs.yml`) in 
+the following path:
+`_build/latex/Mynewt.pdf`
